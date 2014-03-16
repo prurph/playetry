@@ -6,94 +6,10 @@
 <body>
   <h1>Is this thing on?</h1>
   <audio controls></audio>
-  <input onclick="startRecording()" type="button" value="start recording">
-  <input onclick="stopRecording()" type="button" value="stop recording">
-  <input onclick="playback()" type="button" value="play recording">
+  <input type="button" value="start recording" id="start-recording">
+  <input type="button" value="stop recording" id="stop-recording">
+  <input type="button" value="play recording" id="play-recording">
   <div id="playstuff">I'm playful.<br></div>
-  <script>
-    var onFail = function(e) {
-      console.log("Error!", e);
-    };
 
-    var onSuccess = function(s) {
-      context = (typeof AudioContext !== "undefined") ?
-        new AudioContext() : new webkitAudioContext();
-      var mediaStreamSource = context.createMediaStreamSource(s);
-      recorder = new Recorder(mediaStreamSource, {workerPath: "../assets/recorderWorker.js"});
-      recorder.record();
-    }
-
-    window.URL = window.URL || window.webkitURL;
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-    var recorder
-    var audio = document.querySelector("audio");
-
-    function startRecording() {
-      if (navigator.getUserMedia) {
-        navigator.getUserMedia({audio: true}, onSuccess, onFail);
-      } else {
-        console.log("navigator.getUserMedia not present");
-      }
-    }
-
-    var recordedBlob
-    function stopRecording() {
-      recorder.stop();
-      recorder.exportWAV(function(s) {
-        recordedBlob = s;
-        //audio.src = window.URL.createObjectURL(s);
-      });
-    }
-
-    function playback() {
-      audio.src = window.URL.createObjectURL(recordedBlob);
-      ajaxPost(recordedBlob);
-    }
-
-    function ajaxPost(blob) {
-      var data = new FormData(),
-          fileExt;
-      if (blob.type === "application/ogg") {
-        fileExt = ".ogg"
-      } else if (blob.type === "audio/mpeg") {
-        fileExt = ".mp3";
-      } else {
-        fileExt = ".wav";
-      }
-
-      data.append("audio", blob, new Date().getTime() + fileExt);
-      console.log(data);
-      $.ajax({
-        url: '/audio/save_file',
-        type: 'POST',
-        data: data,
-        contentType: false,
-        processData: false
-      })
-      .done(function(response) {
-        console.log(response);
-      })
-      .fail(function() {
-        console.log("error");
-      })
-    }
-
-    function getRec(recordingId) {
-      $.ajax({
-        url: '/audio/get_file/' + recordingId,
-        type: 'GET',
-        dataType: 'json'
-      })
-      // response is Rails render json: {url: @wav.url}
-      .done(function(response) {
-        var $playstuff = $("#playstuff"),
-            $newTrack  = $("<audio/>", { src: response.url }).
-              prop("controls", true);
-
-        $playstuff.append($newTrack)
-      })
-    }
-  </script>
 </body>
 </html>
