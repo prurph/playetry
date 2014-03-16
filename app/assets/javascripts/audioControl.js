@@ -1,4 +1,4 @@
-playetry.audioControl = {
+window.Playetry.audioControl = {
   onLoad: function() {
     this.recordedBlob = {};
     this.audioNode = document.querySelector("audio");
@@ -26,7 +26,6 @@ playetry.audioControl = {
   },
 
   startRecording: function(event) {
-    debugger;
     if (navigator.getUserMedia) {
       navigator.getUserMedia({audio: true},
         this.onSuccess.bind(this),
@@ -42,7 +41,7 @@ playetry.audioControl = {
     console.log("Recording stopped");
     this.recorder.exportWAV(function(s) {
       // "this" is window here, so explicitly specify the namespace
-      playetry.audioControl.recordedBlob = s;
+      window.Playetry.audioControl.recordedBlob = s;
     });
   },
 
@@ -71,16 +70,16 @@ playetry.audioControl = {
     })
   },
 
-  getRec: function(recordingId) {
+  getReading: function(readingId) {
     $.ajax({
-      url: '/audio/get_file/' + recordingId,
+      url: '/audio/get_file/' + readingId,
       type: 'GET',
       dataType: 'json'
     })
-    // response is Rails render json: {url: @wav.url}
+    // Rails responds with serialzation of reading {reading: obj}
     .done(function(response) {
       var $playstuff = $("#playstuff"),
-          $newTrack  = $("<audio/>", { src: response.url }).
+          $newTrack  = $("<audio/>", { src: response.reading.wav_url }).
             prop("controls", true);
 
       $playstuff.append($newTrack)

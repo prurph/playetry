@@ -12,10 +12,12 @@ gem 'turbolinks'
 
 gem 'paperclip', '~> 4.1'
 gem 'handlebars_assets'
+gem 'js-routes'
 
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
+gem 'active_model_serializers'
 
 gem 'jbuilder', '~> 1.2'
 

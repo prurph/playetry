@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require playetry
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require js-routes
 //= require handlebars.runtime
-//= require ./templates
+//= require_tree ./templates
 //= require onLoad
 //= require_tree .

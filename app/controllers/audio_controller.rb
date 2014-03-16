@@ -21,7 +21,7 @@ class AudioController < ApplicationController
 
   def get_file
     @reading = Reading.find(get_params)
-    render json: {url: @reading.wav.url }
+    render json: @reading
   end
 
   private
