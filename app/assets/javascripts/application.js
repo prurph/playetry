@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require handlebars.runtime
+//= require ./templates
 //= require onLoad
 //= require_tree .

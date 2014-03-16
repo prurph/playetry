@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'paperclip', '~> 4.1'
+gem 'handlebars_assets'
 
 gem 'better_errors'
 gem 'binding_of_caller'

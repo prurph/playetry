@@ -4,9 +4,10 @@ playetry.audioControl = {
     this.audioNode = document.querySelector("audio");
     this.trackMaxTime = { maxTime: 360000, timeoutId: null }
     window.URL = window.URL || window.webkitURL;
-    navigator.getUserMedia =
-      navigator.getUserMedia    || navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    navigator.getUserMedia = (navigator.getUserMedia ||
+                              navigator.webkitGetUserMedia ||
+                              navigator.mozGetUserMedia ||
+                              navigator.msGetUserMedia);
   },
   onFail: function(error) {
     console.log("Error: ", error)
