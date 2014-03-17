@@ -78,11 +78,9 @@ window.Playetry.audioControl = {
     })
     // Rails responds with serialzation of reading {reading: obj}
     .done(function(response) {
-      var $playstuff = $("#playstuff"),
-          $newTrack  = $("<audio/>", { src: response.reading.wav_url }).
-            prop("controls", true);
-
-      $playstuff.append($newTrack)
+      console.log(response);
+      var reading = new window.Playetry.AudioPlayer(response.reading);
+      reading.renderSelf($("#playstuff"))
     })
   }
 }

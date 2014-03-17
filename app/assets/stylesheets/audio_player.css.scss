@@ -1,47 +1,49 @@
 /*Play button*/
-#songPlay{
+.song-play{
 
 }
 /*Pause button*/
-#songPause{
+.song-pause{
 
 }
 /*Stop button*/
-#songStop{
+.song-stop{
 
 }
 /*Play/Pause button*/
-#songPlayPause{
+.song-play-pause{
 
 }
 /*Song location slider*/
-#songSlider{
+.track-slider{
+    position: relative; /* makes layerX refer to click distance from this */
     width: 500px;
     height: 10px;
     background-color: black;
 }
 /*Track progress bar*/
-#trackProgress{
+.track-progress{
     width: 0px;
     height: 10px;
     background-color: red;
 }
 /*Volume Up Button*/
-#volumeUp{
+.volume-up{
 
 }
 /*Volume Down Button*/
-#volumeDown{
+.volume-down{
 
 }
 /*Volume Meter*/
-#volumeMeter{
+.volume-meter{
+    position: relative; /* makes layerX refer to click distance from this */
     width: 500px;
     height: 10px;
     background-color: black;
 }
 /*Volume Location Meter*/
-#volumeStatus{
+.volume-status{
     height: 10px;
     background-color: green;
 }

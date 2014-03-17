@@ -1,28 +1,19 @@
-<audio data-reading="{{id}}">
-
-<audio id="song" ontimeupdate="updateTime()">
-<source src="path/to/audio.mp3" type="audio/mp3"/>
-  Your browser does not support the audio tag.
-</audio>
-<!-- Div that plays song, onclick calls the javascript play function and passes the
-id of the audio tag with the appropriate song -->
-<div id="songPlay" onclick="play('song')">Play</div>
-<!-- Div that pauses the song when clicked.  Calls the pause button when clicked. -->
-<div id="songPause" onclick="pause()">Pause</div>
-<!-- Div that switches rather or not to play or pause the song based off of song state -->
-<div id="songPlayPause" onclick="playPause('song')">PlayPause</div>
-<!-- Div that stops the song when clicked -->
-<div id="songStop" onclick="stopSong()">Stop</div>
-<!-- Div that updates with current song time while playing -->
-<div id="songTime">0:00 / 0:00</div>
-<div id="volumeUp" onclick="changeVolume(10, 'up')">Plus</div><br>
-<div id="volumeDown" onclick="changeVolume(10, 'down')">Minus</div>
-<!-- Volume Meter sets the new volume on click.  The Volume Status div is embedded inside so it can grow
-within bounds to simulate percentage feel -->
-<div id="volumeMeter" onclick="setNewVolume(this,event)"><div id="volumeStatus"></div></div>
-<span id="volumeThirty" onclick="volumeUpdate(30)">VOLUME 30</span>
-<span id="volumeSixty" onclick="volumeUpdate(60)">VOLUME 60</span>
-<span id="volumeNinety" onclick="volumeUpdate(90)">VOLUME 90</span>
-<!-- Song Slider tracks progress on song time change, if you click it sets the distance into the song
-based on the percentage of where was clicked -->
-<div id="songSlider" onclick="setSongPosition(this,event)"><div id="trackProgress"></div></div>
+<div class="player-container" data-reading-id="{{id}}">
+  <audio class="audio-player">
+    <source src="{{wav_url}}" type="audio/wav" />
+    Your browser does not support the audio tag.
+  </audio>
+  <div class="song-play" data-player-action="playSong">Play</div>
+  <div class="song-pause" data-player-action="pauseSong">Pause</div>
+  <div class="song-play-pause" data-player-action="playPause">PlayPause</div>
+  <div class="song-stop" data-player-action="stopSong">Stop</div>
+  <div class="song-time">0:00</div>
+{{!--   <div class="volume-up" data-player-action="changeVolume(10, 'up')">Plus</div><br>
+  <div class="volume-down" data-player-action="changeVolume(10, 'down')">Minus</div> --}}
+  <div class="volume-meter" data-player-action="setVolume">
+    <div class="volume-status" data-player-action="setVolume"></div>
+  </div>
+  <div class="track-slider" data-player-action="setTrackPosition">
+    <div class="track-progress" data-player-action="setTrackPosition"></div>
+  </div>
+</div>
