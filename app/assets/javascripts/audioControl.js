@@ -38,15 +38,19 @@ window.Playetry.audioControl = {
   stopRecording: function(event) {
     clearTimeout(this.trackMaxTime.timeoutId);
     this.recorder.stop();
-    console.log("Recording stopped");
     this.recorder.exportWAV(function(s) {
       // "this" is window here, so explicitly specify the namespace
       window.Playetry.audioControl.recordedBlob = s;
+      window.Playetry.audioControl.playback(s);
     });
   },
 
-  playback: function() {
-    this.audioNode.src = window.URL.createObjectURL(this.recordedBlob);
+  playback: function(blob) {
+    // Adjust this later so it's not just a default <audio> element
+    this.audioNode.src = window.URL.createObjectURL(blob);
+  },
+
+  saveRecording: function(event) {
     this.ajaxPost(this.recordedBlob);
   },
 

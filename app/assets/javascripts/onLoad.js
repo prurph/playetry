@@ -11,8 +11,8 @@ $(document).ready(function() {
     $("#stop-recording").click(
       Playetry.audioControl.stopRecording.bind(Playetry.audioControl)
     );
-    $("#play-recording").click(
-      Playetry.audioControl.playback.bind(Playetry.audioControl)
+    $("#save-recording").click(
+      Playetry.audioControl.saveRecording.bind(Playetry.audioControl)
     );
   }
 });
