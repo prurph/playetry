@@ -18,8 +18,7 @@ window.Playetry.audioControl = {
     context = (typeof AudioContext !== "undefined") ?
       new AudioContext() : new webkitAudioContext();
     mediaStreamSource = context.createMediaStreamSource(source);
-    this.recorder = new Recorder(mediaStreamSource,
-      {workerPath: "../assets/recorderWorker.js"});
+    this.recorder = new Recorder(mediaStreamSource)
     this.recorder.record();
     this.trackMaxTime.timeoutId = setTimeout(this.stopRecording,
       this.trackMaxTime.maxTime);

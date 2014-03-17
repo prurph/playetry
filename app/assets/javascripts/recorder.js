@@ -9,7 +9,11 @@
     this.node = (this.context.createScriptProcessor ||
                  this.context.createJavaScriptNode).call(this.context,
                                                          bufferLen, 2, 2);
-    var worker = new Worker(config.workerPath || WORKER_PATH);
+    // Worker constructor MUST have a string URL, so recorderWorker.js is hacked
+    // to create new Blob from all its functonality with .toString() called on
+    // it. This blob is stored as newWorkerURL.
+    var worker = new Worker(newWorkerURL);
+    //var worker = new Worker(config.workerPath || WORKER_PATH);
     worker.postMessage({
       command: 'init',
       config: {
