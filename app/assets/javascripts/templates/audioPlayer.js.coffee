@@ -15,18 +15,12 @@ class Playetry.AudioPlayer
       event.preventDefault()
       clicked = $(event.target).attr("data-player-action")
       # get the DOM node of the player to call functions on
-      # audioTag = $(this).children(".audio-player")[0]
-      Playetry.AudioPlayer[clicked].call($audioNode[0], event);
-      return false;
+      if clicked?
+        Playetry.AudioPlayer[clicked].call($audioNode[0], event);
+        return false;
     # timeupdate is the event an active <audio> tag fires every second
     $audioNode.on("timeupdate",
       Playetry.AudioPlayer.updateTime.bind($audioNode[0]))
-
-  @playSong: (event) ->
-    this.play();
-
-  @pauseSong: (event) ->
-    this.pause();
 
   @playPause: (event) ->
     if this.paused
@@ -35,17 +29,26 @@ class Playetry.AudioPlayer
     else
       this.pause()
       $(event.currentTarget).removeClass("playing")
+    Playetry.AudioPlayer.playPauseBtnState($(event.target))
 
-  @setVolume: (event) ->
+  @playPauseBtnState: ($playPauseButton) ->
+    $playPauseButton.toggleClass("glyphicon-play glyphicon-pause")
+
+  @setVolume: (audioNode, percentage) ->
     # use .find() to search through all descendants
+    $volStatus = $(audioNode).parent().find(".volume-status")
+    audioNode.volume = percentage
+    $volStatus.width("#{percentage*100}%")
+
+  @clickVolumeSlider: (event) ->
     $volSlider     = $(event.currentTarget).find(".volume-meter")
     volSliderWidth = $volSlider.outerWidth()
     $volStatus     = $(event.currentTarget).find(".volume-status")
     clickLocation  = event.originalEvent.layerX
 
-    percentage  = clickLocation / volSliderWidth
-    this.volume = percentage
-    $volStatus.width("#{percentage*100}%")
+    percentage = clickLocation / volSliderWidth
+
+    Playetry.AudioPlayer.setVolume(this, percentage)
 
   @setTrackPosition: (event) ->
     $trackSlider     = $(event.currentTarget).find(".track-slider")
@@ -55,14 +58,32 @@ class Playetry.AudioPlayer
 
     percentage = clickLocation / trackSliderWidth
     this.currentTime = this.duration * percentage
-    # $trackStatus.width("#{percentage*100}%")
+
+  @toggleVolume: (event) ->
+    if this.volume != 0
+      $(event.target).attr("data-player-vol", this.volume)
+      Playetry.AudioPlayer.setVolume(this, 0)
+    else
+      Playetry.AudioPlayer.setVolume(this,
+        $(event.target).attr("data-player-vol"))
+    $(event.target).toggleClass("glyphicon-volume-up glyphicon-volume-off")
 
   @updateTime: ->
     currSeconds = (if Math.floor(this.currentTime % 60) < 10 then "0" else "") +
       Math.floor(this.currentTime % 60)
     currMinutes = Math.floor(this.currentTime / 60)
 
-    $(this).siblings(".song-time").text("#{currMinutes}:#{currSeconds}")
+    $playerContainer = $(this).parent()
+
+    $playerContainer.find(".track-time").text("#{currMinutes}:#{currSeconds}")
 
     percentage = this.currentTime / this.duration
-    $(this).parent().find(".track-progress").width("#{percentage*100}%")
+    $playerContainer.find(".track-progress").width("#{percentage*100}%")
+
+    if percentage == 1
+      $playerContainer.removeClass("playing")
+
+      Playetry.AudioPlayer.playPauseBtnState(
+        $playerContainer.find(".play-pause-glyph")
+      )
+

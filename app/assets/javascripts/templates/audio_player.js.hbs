@@ -3,17 +3,17 @@
     <source src="{{wav_url}}" type="audio/wav" />
     Your browser does not support the audio tag.
   </audio>
-  <div class="song-play" data-player-action="playSong">Play</div>
-  <div class="song-pause" data-player-action="pauseSong">Pause</div>
-  <div class="song-play-pause" data-player-action="playPause">PlayPause</div>
-  <div class="song-stop" data-player-action="stopSong">Stop</div>
-  <div class="song-time">0:00</div>
-{{!--   <div class="volume-up" data-player-action="changeVolume(10, 'up')">Plus</div><br>
-  <div class="volume-down" data-player-action="changeVolume(10, 'down')">Minus</div> --}}
-  <div class="volume-meter" data-player-action="setVolume">
-    <div class="volume-status" data-player-action="setVolume"></div>
+  <div class="player-glyph-container">
+    <span class="play-pause-glyph glyphicon glyphicon-play" data-player-action="playPause"></span>
   </div>
-  <div class="track-slider" data-player-action="setTrackPosition">
-    <div class="track-progress" data-player-action="setTrackPosition"></div>
+  <div class="track-slider player-center" data-player-action="setTrackPosition">
+    <div class="track-progress slider-bar" data-player-action="setTrackPosition"></div>
+    <div class="track-time player-center">0:00</div>
+  </div>
+  <div class="player-glyph-container">
+    <span class="volume-glyph glyphicon glyphicon-volume-up" data-player-action="toggleVolume"></span>
+  </div>
+  <div class="volume-meter player-center" data-player-action="clickVolumeSlider">
+    <div class="volume-status slider-bar" data-player-action="clickVolumeSlider"></div>
   </div>
 </div>

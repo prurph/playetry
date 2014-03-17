@@ -34,6 +34,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.1.1.0)
+      sass (~> 3.2)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -50,6 +52,7 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.0.2)
+    flat-ui-rails (0.0.2)
     handlebars_assets (0.15)
       execjs (>= 1.2.9)
       multi_json
@@ -146,7 +149,9 @@ DEPENDENCIES
   active_model_serializers
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
+  flat-ui-rails
   handlebars_assets
   jbuilder (~> 1.2)
   jquery-rails

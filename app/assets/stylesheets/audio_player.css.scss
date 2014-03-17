@@ -1,49 +1,86 @@
-/*Play button*/
-.song-play{
+/* Caused an error when these were only in application.css.scss */
 
-}
-/*Pause button*/
-.song-pause{
+$clouds:        #ecf0f1;
+$silver:        #bdc3c7;
+$concrete:      #95a5a6;
+$asbestos:      #7f8c8d;
+$midnight-blue: #2c3e50;
+$wet-asphalt:   #34495e;
+$pumpkin:       #d35400;
+$carrot:        #e67e22;
+$orange:        #f39c12;
+$sun-flower:    #f1c40f;
+$nephritis:     #27ae60;
+$emerald:       #2ecc71;
+$pomegranate:   #c0392b;
+$alizarin:      #e74c3c;
+$peter-river:   #3498db;
+$belize-hole:   #2980b9;
 
+.player-container {
+  width: 350px;
+  height: 25px;
+  position: relative;
+  div {
+    display: inline-block;
+    height: 100%;
+  }
 }
-/*Stop button*/
-.song-stop{
 
+.player-glyph-container {
+  font-size: 20px;
+  height: 100%;
+  .play-pause-glyph {
+    height: 100%;
+    top: -3px;
+  }
+  /* must adjust volume glyph to have bigger font-size or it looks off */
+  .volume-glyph {
+    font-size: 26px;
+    top: 0;
+  }
 }
-/*Play/Pause button*/
-.song-play-pause{
 
+/* Centers things vertically across the player bar */
+.player-center {
+  position: relative; /* makes layerX refer to click distance from this */
 }
-/*Song location slider*/
-.track-slider{
-    position: relative; /* makes layerX refer to click distance from this */
-    width: 500px;
-    height: 10px;
-    background-color: black;
-}
-/*Track progress bar*/
-.track-progress{
-    width: 0px;
-    height: 10px;
-    background-color: red;
-}
-/*Volume Up Button*/
-.volume-up{
 
+.track-slider, .volume-meter {
+  height: 10px;
+  background-color: $wet-asphalt;
+  border-radius: 2px;
 }
-/*Volume Down Button*/
-.volume-down{
 
+.track-slider {
+  width: 55%;
 }
-/*Volume Meter*/
-.volume-meter{
-    position: relative; /* makes layerX refer to click distance from this */
-    width: 500px;
-    height: 10px;
-    background-color: black;
+
+.track-time {
+  font-size: 18px;
+  font-weight: bold;
+  color: $clouds;
+  position: absolute;
+  right: 10px;
+  line-height: 25px;
 }
-/*Volume Location Meter*/
+
+.volume-meter {
+  width: 25%;
+}
+
+.slider-bar {
+  height: 100%;
+  position: absolute;
+  border-radius: 2px;
+}
+
+.track-progress {
+  width: 0;
+  background-color: $alizarin;
+}
+
 .volume-status{
-    height: 10px;
-    background-color: green;
+  width: 100%;
+  background-color: $nephritis;
 }
