@@ -1,5 +1,4 @@
 /* Caused an error when these were only in application.css.scss */
-
 $clouds:        #ecf0f1;
 $silver:        #bdc3c7;
 $concrete:      #95a5a6;
@@ -20,6 +19,7 @@ $belize-hole:   #2980b9;
 .player-container {
   width: 350px;
   height: 25px;
+  margin: 5px;
   position: relative;
   div {
     display: inline-block;

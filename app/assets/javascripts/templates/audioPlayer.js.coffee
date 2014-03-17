@@ -47,6 +47,8 @@ class Playetry.AudioPlayer
     clickLocation  = event.originalEvent.layerX
 
     percentage = clickLocation / volSliderWidth
+    # aesthetically cleaner to assume user wants max volume if click near end
+    if percentage > 0.95 then percentage = 1.0
 
     Playetry.AudioPlayer.setVolume(this, percentage)
 

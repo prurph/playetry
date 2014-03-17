@@ -1,7 +1,6 @@
 window.Playetry.audioControl = {
   onLoad: function() {
     this.recordedBlob = {};
-    this.audioNode = document.querySelector("audio");
     this.trackMaxTime = { maxTime: 360000, timeoutId: null }
     window.URL = window.URL || window.webkitURL;
     navigator.getUserMedia = (navigator.getUserMedia ||
@@ -35,22 +34,34 @@ window.Playetry.audioControl = {
   },
 
   stopRecording: function(event) {
-    clearTimeout(this.trackMaxTime.timeoutId);
-    this.recorder.stop();
-    this.recorder.exportWAV(function(s) {
-      // "this" is window here, so explicitly specify the namespace
-      window.Playetry.audioControl.recordedBlob = s;
-      window.Playetry.audioControl.playback(s);
-    });
+    if (typeof this.recorder !== "undefined") {
+      clearTimeout(this.trackMaxTime.timeoutId);
+      this.recorder.stop();
+      this.recorder.exportWAV(function(s) {
+        // "this" is window here, so explicitly specify the namespace
+        window.Playetry.audioControl.recordedBlob = s;
+        window.Playetry.audioControl.playback(s);
+      });
+      return false;
+    }
   },
 
   playback: function(blob) {
-    // Adjust this later so it's not just a default <audio> element
-    this.audioNode.src = window.URL.createObjectURL(blob);
+    // User just recorded something but it's not on the server yet, so create a
+    // player with data-reading-id="-1" so they can listen to it before saving
+    $defaultPlayer = $("#default-player").empty()
+    $("#save-recording").removeClass("hidden")
+    var newPlayer = new window.Playetry.AudioPlayer({
+      id: -1,
+      wav_url: window.URL.createObjectURL(blob)
+    });
+    newPlayer.renderSelf($defaultPlayer);
   },
 
   saveRecording: function(event) {
-    this.ajaxPost(this.recordedBlob);
+    if (this.recordedBlob !== {}) {
+      this.ajaxPost(this.recordedBlob);
+    }
   },
 
   ajaxPost: function(blob) {

@@ -10,8 +10,9 @@
                  this.context.createJavaScriptNode).call(this.context,
                                                          bufferLen, 2, 2);
     // Worker constructor MUST have a string URL, so recorderWorker.js is hacked
-    // to create new Blob from all its functonality with .toString() called on
-    // it. This blob is stored as newWorkerURL.
+    // to create new Blob from all its functonality cast toString().
+    // URL.createObjectURL is then run on this blob to effectively mimic a
+    // separate .js file with the desired worker functionality in it.
     var worker = new Worker(newWorkerURL);
     //var worker = new Worker(config.workerPath || WORKER_PATH);
     worker.postMessage({
@@ -75,7 +76,7 @@
     }
 
     source.connect(this.node);
-    this.node.connect(this.context.destination);    //this should not be necessary
+    this.node.connect(this.context.destination); //this should not be necessary
   };
 
   Recorder.forceDownload = function(blob, filename){
