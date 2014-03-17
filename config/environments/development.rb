@@ -26,4 +26,7 @@ AudioRecordRails::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # from sprockets_better_errors gem
+  config.assets.raise_production_errors = true
 end

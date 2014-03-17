@@ -17,6 +17,7 @@ gem 'handlebars_assets'
 gem 'js-routes'
 
 gem 'better_errors'
+gem 'sprockets_better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'active_model_serializers'
