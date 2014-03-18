@@ -38,7 +38,7 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 
 /* Fix janky Chrome user agent outline */
-.btn {
+.btn, input {
   &:focus, &:active {
     outline: none !important;
   }

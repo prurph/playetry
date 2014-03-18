@@ -51,6 +51,11 @@ class Playetry.AudioPlayer
     if percentage > 0.95 then percentage = 1.0
 
     Playetry.AudioPlayer.setVolume(this, percentage)
+    $volStatus.attr("data-player-vol", percentage)
+    unless percentage == 0
+      $volIcon = $(event.currentTarget).find(".volume-glyph")
+      $volIcon.addClass("glyphicon-volume-up")
+      $volIcon.removeClass("glyphicon-volume-off")
 
   @setTrackPosition: (event) ->
     $trackSlider     = $(event.currentTarget).find(".track-slider")
@@ -62,12 +67,13 @@ class Playetry.AudioPlayer
     this.currentTime = this.duration * percentage
 
   @toggleVolume: (event) ->
+    $volStatus = $(event.currentTarget).find(".volume-status")
     if this.volume != 0
-      $(event.target).attr("data-player-vol", this.volume)
+      $volStatus.attr("data-player-vol", this.volume)
       Playetry.AudioPlayer.setVolume(this, 0)
     else
       Playetry.AudioPlayer.setVolume(this,
-        $(event.target).attr("data-player-vol"))
+        $volStatus.attr("data-player-vol"))
     $(event.target).toggleClass("glyphicon-volume-up glyphicon-volume-off")
 
   @updateTime: ->

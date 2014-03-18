@@ -3,16 +3,14 @@ $(document).ready(function() {
       dataAction     = $("body").attr("data-action");
 
   if (dataController === "audio") {
-    Playetry.audioControl.onLoad();
+    var audCon = Playetry.audioControl;
+    audCon.onLoad();
     // .bind() all these handlers to the namespace to simplify using "this"
-    $("#start-recording").click(
-      Playetry.audioControl.startRecording.bind(Playetry.audioControl)
-    );
-    $("#stop-recording").click(
-      Playetry.audioControl.stopRecording.bind(Playetry.audioControl)
+    $("#toggle-recording").click(
+      audCon.toggleRecording.bind(audCon)
     );
     $("#save-recording").click(
-      Playetry.audioControl.saveRecording.bind(Playetry.audioControl)
+      audCon.saveRecording.bind(audCon)
     );
   }
 });

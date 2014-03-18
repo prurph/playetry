@@ -10,6 +10,7 @@ window.Playetry.audioControl = {
   },
   onFail: function(error) {
     console.log("Error: ", error)
+    Playetry.audioControl.toggleRecording();
   },
   onSuccess: function(source) {
     var context, mediaStreamSource, recorder;
@@ -38,18 +39,31 @@ window.Playetry.audioControl = {
       clearTimeout(this.trackMaxTime.timeoutId);
       this.recorder.stop();
       this.recorder.exportWAV(function(s) {
-        // "this" is window here, so explicitly specify the namespace
-        window.Playetry.audioControl.recordedBlob = s;
-        window.Playetry.audioControl.playback(s);
+        // this is window in .exportWAV() so explicitly specify the namespace
+        Playetry.audioControl.recordedBlob = s;
+        Playetry.audioControl.playback(s);
       });
       return false;
     }
   },
 
+  toggleRecording: function(event) {
+    var $button = $("#toggle-recording");
+    // this is Playetry.audioControl here because of .bind() in onLoad.js
+    if ($button.text().match(/start/i)) {
+      this.startRecording.bind(this)();
+      $button.text("Stop Recording")
+    } else {
+      this.stopRecording.bind(this)();
+      $button.text("Start Recording");
+    }
+    $button.toggleClass("btn-success btn-danger")
+  },
+
   playback: function(blob) {
     // User just recorded something but it's not on the server yet, so create a
     // player with data-reading-id="-1" so they can listen to it before saving
-    $defaultPlayer = $("#default-player").empty()
+    $defaultPlayer = $("#default-player").empty().removeClass("hidden")
     $("#save-recording").removeClass("hidden")
     var newPlayer = new window.Playetry.AudioPlayer({
       id: -1,
@@ -66,22 +80,31 @@ window.Playetry.audioControl = {
 
   ajaxPost: function(blob) {
     var data = new FormData(),
-        fileExt = ".wav";
+        fileExt = ".wav",
+        $description = $("#recording-desc"),
+        descriptionText = $description.val();
 
-    data.append("audio", blob, new Date().getTime() + fileExt);
-    $.ajax({
-      url: '/audio/save_file',
-      type: 'POST',
-      data: data,
-      contentType: false,
-      processData: false
-    })
-    .done(function(response) {
-      console.log(response);
-    })
-    .fail(function() {
-      console.log("error");
-    })
+    if (descriptionText.length > 30 || descriptionText.length <= 3) {
+      // ADD ERROR HANDLING HERE
+      alert("Descriptions should be 3-30 characters.")
+    } else {
+      data.append("wav", blob, new Date().getTime() + fileExt);
+      data.append("description", descriptionText);
+      $.ajax({
+        url: '/audio/save_file',
+        type: 'POST',
+        data: data,
+        contentType: false,
+        processData: false
+      })
+      .done(function(response) {
+        console.log(response);
+        $description.val("");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+    }
   },
 
   getReading: function(readingId) {

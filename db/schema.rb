@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140316175159) do
   enable_extension "plpgsql"
 
   create_table "readings", force: true do |t|
-    t.text     "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "wav_file_name"

@@ -3,16 +3,9 @@ class AudioController < ApplicationController
   end
 
   def save_file
-    audio = params[:audio]
-    # save_path = Rails.root.join("public/audios/#{audio.original_filename}")
-    # audio.rewind
-    # File.open(save_path, 'wb') do |f|
-    #   f.write audio.read
-    # end
-
     @reading = Reading.new
-    @reading.wav  = params[:audio]
-    @reading.name = params[:name]
+    @reading.wav = params[:wav]
+    @reading.description = params[:description]
     @reading.save!
 
 

@@ -5,10 +5,10 @@
 </head>
 <body>
   <h1>Is this thing on?</h1>
-  <button class="btn btn-success" id="start-recording">Start Recording</button>
-  <button class="btn btn-danger" id="stop-recording">Stop Recording</button>
+  <input type="text" id="recording-desc" placeholder="Description" />
+  <button class="btn btn-success" id="toggle-recording">Start Recording</button>
   <button class="btn btn-warning hidden" id="save-recording">Save to Server</button>
-  <div id="default-player">
+  <div id="default-player" class="hidden">
   </div>
   <div id="playstuff"></div>
 </body>

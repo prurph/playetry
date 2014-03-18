@@ -19,12 +19,19 @@ $belize-hole:   #2980b9;
 .player-container {
   width: 350px;
   height: 25px;
-  margin: 5px;
   position: relative;
   div {
     display: inline-block;
     height: 100%;
   }
+}
+
+#default-player {
+  background-color: $asbestos;
+  width: 350px;
+  margin: 2px;
+  height: 31px;
+  padding: 3px;
 }
 
 .player-glyph-container {
