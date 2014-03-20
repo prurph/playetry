@@ -1,6 +1,7 @@
 class Reading < ActiveRecord::Base
   belongs_to :poem
   belongs_to :user
+  delegates :username, to: :user
   has_many :favorites, as: :favoriteable, dependent: :destroy
 
   has_attached_file :wav

@@ -6,11 +6,14 @@ class FavoritesController < ApplicationController
     @favorite.save!
   end
 
+  def destroy
+    @favorite.destroy!
+  end
+
 
   private
   def load_favoriteable
     resource, id = request.path.split('/')[-2,2]
     @favoriteable = resource.singularize.classify.constantize.find(id)
-    binding.pry
   end
 end
