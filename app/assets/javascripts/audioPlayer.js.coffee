@@ -16,8 +16,8 @@ class Playetry.AudioPlayer
       clicked = $(event.target).attr("data-player-action")
       # get the DOM node of the player to call functions on
       if clicked?
-        Playetry.AudioPlayer[clicked].call($audioNode[0], event);
-        return false;
+        Playetry.AudioPlayer[clicked].call($audioNode[0], event)
+        return false
     # timeupdate is the event an active <audio> tag fires every second
     $audioNode.on("timeupdate",
       Playetry.AudioPlayer.updateTime.bind($audioNode[0]))
@@ -34,11 +34,19 @@ class Playetry.AudioPlayer
   @playPauseBtnState: ($playPauseButton) ->
     $playPauseButton.toggleClass("glyphicon-play glyphicon-pause")
 
-  @setVolume: (audioNode, percentage) ->
-    # use .find() to search through all descendants
-    $volStatus = $(audioNode).parent().find(".volume-status")
+  @setVolume: (audioNode, percentage, $volStatus) ->
+    $playerContainer = $(audioNode).parent()
+    $volIcon = $playerContainer.find(".volume-glyph")
     audioNode.volume = percentage
     $volStatus.width("#{percentage*100}%")
+
+    if percentage != 0
+      $volIcon.addClass("glyphicon-volume-up")
+        .removeClass("glyphicon-volume-off")
+      $volStatus.attr("data-player-vol", percentage)
+    else
+      $volIcon.addClass("glyphicon-volume-off")
+        .removeClass("glyphicon-volume-up")
 
   @clickVolumeSlider: (event) ->
     $volSlider     = $(event.currentTarget).find(".volume-meter")
@@ -50,12 +58,7 @@ class Playetry.AudioPlayer
     # aesthetically cleaner to assume user wants max volume if click near end
     if percentage > 0.95 then percentage = 1.0
 
-    Playetry.AudioPlayer.setVolume(this, percentage)
-    $volStatus.attr("data-player-vol", percentage)
-    unless percentage == 0
-      $volIcon = $(event.currentTarget).find(".volume-glyph")
-      $volIcon.addClass("glyphicon-volume-up")
-      $volIcon.removeClass("glyphicon-volume-off")
+    Playetry.AudioPlayer.setVolume(this, percentage, $volStatus)
 
   @setTrackPosition: (event) ->
     $trackSlider     = $(event.currentTarget).find(".track-slider")
@@ -69,12 +72,10 @@ class Playetry.AudioPlayer
   @toggleVolume: (event) ->
     $volStatus = $(event.currentTarget).find(".volume-status")
     if this.volume != 0
-      $volStatus.attr("data-player-vol", this.volume)
-      Playetry.AudioPlayer.setVolume(this, 0)
+      Playetry.AudioPlayer.setVolume(this, 0, $volStatus)
     else
       Playetry.AudioPlayer.setVolume(this,
-        $volStatus.attr("data-player-vol"))
-    $(event.target).toggleClass("glyphicon-volume-up glyphicon-volume-off")
+        $volStatus.attr("data-player-vol"), $volStatus)
 
   @updateTime: ->
     currSeconds = (if Math.floor(this.currentTime % 60) < 10 then "0" else "") +
@@ -90,7 +91,6 @@ class Playetry.AudioPlayer
 
     if percentage == 1
       $playerContainer.removeClass("playing")
-
       Playetry.AudioPlayer.playPauseBtnState(
         $playerContainer.find(".play-pause-glyph")
       )

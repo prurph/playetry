@@ -141,4 +141,4 @@ var newWorkerURL = URL.createObjectURL(new Blob([ "(",
       return view;
     }
   }.toString(),
-")()"], { type: "application/javascript" } ))
+")()"], { type: "application/javascript" } ));

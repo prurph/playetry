@@ -1,7 +1,7 @@
 window.Playetry.audioControl = {
   onLoad: function() {
     this.recordedBlob = {};
-    this.trackMaxTime = { maxTime: 360000, timeoutId: null }
+    this.trackMaxTime = { maxTime: 360000, timeoutId: null };
     window.URL = window.URL || window.webkitURL;
     navigator.getUserMedia = (navigator.getUserMedia ||
                               navigator.webkitGetUserMedia ||
@@ -9,7 +9,7 @@ window.Playetry.audioControl = {
                               navigator.msGetUserMedia);
   },
   onFail: function(error) {
-    console.log("Error: ", error)
+    console.log("Error: ", error);
     Playetry.audioControl.toggleRecording();
   },
   onSuccess: function(source) {
@@ -18,7 +18,7 @@ window.Playetry.audioControl = {
     context = (typeof AudioContext !== "undefined") ?
       new AudioContext() : new webkitAudioContext();
     mediaStreamSource = context.createMediaStreamSource(source);
-    this.recorder = new Recorder(mediaStreamSource)
+    this.recorder = new Recorder(mediaStreamSource);
     this.recorder.record();
     this.trackMaxTime.timeoutId = setTimeout(this.stopRecording,
       this.trackMaxTime.maxTime);
@@ -52,19 +52,19 @@ window.Playetry.audioControl = {
     // this is Playetry.audioControl here because of .bind() in onLoad.js
     if ($button.text().match(/start/i)) {
       this.startRecording.bind(this)();
-      $button.text("Stop Recording")
+      $button.text("Stop Recording");
     } else {
       this.stopRecording.bind(this)();
       $button.text("Start Recording");
     }
-    $button.toggleClass("btn-success btn-danger")
+    $button.toggleClass("btn-success btn-danger");
   },
 
   playback: function(blob) {
     // User just recorded something but it's not on the server yet, so create a
     // player with data-reading-id="-1" so they can listen to it before saving
-    $defaultPlayer = $("#default-player").empty().removeClass("hidden")
-    $("#save-recording").removeClass("hidden")
+    $defaultPlayer = $("#default-player").empty().removeClass("hidden");
+    $("#save-recording").removeClass("hidden");
     var newPlayer = new window.Playetry.AudioPlayer({
       id: -1,
       wav_url: window.URL.createObjectURL(blob)
@@ -86,7 +86,7 @@ window.Playetry.audioControl = {
 
     if (descriptionText.length > 30 || descriptionText.length <= 3) {
       // ADD ERROR HANDLING HERE
-      alert("Descriptions should be 3-30 characters.")
+      alert("Descriptions should be 3-30 characters.");
     } else {
       data.append("wav", blob, new Date().getTime() + fileExt);
       data.append("description", descriptionText);
@@ -103,7 +103,7 @@ window.Playetry.audioControl = {
       })
       .fail(function() {
         console.log("error");
-      })
+      });
     }
   },
 
@@ -117,8 +117,8 @@ window.Playetry.audioControl = {
     .done(function(response) {
       console.log(response);
       var reading = new window.Playetry.AudioPlayer(response.reading);
-      reading.renderSelf($("#playstuff"))
-    })
+      reading.renderSelf($("#playstuff"));
+    });
   }
-}
+};
 
