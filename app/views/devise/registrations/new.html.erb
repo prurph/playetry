@@ -4,13 +4,27 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <%= f.email_field :email, class: 'form-control', placeholder: 'email',
+    autofocus: true %>
+  </div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div>
+    <%= f.label :username %><br />
+    <%= f.password_field :username, class: 'form-control',
+    placeholder: 'username', autocomplete: "off" %>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <div>
+    <%= f.label :password %><br />
+    <%= f.password_field :password, class: 'form-control', placeholder:
+    'password', autocomplete: "off" %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: 'form-control',
+    placeholder: 'confirm password', autocomplete: "off" %>
+  </div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
