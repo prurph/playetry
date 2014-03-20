@@ -65,6 +65,7 @@ window.Playetry.audioControl = {
     // player with data-reading-id="-1" so they can listen to it before saving
     $defaultPlayer = $("#default-player").empty().removeClass("hidden");
     $("#save-recording").removeClass("hidden");
+    $("#recording-desc").removeClass("hidden");
     var newPlayer = new window.Playetry.AudioPlayer({
       id: -1,
       wav_url: window.URL.createObjectURL(blob)
