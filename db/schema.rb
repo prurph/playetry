@@ -11,13 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320011902) do
+ActiveRecord::Schema.define(version: 20140320015345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "favoriteable_id"
+    t.string   "favoriteable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["favoriteable_id", "favoriteable_type"], name: "index_favorites_on_favoriteable_id_and_favoriteable_type", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "poems", force: true do |t|
+    t.text "title"
+    t.text "author"
+  end
+
   create_table "readings", force: true do |t|
     t.text     "description"
+    t.integer  "user_id"
+    t.integer  "poem_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "wav_file_name"
@@ -25,6 +43,9 @@ ActiveRecord::Schema.define(version: 20140320011902) do
     t.integer  "wav_file_size"
     t.datetime "wav_updated_at"
   end
+
+  add_index "readings", ["poem_id"], name: "index_readings_on_poem_id", using: :btree
+  add_index "readings", ["user_id"], name: "index_readings_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
