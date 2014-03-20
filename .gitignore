@@ -17,3 +17,8 @@
 
 # Ignore .wav files
 *.wav
+
+# Other ignores
+.map
+/coverage
+.env

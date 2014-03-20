@@ -32,3 +32,19 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'faker'
+  gem 'chronic'
+  gem 'simplecov'
+  gem 'factory_girl_rails'
+end
