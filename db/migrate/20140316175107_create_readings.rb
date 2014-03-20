@@ -4,6 +4,7 @@ class CreateReadings < ActiveRecord::Migration
       t.text :description
       t.references :user, index: true
       t.references :poem, index: true
+      t.datetime :added_at
       t.timestamps
     end
   end
