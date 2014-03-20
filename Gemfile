@@ -16,6 +16,7 @@ gem 'flat-ui-rails'
 gem 'paperclip', '~> 4.1'
 gem 'handlebars_assets'
 gem 'js-routes'
+gem 'haml-rails'
 
 gem 'better_errors'
 gem 'sprockets_better_errors'
@@ -33,6 +34,10 @@ group :production do
   gem 'rails_12factor'
 end
 
+# group :development do
+#   gem 'coffee-rails-source-maps'
+# end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'database_cleaner'
@@ -41,7 +46,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
   gem 'launchy'
   gem 'faker'
   gem 'chronic'

@@ -19,6 +19,7 @@
 *.wav
 
 # Other ignores
-.map
+*.map
+/app/public/assets/source_maps/
 /coverage
 .env
