@@ -91,7 +91,7 @@ window.Playetry.audioControl = {
       data.append("wav", blob, new Date().getTime() + fileExt);
       data.append("description", descriptionText);
       $.ajax({
-        url: '/audio/save_file',
+        url: '/readings',
         type: 'POST',
         data: data,
         contentType: false,
@@ -109,7 +109,7 @@ window.Playetry.audioControl = {
 
   getReading: function(readingId) {
     $.ajax({
-      url: '/audio/get_file/' + readingId,
+      url: '/readings/' + readingId,
       type: 'GET',
       dataType: 'json'
     })
