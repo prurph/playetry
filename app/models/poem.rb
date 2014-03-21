@@ -10,6 +10,6 @@ class Poem < ActiveRecord::Base
   validates :body, presence: true
 
   def added_at
-    self.added_at = Time.now()
+    added_at = Time.now()
   end
 end

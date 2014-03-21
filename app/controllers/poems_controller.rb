@@ -15,7 +15,7 @@ class PoemsController < ApplicationController
   end
 
   def show
-    @poem = Poem.find(params[:id])
+    @poem = Poem.includes(:readings).find(params[:id])
   end
 
   private
