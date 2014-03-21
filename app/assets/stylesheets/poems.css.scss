@@ -1,4 +1,65 @@
-/* Titlebar for poems */
-.poem-title {
+$clouds:        #ecf0f1;
+$silver:        #bdc3c7;
+$concrete:      #95a5a6;
+$asbestos:      #7f8c8d;
+$midnight-blue: #2c3e50;
+$wet-asphalt:   #34495e;
+$pumpkin:       #d35400;
+$carrot:        #e67e22;
+$orange:        #f39c12;
+$sun-flower:    #f1c40f;
+$nephritis:     #27ae60;
+$emerald:       #2ecc71;
+$pomegranate:   #c0392b;
+$alizarin:      #e74c3c;
+$peter-river:   #3498db;
+$belize-hole:   #2980b9;
 
+.poem-container {
+  width: 620px;
+  margin: 0 10px;;
+  padding: 10px;
+}
+
+.poem-title {
+  width: 100%;
+  background-color: $wet-asphalt;
+  padding: 10px;
+}
+
+.poem-body {
+
+}
+
+/* must specify tag and class or the attribute settings in bootstrap give it
+greater priority than just a class */
+input.poem-input {
+  display: block;
+  color: $pumpkin;
+  border: none;
+  background-color: $wet-asphalt;
+  margin-bottom: 2px;
+  width: 70%;
+  &:focus {
+    background-color: white;
+  }
+}
+input.major-input {
+  height: 50px;
+  font-size: 36px;
+}
+
+input.minor-input {
+  text-indent: 20px;
+  font-size: 20px;
+}
+
+.poem-text {
+  resize: none;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  height: 500px;
+  background-color: $concrete;
+  color: $midnight-blue
 }
