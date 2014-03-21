@@ -1,7 +1,7 @@
 = form_for @poem do |f|
   .poem-title
-    = f.text_field :title, class: 'poem-input major-input', id: 'new-title', placeholder: 'Title'
-    = f.text_field :author, class: 'poem-input minor-input', id: 'new-author', placeholder: 'Author'
+    = f.text_field :title, class: 'poem-input major-input', id: 'new-title', placeholder: 'Click to enter title'
+    = f.text_field :author, class: 'poem-input minor-input', id: 'new-author', placeholder: 'Click to enter author'
   .poem-body
-    = f.text_area :body, class: 'poem-text', id: 'new-body'
+    = f.text_area :body, id: 'new-body'
   = f.button "Submit", type: 'submit', class: 'btn btn-warning', id: 'submit-poem'
