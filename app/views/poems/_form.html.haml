@@ -1,0 +1,6 @@
+= form_for @poem do |f|
+  .poem-title
+    = f.text_field :title, class: 'major-input', id: 'new-title', placeholder: 'Title'
+    = f.text_field :author, class: 'minor-input', id: 'new-author', placeholder: 'Author'
+  .poem-body
+    = f.text_area :body

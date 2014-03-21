@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140320015345) do
   create_table "poems", force: true do |t|
     t.text     "title"
     t.text     "author"
+    t.text     "body"
     t.datetime "added_at"
     t.datetime "created_at"
     t.datetime "updated_at"
