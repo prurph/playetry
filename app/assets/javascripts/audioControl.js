@@ -132,6 +132,7 @@ window.Playetry.audioControl = {
       dataType: 'json'
     })
     .done(function(response) {
+      console.log(response);
       Playetry.audioControl.makePlayers(response.readings);
     });
   },

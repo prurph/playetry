@@ -7,8 +7,11 @@ class ReadingsController < ApplicationController
   end
 
   def index
-    readings = Reading.where(poem_id: params[:poem_id])
-    render json: readings
+    @readings = Reading.where(poem_id: params[:poem_id])
+    # Construct an array of the user's favorite readings
+    @user_favs = current_user.favorites.readings.pluck(:favoriteable_id)
+    binding.pry
+    # render json: @readings
   end
 
   def show
