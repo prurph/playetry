@@ -1,0 +1,15 @@
+- readings.each do |reading|
+  %li
+    .player-container{"data-reading-id" => "#{reading.id}"}
+      %audio.audio-player
+        %source{src: "#{reading.wav_url}", type: "audio/wav" }/
+        Your browser does not support the audio tag
+    .player-glyph-container
+      %span.play-pause-glyph.glyphicon.glyphicon-play{"data-player-action" => "playPause"}
+    .track-slider.player-center{"data-player-action" => "setTrackPosition"}
+      .track-progress.slider-bar{"data-player-action" => "setTrackPosition"}
+      .track-time.player-center 0:00
+    .player-glyph-container
+      %span.volume-glyph.glyphicon.glyphicon-volume-up{"data-player-action" => "toggleVolume"}
+    .volume-meter.player-center{"data-player-action" => "clickVolumeSlider"}
+      .volume-status.slider-bar{"data-player-action" => "clickVolumeSlider", "data-player-vol" => "1"}

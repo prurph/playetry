@@ -1,6 +1,20 @@
-.poem-container
+.poem-container{ "data-poem-id" => "#{@poem.id}" }
   .poem-title
     %h1.poem-title-bar #{@poem.title}
     %h3.poem-author-bar #{@poem.author}
   .poem-body
     %pre #{@poem.body}
+
+.readings-container
+  %ul#reading-list
+
+.new-reading-container
+  %h1 Is this thing on?
+  %button.btn.btn-success#toggle-recording Start Recording
+  %button.btn.btn-warning.hidden#save-recording Save to Server
+  %input#recording-desc.hidden{ type: "text", placeholder: "Description" }/
+  #default-player.hidden
+  #playstuff
+
+%script
+  window.Playetry.audioControl.getReadings("#{@poem.id}")

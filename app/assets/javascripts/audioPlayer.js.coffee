@@ -6,7 +6,7 @@ class Playetry.AudioPlayer
 
   renderSelf: ($parentNode) ->
     $parentNode.append(HandlebarsTemplates["audio_player"](this))
-    this.attachHandlers()
+    this.attachHandlers();
 
   attachHandlers: ->
     $playerNode = $("[data-reading-id='#{this.id}']")

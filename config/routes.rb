@@ -1,9 +1,12 @@
 AudioRecordRails::Application.routes.draw do
   devise_for :users
 
-  resources :readings, only: [:create, :show]
-  resources :poems, except: [:destroy]
+  # resources :readings, only: [:create, :show]
+  resources :poems, except: [:destroy, :update] do
+    resources :readings, only: [:index, :create]
+  end
 
+  get '/readings/:id', to: 'readings#show'
   # post 'audio/save_file'
   # get  'audio/get_file/:id', to: 'audio#get_file'
 

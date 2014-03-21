@@ -75,11 +75,11 @@ window.Playetry.audioControl = {
 
   saveRecording: function(event) {
     if (this.recordedBlob !== {}) {
-      this.ajaxPost(this.recordedBlob);
+      this.createReading(this.recordedBlob);
     }
   },
 
-  ajaxPost: function(blob) {
+  createReading: function(blob) {
     var data = new FormData(),
         fileExt = ".wav",
         $description = $("#recording-desc"),
@@ -92,15 +92,19 @@ window.Playetry.audioControl = {
       data.append("wav", blob, new Date().getTime() + fileExt);
       data.append("description", descriptionText);
       $.ajax({
-        url: '/readings',
+        // current URL is /poems/:poem_id, tacking on readings and making a POST
+        // gives readings#create controller as a resourceful nested route
+        url: window.location.pathname + '/readings',
         type: 'POST',
         data: data,
         contentType: false,
         processData: false
       })
       .done(function(response) {
-        console.log(response);
         $description.val("");
+        console.log(response);
+        // makePlayers expects an array, so pass this as one
+        Playetry.audioControl.makePlayers([response.reading]);
       })
       .fail(function() {
         console.log("error");
@@ -117,8 +121,26 @@ window.Playetry.audioControl = {
     // Rails responds with serialzation of reading {reading: obj}
     .done(function(response) {
       console.log(response);
-      var reading = new window.Playetry.AudioPlayer(response.reading);
-      reading.renderSelf($("#playstuff"));
+      Playetry.audioControl.makePlayers([response.reading]);
+    });
+  },
+
+  getReadings: function(poemId) {
+    $.ajax({
+      url: '/poems/' + poemId + '/readings',
+      type: 'GET',
+      dataType: 'json'
+    })
+    .done(function(response) {
+      Playetry.audioControl.makePlayers(response.readings);
+    });
+  },
+
+  makePlayers: function(readings) {
+
+    $.each(readings, function(index, reading) {
+      var readingInstance = new Playetry.AudioPlayer(reading);
+      readingInstance.renderSelf($("#reading-list"));
     });
   }
 };
