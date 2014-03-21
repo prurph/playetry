@@ -18,6 +18,7 @@ $belize-hole:   #2980b9;
 
 
 @import url(http://fonts.googleapis.com/css?family=PT+Mono);
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 
 .poem-container {
   width: 620px;
@@ -75,6 +76,7 @@ $belize-hole:   #2980b9;
 greater priority than just a class */
 input.poem-input, .poem-title-bar, .poem-author-bar {
   display: block;
+  font-family: 'Oleo Script', Lato, 'Helvetica Neue';
   color: $pumpkin;
   border: 2px solid transparent; // so border on transition doesn't alter height
   background-color: $wet-asphalt;
