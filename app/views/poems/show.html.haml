@@ -16,5 +16,8 @@
   #default-player.hidden
   #playstuff
 
+-# I honestly think this is the most elegant way to do this given that we want
+-# this to be rendered using JS and require the poem.id to make a request to the
+-# readings controller
 %script
   window.Playetry.audioControl.getReadings("#{@poem.id}")
