@@ -16,7 +16,9 @@ class PoemsController < ApplicationController
 
   def show
     @poem = Poem.includes(:favorites).find(params[:id])
-    @user_fav = @poem.favorites.where(user: current_user).present?
+    if current_user.present?
+      @user_fav = @poem.favorites.where(user: current_user).present?
+    end
   end
 
   private

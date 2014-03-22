@@ -9,7 +9,9 @@ class ReadingsController < ApplicationController
   def index
     @readings = Reading.includes(:user).where(poem_id: params[:poem_id])
     # Construct an array of the user's favorite readings
-    @user_favs = current_user.favorites.readings.pluck(:favoriteable_id)
+    if current_user.present?
+      @user_favs = current_user.favorites.readings.pluck(:favoriteable_id)
+    end
   end
 
   def show

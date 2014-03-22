@@ -104,7 +104,7 @@ input.minor-input, .poem-author-bar {
   font-size: 20px;
 }
 
-.fav-poem {
+.fav-poem, .fav-reading {
   position: absolute;
   right: 2px;
   top: -3px;
@@ -117,4 +117,10 @@ input.minor-input, .poem-author-bar {
   .is-fav {
     color: $pomegranate;
   }
+}
+
+.fav-reading {
+  top: 0;
+  right: 3px;
+  font-size: 24px;
 }

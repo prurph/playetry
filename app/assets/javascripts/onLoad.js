@@ -2,6 +2,8 @@ $(document).ready(function() {
   var dataController = $("body").attr("data-controller"),
       dataAction     = $("body").attr("data-action");
 
+  Playetry.currentUserId  = $("body").attr("data-current-user");
+
   if (dataController === "audio" || dataController === "poems") {
     var audCon = Playetry.audioControl;
     audCon.onLoad();

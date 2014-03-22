@@ -36,7 +36,7 @@ $belize-hole:   #2980b9;
 
 .player-description {
   height: 25px;
-  width: 100%;
+  width: 90%; // leave room for the heart (remember this scrolls for long desc)
   line-height: 25px;
   font-size: 24px;
   margin: 0;

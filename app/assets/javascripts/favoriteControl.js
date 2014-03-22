@@ -1,15 +1,19 @@
 window.Playetry.favoriteControl = {
   onLoad: function() {
-    this.poemFavClick();
+    if (Playetry.currentUserId) {
+      this.bindHeartClicks($("#reading-list"), "reading");
+      this.bindHeartClicks($(".fav-poem"), "poem");
+    }
   },
-  poemFavClick: function() {
-    var $favPoem = $(".fav-poem");
-    $favPoem.click(function(event) {
-      var $heart = $(event.target),
-          action = ($heart.hasClass("is-fav")) ? "DELETE" : "POST",
-          poemId = $heart.parents(".poem-container").attr("data-poem-id");
-      // send ajax request with callback as fourth argument
-      Playetry.favoriteControl.railsFav("poems", poemId, action,
+  bindHeartClicks: function($parent, type) {
+    $parent.click(function(event) {
+      // this itemId assignment looks janky but is better performance than doing
+      // regex matches on the class names like [class$='container'] or something
+      var $heart   = $(event.target),
+          action   = ($heart.hasClass("is-fav")) ? "DELETE" : "POST",
+          dataAttr = "data-" + type + "-id",
+          itemId    = $heart.parents("[" + dataAttr + "]").attr(dataAttr);
+      Playetry.favoriteControl.railsFav(type + "s", itemId, action,
         Playetry.favoriteControl.toggleHeart.bind($heart));
     });
   },
