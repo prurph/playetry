@@ -1,3 +1,7 @@
+// I hacked this a little bit for smaller filesize by messing with interLeave
+// and wrapped the whole thing in a Blob to get around asset compiling in
+// production, but I did NOT write this code:
+// https://github.com/mattdiamond/Recorderjs
 var newWorkerURL = URL.createObjectURL(new Blob([ "(",
 
   function(){
@@ -70,22 +74,10 @@ var newWorkerURL = URL.createObjectURL(new Blob([ "(",
     }
 
     function interleave(inputL, inputR){
-      // var length = inputL.length + inputR.length;
-      // var result = new Float32Array(length);
-
-      // var index = 0,
-      //   inputIndex = 0;
-
-      // while (index < length){
-      //   result[index++] = inputL[inputIndex];
-      //   result[index++] = inputR[inputIndex];
-      //   inputIndex++;
-      // }
-      // return result;
-        var result = new Float32Array(inputL.length);
-        for (var i = 0; i < inputL.length; ++i)
-          result[i] = 0.5 * (inputL[i] + inputR[i]);
-        return result;
+      var result = new Float32Array(inputL.length);
+      for (var i = 0; i < inputL.length; ++i)
+        result[i] = 0.5 * (inputL[i] + inputR[i]);
+      return result;
     }
 
     function floatTo16BitPCM(output, offset, input){

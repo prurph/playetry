@@ -25,6 +25,7 @@ gem 'pry-rails'
 gem 'active_model_serializers'
 
 gem 'jbuilder', '~> 1.2'
+gem 'fuzzily'
 
 group :doc do
   gem 'sdoc', require: false

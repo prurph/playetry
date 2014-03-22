@@ -1,3 +1,5 @@
+// This is recorder.js I modified this but DID NOT WRITE the original
+// https://github.com/mattdiamond/Recorderjs
 (function(window){
 
   var WORKER_PATH = 'recorderWorker.js';

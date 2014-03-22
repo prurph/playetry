@@ -90,6 +90,8 @@ GEM
     ffi (1.9.3)
     flat-ui-rails (0.0.2)
     formatador (0.2.4)
+    fuzzily (0.3.2)
+      activerecord (>= 2.3.17)
     guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -269,6 +271,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   flat-ui-rails
+  fuzzily
   guard-rspec
   haml-rails
   handlebars_assets

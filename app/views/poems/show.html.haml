@@ -12,7 +12,11 @@
   .poem-topbot#new-reading-container
     %button.btn.btn-success#toggle-recording Start
     #new-reading-inner
-      %h3.poem-major-bar.full-width Read this poem! (Click "Allow")
+      %h3.poem-major-bar.full-width
+        - if current_user.present?
+          Read this poem! (Click "Allow")
+        - else
+          #{link_to "Sign in", new_user_session_path} to record.
       %input#recording-desc.poem-input.minor-input.hidden{ type: "text", placeholder: "Click to enter a description"}/
       %button.btn.btn-warning.hidden#save-recording Save!
 

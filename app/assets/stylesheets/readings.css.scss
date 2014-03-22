@@ -14,6 +14,7 @@ $pomegranate:   #c0392b;
 $alizarin:      #e74c3c;
 $peter-river:   #3498db;
 $belize-hole:   #2980b9;
+$jordy-blue:    #89C4F4;
 
 .readings-container {
   width: 300px;
@@ -27,6 +28,10 @@ $belize-hole:   #2980b9;
 #reading-list {
   height: 100%;
   width: 100%;
+  li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba($pumpkin, 0.5);
+  }
 }
 
 #toggle-recording {
@@ -44,5 +49,11 @@ $belize-hole:   #2980b9;
 }
 
 #save-recording {
-  width: 100%;
+  width: 29%;
+  float: right;
+}
+
+/* <li> for which the reading is current user's */
+.user-reading {
+  background-color: $jordy-blue;
 }

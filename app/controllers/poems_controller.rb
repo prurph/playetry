@@ -21,8 +21,21 @@ class PoemsController < ApplicationController
     end
   end
 
+  def index
+    respond_to do |format|
+      format.html { @poems = Poem.order(added_at: :desc).limit(5) }
+      format.json do
+        @poems = Poem.find_fuzzy(search_params.delete_if {|k,v| v.length == 0})
+      end
+    end
+  end
+
+
   private
   def poem_params
     params.require(:poem).permit(:title, :author, :body)
+  end
+  def search_params
+    params.require(:fuzzies).permit(:title, :author, :body)
   end
 end

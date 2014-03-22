@@ -15,6 +15,7 @@ $pomegranate:   #c0392b;
 $alizarin:      #e74c3c;
 $peter-river:   #3498db;
 $belize-hole:   #2980b9;
+$jordy-blue:    #89C4F4;
 
 
 @import url(http://fonts.googleapis.com/css?family=PT+Mono);
@@ -24,15 +25,23 @@ $belize-hole:   #2980b9;
   width: 100%;
   max-width: 620px;
   margin: 0;
-  padding: 0 10px;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  &:after {
+    content: '';
+    background: $concrete image-url("paper-9.jpg") no-repeat top left;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    opacity: 0.45;
+    z-index: -1;
+  }
 }
 
 .poem-topbot {
   position: relative;
   width: 100%;
-  background-color: $wet-asphalt;
+  background-color: rgba($wet-asphalt, 0.8);
   padding: 10px;
 }
 
@@ -64,14 +73,6 @@ $belize-hole:   #2980b9;
     font-weight: inherit;
     line-height: inherit;
   }
-  &:after {
-    content: '';
-    background: $concrete image-url("paper-9.jpg") no-repeat top left;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    opacity: 0.45;
-    z-index: -1;
-  }
 }
 
 /* must specify tag and class or the attribute settings in bootstrap give it
@@ -81,7 +82,7 @@ input.poem-input, .poem-major-bar, .poem-minor-bar {
   font-family: 'Oleo Script', Lato, 'Helvetica Neue';
   color: $pumpkin;
   border: 2px solid transparent; // so border on transition doesn't alter height
-  background-color: $wet-asphalt;
+  background-color: transparent;
   margin: 0 0 2px 0;
   width: 70%;
   font-weight: normal;
@@ -116,7 +117,8 @@ input.minor-input, .poem-minor-bar {
     transform: scale(1.2);
   }
   .is-fav {
-    color: $pomegranate;
+    color: $alizarin;
+    text-shadow: 0 0 2px $clouds;
   }
 }
 
@@ -132,4 +134,5 @@ input.minor-input, .poem-minor-bar {
     display: none;
   }
   width: 100%;
+  background-color: $jordy-blue;
 }

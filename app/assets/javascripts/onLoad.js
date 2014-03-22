@@ -4,16 +4,22 @@ $(document).ready(function() {
 
   Playetry.currentUserId  = $("body").attr("data-current-user");
 
-  if (dataController === "audio" || dataController === "poems") {
-    var audCon = Playetry.audioControl;
-    audCon.onLoad();
-    // .bind() all these handlers to the namespace to simplify using "this"
-    $("#toggle-recording").click(
-      audCon.toggleRecording.bind(audCon)
-    );
-    $("#save-recording").click(
-      audCon.saveRecording.bind(audCon)
-    );
-    Playetry.favoriteControl.onLoad();
+  if (Playetry.currentUserId.length > 0 && dataController === "poems") {
+    if (dataAction === "show") {
+      var audCon = Playetry.audioControl;
+      audCon.onLoad();
+      // .bind() all these handlers to the namespace to simplify using "this"
+      $("#toggle-recording").click(
+        audCon.toggleRecording.bind(audCon)
+      );
+      $("#save-recording").click(
+        audCon.saveRecording.bind(audCon)
+      );
+      Playetry.favoriteControl.onLoad();
+    } else if (dataAction === "index") {
+      $("#send-search").click(
+        Playetry.poemControl.searchPoems
+      );
+    }
   }
 });

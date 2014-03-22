@@ -13,7 +13,6 @@ class FavoritesController < ApplicationController
     render json: @favorite
   end
 
-
   private
   def load_favoriteable
     resource, id = request.path.split('/')[-2,2]

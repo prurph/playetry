@@ -1,4 +1,6 @@
 class Poem < ActiveRecord::Base
+  fuzzily_searchable :title, :author, :body
+
   has_many :readings, dependent: :destroy
   has_many :favorites, as: :favoriteable, dependent: :destroy
   before_create :added_at
@@ -10,6 +12,16 @@ class Poem < ActiveRecord::Base
   validates :body, presence: true
 
   def added_at
-    added_at = Time.now()
+    self.added_at = Time.now()
+  end
+
+  def self.find_fuzzy(params)
+    poems = []
+    params.each do |term, input|
+      results = Poem.send("find_by_fuzzy_#{term}", input)
+      puts results
+      poems = poems.empty? ? results : poems & results
+    end
+    return poems
   end
 end

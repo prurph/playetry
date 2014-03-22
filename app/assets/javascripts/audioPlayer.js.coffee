@@ -1,11 +1,9 @@
-# http://serversideup.net/style-the-html-5-audio-element/
 class Playetry.AudioPlayer
   constructor: (railsReading) ->
     for own key, value of railsReading
       this[key] = value
 
   renderSelf: ($parentNode) ->
-    # $parentNode.append(HandlebarsTemplates["audio_player"](this))
     $selfNode = $(HandlebarsTemplates["audio_player"](this))
     $selfNode.appendTo($parentNode)
     this.attachHandlers()
