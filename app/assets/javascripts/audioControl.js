@@ -51,12 +51,12 @@ window.Playetry.audioControl = {
   toggleRecording: function(event) {
     var $button = $("#toggle-recording");
     // this is Playetry.audioControl here because of .bind() in onLoad.js
-    if ($button.text().match(/start/i)) {
-      this.startRecording.bind(this)();
-      $button.text("Stop");
-    } else {
+    if ($button.text().match(/stop/i)) {
       this.stopRecording.bind(this)();
       $button.text("Redo");
+    } else {
+      this.startRecording.bind(this)();
+      $button.text("Stop");
     }
     $button.toggleClass("btn-success btn-danger");
   },
@@ -111,28 +111,13 @@ window.Playetry.audioControl = {
         $description.val("");
         console.log(response);
         Playetry.audioControl.makePlayers([response]);
-        $(".readings-container").animate({
-          scrollTop: "10000px" // we just want to scroll to bottom to show new
-        }, 1000);
+        Playetry.audioControl.animateToList();
       })
       .fail(function() {
         console.log("error");
       });
     }
   },
-
-  // getReading: function(readingId) {
-  //   $.ajax({
-  //     url: '/readings/' + readingId,
-  //     type: 'GET',
-  //     dataType: 'json'
-  //   })
-  //   // Rails responds with serialzation of reading {reading: obj}
-  //   .done(function(response) {
-  //     console.log(response);
-  //     Playetry.audioControl.makePlayers([response.reading]);
-  //   });
-  // },
 
   getReadings: function(poemId) {
     $.ajax({
@@ -150,6 +135,31 @@ window.Playetry.audioControl = {
     $.each(readings, function(index, reading) {
       var readingInstance = new Playetry.AudioPlayer(reading);
       readingInstance.renderSelf($("#reading-list"));
+    });
+  },
+
+  animateToList: function() {
+    var $newReading = $(".new-reading"),
+        $readCont   = $(".readings-container"),
+        offsets = {
+          top: $readCont.offset().top + $readCont.height() -
+            $newReading.offset().top,
+          left: $readCont.offset().left - $newReading.offset().left
+        };
+    // scroll the list to the bottom, animate the new reading moving to the list
+    $readCont.animate({scrollTop: $readCont.height() + "px"}, "slow",
+    function(){
+      $newReading.animate({
+        top: offsets.top + "px",
+        left: offsets.left + "px",
+        width: $readCont.width()
+      }, 750, function() {
+        $newReading.fadeOut(500);
+        $("#save-recording").fadeOut(500, function() {
+            $(this).addClass("hidden").fadeIn();
+            $("#recording-desc").addClass("hidden");
+          });
+      });
     });
   }
 };

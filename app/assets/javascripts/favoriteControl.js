@@ -7,14 +7,18 @@ window.Playetry.favoriteControl = {
   },
   bindHeartClicks: function($parent, type) {
     $parent.click(function(event) {
+      var $heart = $(event.target);
+      // since just one handler for the whole list, must verify they clicked the
+      // actual favorite glyph
+      if ($heart.hasClass("glyphicon")) {
       // this itemId assignment looks janky but is better performance than doing
       // regex matches on the class names like [class$='container'] or something
-      var $heart   = $(event.target),
-          action   = ($heart.hasClass("is-fav")) ? "DELETE" : "POST",
-          dataAttr = "data-" + type + "-id",
-          itemId    = $heart.parents("[" + dataAttr + "]").attr(dataAttr);
-      Playetry.favoriteControl.railsFav(type + "s", itemId, action,
-        Playetry.favoriteControl.toggleHeart.bind($heart));
+        var action   = ($heart.hasClass("is-fav")) ? "DELETE" : "POST",
+            dataAttr = "data-" + type + "-id",
+            itemId    = $heart.parents("[" + dataAttr + "]").attr(dataAttr);
+        Playetry.favoriteControl.railsFav(type + "s", itemId, action,
+          Playetry.favoriteControl.toggleHeart.bind($heart));
+      }
     });
   },
   railsFav: function(favoriteable, id, action, callback) {

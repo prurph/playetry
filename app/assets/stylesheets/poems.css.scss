@@ -21,9 +21,10 @@ $belize-hole:   #2980b9;
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 
 .poem-container {
-  width: 620px;
-  margin: 0 10px;
-  padding: 0 10px 10px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0;
+  padding: 0 10px;
   display: inline-block;
   vertical-align: top;
 }
