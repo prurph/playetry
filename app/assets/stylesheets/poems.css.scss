@@ -28,7 +28,7 @@ $belize-hole:   #2980b9;
   vertical-align: top;
 }
 
-.poem-title {
+.poem-topbot {
   position: relative;
   width: 100%;
   background-color: $wet-asphalt;
@@ -75,8 +75,8 @@ $belize-hole:   #2980b9;
 
 /* must specify tag and class or the attribute settings in bootstrap give it
 greater priority than just a class */
-input.poem-input, .poem-title-bar, .poem-author-bar {
-  display: block;
+input.poem-input, .poem-major-bar, .poem-minor-bar {
+  display: inline-block;
   font-family: 'Oleo Script', Lato, 'Helvetica Neue';
   color: $pumpkin;
   border: 2px solid transparent; // so border on transition doesn't alter height
@@ -93,12 +93,12 @@ input.poem-input:focus {
   border: 2px solid $pumpkin;
   background-color: white;
 }
-input.major-input, .poem-title-bar {
+input.major-input, .poem-major-bar {
   height: 54px;
   font-size: 36px;
 }
 
-input.minor-input, .poem-author-bar {
+input.minor-input, .poem-minor-bar {
   height: 36px;
   text-indent: 5px;
   font-size: 20px;
@@ -123,4 +123,12 @@ input.minor-input, .poem-author-bar {
   top: 0;
   right: 3px;
   font-size: 24px;
+}
+
+/* if this is an unsaved new reading, don't display the heart or the username */
+.new-reading {
+  .fav-reading > span, .player-username {
+    display: none;
+  }
+  width: 100%;
 }

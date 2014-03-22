@@ -20,6 +20,8 @@ $belize-hole:   #2980b9;
   width: 300px;
   height: 65px;
   position: relative;
+  background-color: white;
+  margin: 2px auto;
   div {
     display: inline-block;
     height: 25px;
@@ -42,6 +44,7 @@ $belize-hole:   #2980b9;
   margin: 0;
   padding-left: 2px;
   overflow: scroll;
+  text-transform: none; // otherwise h6's are all caps
   white-space: nowrap; // might be better to just text-overflow: ellipsis
 }
 

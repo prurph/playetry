@@ -1,25 +1,23 @@
 .poem-container{ "data-poem-id" => "#{@poem.id}" }
-  .poem-title
+  .poem-title.poem-topbot
     .fav-poem
       - if @user_fav
         %span.glyphicon.glyphicon-heart.is-fav
       - else
         %span.glyphicon.glyphicon-heart-empty
-    %h1.poem-title-bar #{@poem.title}
-    %h3.poem-author-bar #{@poem.author}
+    %h1.poem-major-bar #{@poem.title}
+    %h3.poem-minor-bar #{@poem.author}
   .poem-body
     %pre #{@poem.body}
+  .poem-topbot#new-reading-container
+    %button.btn.btn-success#toggle-recording Start
+    #new-reading-inner
+      %h3.poem-major-bar.full-width Read this poem! (Click "Allow")
+      %input#recording-desc.poem-input.minor-input.hidden{ type: "text", placeholder: "Click to enter a description"}/
+      %button.btn.btn-warning.hidden#save-recording Save!
 
 .readings-container
   %ul#reading-list
-
-.new-reading-container
-  %h1 Is this thing on?
-  %button.btn.btn-success#toggle-recording Start Recording
-  %button.btn.btn-warning.hidden#save-recording Save to Server
-  %input#recording-desc.hidden{ type: "text", placeholder: "Description" }/
-  #default-player.hidden
-  #playstuff
 
 -# I honestly think this script tag is the most elegant way to immediately
 -# make a JSON request for all the relevant readings and render them with JS

@@ -12,6 +12,7 @@ window.Playetry.audioControl = {
     console.log("Error: ", error);
     Playetry.audioControl.toggleRecording();
   },
+
   onSuccess: function(source) {
     var context, mediaStreamSource, recorder;
     // FF and Chrome use different constructors; ensure correct one is used
@@ -52,25 +53,31 @@ window.Playetry.audioControl = {
     // this is Playetry.audioControl here because of .bind() in onLoad.js
     if ($button.text().match(/start/i)) {
       this.startRecording.bind(this)();
-      $button.text("Stop Recording");
+      $button.text("Stop");
     } else {
       this.stopRecording.bind(this)();
-      $button.text("Start Recording");
+      $button.text("Redo");
     }
     $button.toggleClass("btn-success btn-danger");
   },
 
   playback: function(blob) {
     // User just recorded something but it's not on the server yet, so create a
-    // player with data-reading-id="-1" so they can listen to it before saving
-    $defaultPlayer = $("#default-player").empty().removeClass("hidden");
+    // player with data-reading-id="undefined" so they can listen to it before
+    // saving. Handlebars uses this undefined to not render a favorite option
+
+    var $newReadingInner = $("#new-reading-inner");
+    $newReadingInner.children(".player-container").remove();
     $("#save-recording").removeClass("hidden");
     $("#recording-desc").removeClass("hidden");
     var newPlayer = new window.Playetry.AudioPlayer({
-      id: -1,
+      id: "undefined",
       wav_url: window.URL.createObjectURL(blob)
     });
-    newPlayer.renderSelf($defaultPlayer);
+    newPlayer.renderSelf($newReadingInner) // comes in wrapped in <li>
+      .children() // get the .player-container inside the <li>
+      .unwrap() // remove the <li>
+      .addClass("new-reading");
   },
 
   saveRecording: function(event) {
