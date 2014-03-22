@@ -14,20 +14,33 @@ Playetry.poemControl = {
     })
     .done(function(response) {
       console.log(response);
-      Playetry.poemControl.makePoems(response.poems);
-      $("#search-by").text(
-        "searched: " + $title.val() + " " + $author.val() + " " + $body.val()
-        );
+      var poemCon = Playetry.poemControl;
+      poemCon.makePoems(response.poems);
+      poemCon.adjustText(response.poems.length, [$title, $author, $body]);
     })
     .fail(function() {
       console.log("error");
     });
-
+    return false;
   },
-  poemControl: function(response) {
+
+  adjustText: function(numResponses, inputArray) {
+    var searchText = numResponses + " results for ";
+    $.each(inputArray, function(index, $input) {
+      if ($input.val() !== "") {
+        searchText += $input.attr("placeholder").toLowerCase() +
+          ": " + $input.val() + ", ";
+      }
+      $input.val("");
+    });
+    $("#search-by").html(searchText.slice(0,-2));
+  },
+
+  makePoems: function(response) {
+    var $poemsList = $("#poems-list").empty();
     $.each(response, function(index, poem) {
       var poemInstance = new Playetry.Poem(poem);
-      poemInstance.renderSelf($("#poems-list"));
+      poemInstance.renderSelf($poemsList);
     });
   }
 };
