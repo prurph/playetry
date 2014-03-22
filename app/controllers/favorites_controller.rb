@@ -4,10 +4,13 @@ class FavoritesController < ApplicationController
   def create
     @favorite = @favoriteable.favorites.new(user: current_user)
     @favorite.save!
+    render json: @favorite
   end
 
   def destroy
+    @favorite = @favoriteable.favorites.where(user: current_user).first
     @favorite.destroy!
+    render json: @favorite
   end
 
 

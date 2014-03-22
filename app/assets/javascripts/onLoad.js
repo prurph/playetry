@@ -12,5 +12,6 @@ $(document).ready(function() {
     $("#save-recording").click(
       audCon.saveRecording.bind(audCon)
     );
+    Playetry.favoriteControl.onLoad();
   }
 });

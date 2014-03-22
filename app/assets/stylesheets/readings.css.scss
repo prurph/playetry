@@ -16,8 +16,15 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 
 .readings-container {
-  width: 100%;
+  width: 300px;
+  height: 664px;
+  overflow-y: scroll;
   margin: 0 10px;
   display: inline-block;
   vertical-align: top;
+}
+
+#reading-list {
+  height: 100%;
+  width: 100%;
 }

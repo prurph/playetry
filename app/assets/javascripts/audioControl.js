@@ -103,8 +103,10 @@ window.Playetry.audioControl = {
       .done(function(response) {
         $description.val("");
         console.log(response);
-        // makePlayers expects an array, so pass this as one
-        Playetry.audioControl.makePlayers([response.reading]);
+        Playetry.audioControl.makePlayers([response]);
+        $(".readings-container").animate({
+          scrollTop: "10000px" // we just want to scroll to bottom to show new
+        }, 1000);
       })
       .fail(function() {
         console.log("error");
@@ -112,18 +114,18 @@ window.Playetry.audioControl = {
     }
   },
 
-  getReading: function(readingId) {
-    $.ajax({
-      url: '/readings/' + readingId,
-      type: 'GET',
-      dataType: 'json'
-    })
-    // Rails responds with serialzation of reading {reading: obj}
-    .done(function(response) {
-      console.log(response);
-      Playetry.audioControl.makePlayers([response.reading]);
-    });
-  },
+  // getReading: function(readingId) {
+  //   $.ajax({
+  //     url: '/readings/' + readingId,
+  //     type: 'GET',
+  //     dataType: 'json'
+  //   })
+  //   // Rails responds with serialzation of reading {reading: obj}
+  //   .done(function(response) {
+  //     console.log(response);
+  //     Playetry.audioControl.makePlayers([response.reading]);
+  //   });
+  // },
 
   getReadings: function(poemId) {
     $.ajax({
@@ -138,7 +140,6 @@ window.Playetry.audioControl = {
   },
 
   makePlayers: function(readings) {
-
     $.each(readings, function(index, reading) {
       var readingInstance = new Playetry.AudioPlayer(reading);
       readingInstance.renderSelf($("#reading-list"));

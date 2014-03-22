@@ -29,6 +29,7 @@ $belize-hole:   #2980b9;
 }
 
 .poem-title {
+  position: relative;
   width: 100%;
   background-color: $wet-asphalt;
   padding: 10px;
@@ -38,7 +39,7 @@ $belize-hole:   #2980b9;
   border: none;
   border-radius: 0;
   width: 100%;
-  height: 600px;
+  height: 550px;
   position: relative;
   padding: 22px; // Title is 10px + 10px + 2px border
   //background: $concrete image-url("paper-9.jpg") no-repeat top left;
@@ -103,3 +104,17 @@ input.minor-input, .poem-author-bar {
   font-size: 20px;
 }
 
+.fav-poem {
+  position: absolute;
+  right: 2px;
+  top: -3px;
+  font-size: 48px;
+  color: $asbestos;
+  span:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  .is-fav {
+    color: $pomegranate;
+  }
+}

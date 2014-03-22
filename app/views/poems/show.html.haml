@@ -1,5 +1,10 @@
 .poem-container{ "data-poem-id" => "#{@poem.id}" }
   .poem-title
+    .fav-poem
+      - if @user_fav
+        %span.glyphicon.glyphicon-heart.is-fav
+      - else
+        %span.glyphicon.glyphicon-heart-empty
     %h1.poem-title-bar #{@poem.title}
     %h3.poem-author-bar #{@poem.author}
   .poem-body
@@ -16,8 +21,7 @@
   #default-player.hidden
   #playstuff
 
--# I honestly think this is the most elegant way to do this given that we want
--# this to be rendered using JS and require the poem.id to make a request to the
--# readings controller
+-# I honestly think this script tag is the most elegant way to immediately
+-# make a JSON request for all the relevant readings and render them with JS
 %script
   window.Playetry.audioControl.getReadings("#{@poem.id}")
