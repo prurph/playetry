@@ -33,7 +33,7 @@ class PoemsController < ApplicationController
 
   private
   def poem_params
-    params.require(:poem).permit(:title, :author, :body)
+    params.require(:poem).permit(:title, :author, :body, :tag_list)
   end
   def search_params
     params.require(:fuzzies).permit(:title, :author, :body)

@@ -18,14 +18,12 @@ gem 'handlebars_assets'
 gem 'js-routes'
 gem 'haml-rails'
 
-gem 'better_errors'
-gem 'sprockets_better_errors'
-gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'active_model_serializers'
 
 gem 'jbuilder', '~> 1.2'
 gem 'fuzzily'
+gem 'acts-as-taggable-on'
 
 group :doc do
   gem 'sdoc', require: false
@@ -44,6 +42,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
+  gem 'better_errors'
+  gem 'sprockets_better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

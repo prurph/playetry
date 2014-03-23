@@ -4,4 +4,6 @@
     = f.text_field :author, class: 'poem-input minor-input', id: 'new-author', placeholder: 'Click to enter author'
   .poem-body
     = f.text_area :body, id: 'new-body'
+  .poem-tags
+    = f.text_field :tag_list, id: 'new-tags'
   = f.button "Submit", type: 'submit', class: 'btn btn-warning', id: 'submit-poem'

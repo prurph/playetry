@@ -1,5 +1,6 @@
 class Poem < ActiveRecord::Base
   fuzzily_searchable :title, :author, :body
+  acts_as_taggable
 
   has_many :readings, dependent: :destroy
   has_many :favorites, as: :favoriteable, dependent: :destroy
