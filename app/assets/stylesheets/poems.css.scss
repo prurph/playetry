@@ -133,6 +133,8 @@ input.minor-input, .poem-minor-bar {
   .fav-reading > span, .player-username {
     display: none;
   }
+  position: relative;
   width: 100%;
   background-color: $jordy-blue;
+  padding: 5px 0;
 }

@@ -23,6 +23,7 @@ window.Playetry.audioControl = {
     this.recorder.record();
     this.trackMaxTime.timeoutId = setTimeout(this.stopRecording,
       this.trackMaxTime.maxTime);
+    $("#toggle-recording").text("STOP").toggleClass("btn-success btn-danger");
   },
 
   startRecording: function(event) {
@@ -44,6 +45,7 @@ window.Playetry.audioControl = {
         Playetry.audioControl.recordedBlob = s;
         Playetry.audioControl.playback(s);
       });
+      $("#toggle-recording").text("REC").toggleClass("btn-success btn-danger");
       return false;
     }
   },
@@ -53,12 +55,9 @@ window.Playetry.audioControl = {
     // this is Playetry.audioControl here because of .bind() in onLoad.js
     if ($button.text().match(/stop/i)) {
       this.stopRecording.bind(this)();
-      $button.text("Redo");
     } else {
       this.startRecording.bind(this)();
-      $button.text("Stop");
     }
-    $button.toggleClass("btn-success btn-danger");
   },
 
   playback: function(blob) {
@@ -74,10 +73,7 @@ window.Playetry.audioControl = {
       id: "undefined",
       wav_url: window.URL.createObjectURL(blob)
     });
-    newPlayer.renderSelf($newReadingInner) // comes in wrapped in <li>
-      .children() // get the .player-container inside the <li>
-      .unwrap() // remove the <li>
-      .addClass("new-reading");
+    newPlayer.renderSelf($newReadingInner).addClass("new-reading");
   },
 
   saveRecording: function(event) {
@@ -144,6 +140,11 @@ window.Playetry.audioControl = {
         $lis         = $readingList.children(),
         $lisHeight   = $lis.outerHeight() * $lis.length,
         scrollDist;
+
+    debugger;
+    $newReading.find(".player-description").text(response.description);
+    $newReading.find(".player-username").text("by " + response.username)
+      .show();
 
     scrollDist = function() {
       // If there is overflow on the list it must be scrolled

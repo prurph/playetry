@@ -10,13 +10,13 @@
     .poem-tags
       %ul#poem-tag-list
         - @poem.try(:tags).each do |tag|
-          = link_to tag_path(tag.name), class: "tag-link" do
-            %li.mini-tag
+          %li.mini-tag
+            = link_to tag_path(tag.name), class: "tag-link" do
               %p #{tag.name}
   .poem-body
     %pre #{@poem.body}
   .poem-topbot#new-reading-container
-    %button.btn.btn-success#toggle-recording Start
+    %button.btn.btn-success#toggle-recording REC
     #new-reading-inner
       %h3.poem-major-bar.full-width
         - if current_user.present?

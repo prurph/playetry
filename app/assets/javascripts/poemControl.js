@@ -30,30 +30,11 @@ Playetry.poemControl = {
     if (response.poems.length === 1) {
       searchText = " result for ";
     }
-    for (param in search) {
+    for (var param in search) {
       searchText += param + ": " + search[param] + ", ";
     }
     $("#search-by").html(searchText.slice(0,-2));
   },
-
-  // adjustText: function(numResponses, inputArray) {
-  //   var searchText;
-  //   // map inputArray to empty string if all elements are empty (fresh load)
-  //   if ($.map(inputArray, function(e,i) { return e.val(); }).join("")
-  //   .length === 0) {
-  //     searchText = "recent additions..";
-  //   } else {
-  //     searchText = numResponses + " results for ";
-  //     $.each(inputArray, function(index, $input) {
-  //       if ($input.val() !== "") {
-  //         searchText += $input.attr("placeholder").toLowerCase() +
-  //           ": \"" + $input.val() + "\", ";
-  //       }
-  //       $input.val("");
-  //     });
-  //   }
-  //   $("#search-by").html(searchText.slice(0,-2));
-  // },
 
   makePoems: function(response, $attachNode) {
     $.each(response, function(index, poem) {
