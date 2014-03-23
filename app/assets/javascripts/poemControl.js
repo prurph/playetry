@@ -24,14 +24,21 @@ Playetry.poemControl = {
   },
 
   adjustText: function(numResponses, inputArray) {
-    var searchText = numResponses + " results for ";
-    $.each(inputArray, function(index, $input) {
-      if ($input.val() !== "") {
-        searchText += $input.attr("placeholder").toLowerCase() +
-          ": \"" + $input.val() + "\", ";
-      }
-      $input.val("");
-    });
+    var searchText;
+    // map inputArray to empty string if all elements are empty (fresh load)
+    if ($.map(inputArray, function(e,i) { return e.val(); }).join("")
+    .length === 0) {
+      searchText = "recent additions..";
+    } else {
+      searchText = numResponses + " results for ";
+      $.each(inputArray, function(index, $input) {
+        if ($input.val() !== "") {
+          searchText += $input.attr("placeholder").toLowerCase() +
+            ": \"" + $input.val() + "\", ";
+        }
+        $input.val("");
+      });
+    }
     $("#search-by").html(searchText.slice(0,-2));
   },
 

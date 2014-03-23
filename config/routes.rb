@@ -7,7 +7,8 @@ AudioRecordRails::Application.routes.draw do
     resources :readings, only: [:index, :create]
   end
 
-  get    '/user', to: 'users#user_page', as: 'user_page'
+  get    '/tags/:tag', to: 'poems#index', as: 'tag'
+
   post   'favorites/:type/:id', to: 'favorites#create', as: 'new_favorite'
   delete 'favorites/:type/:id', to: 'favorites#destroy', as: 'destroy_favorite'
 

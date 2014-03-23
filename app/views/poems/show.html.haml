@@ -8,7 +8,10 @@
     %h1.poem-major-bar #{@poem.title}
     %h3.poem-minor-bar by #{@poem.author}
     .poem-tags
-      -
+      %ul#poem-tag-list
+        - @poem.try(:tags).each do |tag|
+          %li.mini-tag
+            %p #{tag.name}
   .poem-body
     %pre #{@poem.body}
   .poem-topbot#new-reading-container

@@ -26,16 +26,16 @@ class PoemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        formatted_params = search_params.reject {|k,v| v.empty? }
-        if formatted_params.empty?
-          @poems = Poem.order(added_at: :desc).limit(5)
+        if params[:tag]
+          @poems = Poem.includes(:tags).tagged_with(params[:tag])
+        elsif search_params.empty?
+          @poems = Poem.includes(:tags).order(added_at: :desc).limit(5)
         else
-          @poems = Poem.find_fuzzy(formatted_params)
+          @poems = Poem.includes(:tags).find_fuzzy(search_params)
         end
       end
     end
   end
-
 
   private
   def poem_params
@@ -43,5 +43,6 @@ class PoemsController < ApplicationController
   end
   def search_params
     params.require(:fuzzies).permit(:title, :author, :body)
+      .reject! {|k,v| v.empty? }
   end
 end

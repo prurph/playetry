@@ -20,26 +20,35 @@ $jordy-blue:    #89C4F4;
   position: relative;
 }
 
+/* this is on poems#new */
 #tag-list {
   position: absolute;
   top: 6px;
   left: 6px;
   margin: 0;
   padding: 0;
-  li {
-    display: inline-block;
-  }
+}
+
+/* this is on poems#show */
+#poem-tag-list {
+  margin: 0;
+  position: relative;
+  left: 10px;
 }
 
 .mini-tag {
   height: 25px;
   position: relative;
   background-color: $wet-asphalt;
+  display: inline-block;
   padding: 0 5px;
   border-radius: 4px;
   z-index: 2;
   color: $clouds;
   margin-right: 2px;
+  &:hover {
+    background-color: $jordy-blue;
+  }
   p {
     font-size: 18px;
     padding: 0;

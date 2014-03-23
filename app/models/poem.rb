@@ -20,7 +20,6 @@ class Poem < ActiveRecord::Base
     poems = []
     params.each do |term, input|
       results = Poem.send("find_by_fuzzy_#{term}", input)
-      puts results
       poems = poems.empty? ? results : poems & results
     end
     return poems

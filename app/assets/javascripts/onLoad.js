@@ -1,4 +1,4 @@
-Playetry.ready = function() {
+Playetry.onLoad = function() {
   var dataController = $("body").attr("data-controller"),
       dataAction     = $("body").attr("data-action");
 
@@ -31,5 +31,5 @@ Playetry.ready = function() {
   }
 };
 
-$(document).ready(Playetry.ready);
-$(document).on('page:load', Playetry.ready);
+$(document).ready(Playetry.onLoad);
+$(document).on("page:load", Playetry.onLoad);
