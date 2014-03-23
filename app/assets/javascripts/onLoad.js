@@ -26,26 +26,26 @@ $(document).ready(function() {
           extractLast = function(term) { return split(term).pop(); };
       $("#new-tags").autocomplete({
         minLength: 2,
-        source: function(request, response) {
-          // request is an object passed as {term: "textbox value"}
-          var tag = extractLast(request.term);
-          response($.ui.autocomplete.filter(
-            $("#new-tags").data("autocomplete-source"), tag));
-        },
+        source: $("#new-tags").data("autocomplete-source"),
+        // function(request, response) {
+        //   // request is an object passed as {term: "textbox value"}
+        //   var tag = extractLast(request.term);
+        //   response($.ui.autocomplete.filter(
+        //     $("#new-tags").data("autocomplete-source"), tag));
+        // },
         focus: function() { return false; },
-        select: function(event, ui) {
-          var terms = split(this.value);
-          terms.pop();
-          terms.push(ui.item.value);
-          terms.push("");
-          this.value = terms.join(", ");
-          return false;
-        }
+        select: Playetry.tagControl.onAutocomplete
+        // function(event, ui) {
+        //   console.log(this);
+        //   // ui is {item: {label: "selectboxval", value: "selectboxval"}}
+        //   var terms = split(this.value);
+        //   terms.pop();
+        //   terms.push(ui.item.value);
+        //   terms.push("");
+        //   this.value = terms.join(", ");
+        //   return false;
+        // }
       });
-      // $("#new-tags").autocomplete({
-      //   minLength: 0,
-      //   source: $("#new-tags").data("autocomplete-source")
-      // });
     }
   } else if (dataController === "users") {
     Playetry.userControl.renderUser();

@@ -1,0 +1,53 @@
+$clouds:        #ecf0f1;
+$silver:        #bdc3c7;
+$concrete:      #95a5a6;
+$asbestos:      #7f8c8d;
+$midnight-blue: #2c3e50;
+$wet-asphalt:   #34495e;
+$pumpkin:       #d35400;
+$carrot:        #e67e22;
+$orange:        #f39c12;
+$sun-flower:    #f1c40f;
+$nephritis:     #27ae60;
+$emerald:       #2ecc71;
+$pomegranate:   #c0392b;
+$alizarin:      #e74c3c;
+$peter-river:   #3498db;
+$belize-hole:   #2980b9;
+$jordy-blue:    #89C4F4;
+
+.poem-tags {
+  position: relative;
+}
+
+#tag-list {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+  }
+}
+
+.mini-tag {
+  height: 25px;
+  position: relative;
+  background-color: $wet-asphalt;
+  padding: 0 5px;
+  border-radius: 4px;
+  z-index: 2;
+  color: $clouds;
+  margin-right: 2px;
+  p {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+  }
+  .tag-x {
+    top: 3px;
+    left: 3px;
+  }
+}

@@ -6,4 +6,5 @@
     = f.text_area :body, id: 'new-body'
   .poem-tags
     = f.text_field :tag_list, id: 'new-tags', class: 'poem-input minor-input', data: { autocomplete_source: Poem.tag_counts_on(:tags).order(:name).map(&:name) }
+    %ul#tag-list
   = f.button "Submit", type: 'submit', class: 'btn btn-warning', id: 'submit-poem'
