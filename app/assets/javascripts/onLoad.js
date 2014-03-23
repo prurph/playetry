@@ -23,6 +23,7 @@ $(document).ready(function() {
         select: Playetry.tagControl.onTagGenerated
       });
       $("#new-tags").keyup(Playetry.tagControl.lookForComma);
+      $("#submit-poem").click(Playetry.tagControl.fillHidden);
     }
   } else if (dataController === "users") {
     Playetry.userControl.renderUser();

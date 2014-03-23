@@ -37,9 +37,15 @@ Playetry.tagControl = {
     }
     return false;
   },
-  fillHidden: function(tagText) {
-    var $tagForm = $("#finished-tags");
-    // acts-as-taggable-on will chop off the last ", "
-    $tagForm.val($tagForm.val()+ tagText + ", ");
+  fillHidden: function(event) {
+    var $tags = $(".mini-tag p"),
+        $processedList;
+    $processedList = $tags.map(function(index, tagDOM) {
+      return this.innerText;
+    });
+    // adjust the hidden form with the list of tag1,tag2,tag3
+    $("#finished-tags").val($processedList.get().join(","));
+    // and submit it to Rails to create the poem
+    return true;
   }
 };
