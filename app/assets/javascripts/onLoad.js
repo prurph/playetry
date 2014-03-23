@@ -9,17 +9,12 @@ $(document).ready(function() {
       var audCon = Playetry.audioControl;
       audCon.onLoad();
       // .bind() all these handlers to the namespace to simplify using "this"
-      $("#toggle-recording").click(
-        audCon.toggleRecording.bind(audCon)
-      );
-      $("#save-recording").click(
-        audCon.saveRecording.bind(audCon)
+      $("#toggle-recording").click(audCon.toggleRecording.bind(audCon));
+      $("#save-recording").click(audCon.saveRecording.bind(audCon)
       );
       Playetry.favoriteControl.onLoad($("#reading-list"), $(".fav-poem"));
     } else if (dataAction === "index") {
-      $("#send-search").click(
-        Playetry.poemControl.searchPoems
-      );
+      $("#send-search").click(Playetry.poemControl.searchPoems);
     } else if (dataAction === "new") {
       // http://jsfiddle.net/didierg/7aGFq/
       var split = function(val) { return val.split(/,\s*/); },
@@ -34,7 +29,7 @@ $(document).ready(function() {
         //     $("#new-tags").data("autocomplete-source"), tag));
         // },
         focus: function() { return false; },
-        select: Playetry.tagControl.onAutocomplete
+        select: Playetry.tagControl.onTagGenerated,
         // function(event, ui) {
         //   console.log(this);
         //   // ui is {item: {label: "selectboxval", value: "selectboxval"}}
@@ -46,6 +41,7 @@ $(document).ready(function() {
         //   return false;
         // }
       });
+      $("#new-tags").keyup(Playetry.tagControl.lookForComma);
     }
   } else if (dataController === "users") {
     Playetry.userControl.renderUser();

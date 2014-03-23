@@ -1,6 +1,6 @@
 Playetry.tagControl = {
-  onAutocomplete: function(event, selectionItem) {
-    var $tag = Playetry.tagControl.textToTag(selectionItem.item.value),
+  onTagGenerated: function(event, ui) {
+    var $tag = Playetry.tagControl.textToTag(ui.item.value),
         $tagList = $("#tag-list");
     $("#tag-list").append($tag);
     Playetry.tagControl.adjustIndent($tagList);
@@ -25,5 +25,13 @@ Playetry.tagControl = {
   adjustIndent: function($tagList) {
     $("#new-tags").css("text-indent", $tagList.position().left +
       $tagList.width() + "px").val("");
+  },
+  lookForComma: function(event) {
+    // if comma pressed, fake a tag match to effectively create a new tag
+    if (event.which === 188 && !(/^,/.test(this.value)) ) {
+      var withoutComma = this.value.slice(0,-1),
+          dummyUi = {item: {value: withoutComma}};
+      Playetry.tagControl.onTagGenerated(event, dummyUi);
+    }
   }
 };
