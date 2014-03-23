@@ -12,7 +12,7 @@ Playetry.tagControl = {
     return false;
   },
   textToTag: function(text) {
-    var $tagNode = $(HandlebarsTemplates["tag"]({text: text}));
+    var $tagNode = $(HandlebarsTemplates["tag"]({name: text}));
     return $tagNode;
   },
   bindClickX: function($tag) {

@@ -5,6 +5,15 @@
   %button.btn.btn-warning#send-search{type: 'submit'} Submit
 .poems-index
   %h1.poem-search poems
-  %h3#search-by newest additions
+  %h3#search-by
+    - if @search
+      = "#{pluralize(@poems.count, 'result')} for #{@search.values[0]}"
+    - else
+      recent additions
   %ul#poems-list
     = render @poems
+.tags-index
+  %h1 get inspired!
+  %h3 search by tag
+  %ul#tags-list
+    = render partial: 'tags/tag', collection: @tags

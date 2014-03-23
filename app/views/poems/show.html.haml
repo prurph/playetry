@@ -9,10 +9,7 @@
     %h3.poem-minor-bar by #{@poem.author}
     .poem-tags
       %ul#poem-tag-list
-        - @poem.try(:tags).each do |tag|
-          %li.mini-tag
-            = link_to tag_path(tag.name), class: "tag-link" do
-              %p #{tag.name}
+        = render partial: 'tags/tag', collection: @poem.tags, as: :tag
   .poem-body
     %pre #{@poem.body}
   .poem-topbot#new-reading-container
