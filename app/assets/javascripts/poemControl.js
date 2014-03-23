@@ -29,7 +29,7 @@ Playetry.poemControl = {
     $.each(inputArray, function(index, $input) {
       if ($input.val() !== "") {
         searchText += $input.attr("placeholder").toLowerCase() +
-          ": " + $input.val() + ", ";
+          ": \"" + $input.val() + "\", ";
       }
       $input.val("");
     });
