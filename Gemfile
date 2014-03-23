@@ -24,6 +24,7 @@ gem 'active_model_serializers'
 gem 'jbuilder', '~> 1.2'
 gem 'fuzzily'
 gem 'acts-as-taggable-on'
+gem 'jquery-ui-rails'
 
 group :doc do
   gem 'sdoc', require: false

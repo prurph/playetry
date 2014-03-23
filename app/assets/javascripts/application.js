@@ -13,6 +13,7 @@
 //= require playetry
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require turbolinks
 //= require js-routes
 //= require handlebars.runtime
