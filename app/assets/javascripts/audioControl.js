@@ -138,27 +138,42 @@ window.Playetry.audioControl = {
   },
 
   animateToList: function(response) {
-    var $newReading = $(".new-reading"),
-        $readCont   = $(".readings-container"),
-        offsets = {
-          top: $readCont.offset().top + $readCont.height() -
-            $newReading.offset().top,
-          left: $readCont.offset().left - $newReading.offset().left
-        };
-    // scroll the list to the bottom, animate the new reading moving to the list
-    $readCont.animate({scrollTop: 10000}, "slow",
-    function(){
-      $newReading.animate({
-        top: offsets.top + "px",
-        left: offsets.left + "px",
-      }, 750, function() {
-        $newReading.fadeOut(500);
-        $("#save-recording").fadeOut(500, function() {
+    var $newReading  = $(".new-reading"),
+        $readCont    = $(".readings-container"),
+        $readingList = $("#reading-list"),
+        $lis         = $readingList.children(),
+        $lisHeight   = $lis.outerHeight() * $lis.length,
+        scrollDist;
+
+    scrollDist = function() {
+      // If there is overflow on the list it must be scrolled
+      return ($lisHeight > $readCont.height()) ? 9000 : -9000;
+    };
+
+    // scroll the list to the bottom then...
+    $readCont.animate({scrollTop: scrollDist()}, "slow", function() {
+      // shrink the new reading so it's the same width as the list of existing
+      $newReading.animate({ width: $readCont.width() + "px" }, 500, function() {
+        var topOffset = Math.min($lisHeight, $readCont.height());
+        var offsets = {
+            top: $readCont.offset().top + topOffset - $newReading.offset().top,
+            left: $readCont.offset().left - $newReading.offset().left
+          };
+        // move the new reading over to the existing list
+        $newReading.animate({
+          top: offsets.top + "px",
+          left: offsets.left + "px",
+        }, 750, function() {
+          // fade out the new reading and stick the actual recording on the list
+          $newReading.fadeOut(500);
+          $("#save-recording").fadeOut(500, function() {
+
             $(this).addClass("hidden").fadeIn();
             $("#recording-desc").addClass("hidden");
-            Playetry.audioControl.makePlayers([response], $("#reading-list"));
-            $readCont.scrollTop(10000); // make sure new reading totally vis
+            Playetry.audioControl.makePlayers([response], $readingList);
+            $readCont.scrollTop(scrollDist());
           });
+        });
       });
     });
   }

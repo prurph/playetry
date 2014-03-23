@@ -14,7 +14,7 @@
     #new-reading-inner
       %h3.poem-major-bar.full-width
         - if current_user.present?
-          Read this poem! (Click "Allow")
+          Read this poem! ("Allow" on prompt)
         - else
           #{link_to "Sign in", new_user_session_path} to record.
       %input#recording-desc.poem-input.minor-input.hidden{ type: "text", placeholder: "Click to enter a description"}/
