@@ -1,26 +1,16 @@
 class SearchController < ApplicationController
 
-  def fuzzy_search
-    formatted_params = fuzzy_params.reject {|k,v| v.empty? }
-    if formatted_params.empty?
-      @poems = Poem.order(added_at: :desc).limit(5)
-    else
-      @poems = Poem.find_fuzzy(formatted_params)
-    end
-    render poems: @poems
+  def tag_search
+    @poems = Poem.includes(:tags).tagged_with(params[:tag])
   end
 
-  def tag
-    @poems = Poem.tagged_with(tag_params)
-    render json: { poems: @poems}
+  def fuzzy_search
+    @poems = Poem.includes(:tags).find_fuzzy(search_params)
   end
 
   private
-  def fuzzy_params
+  def search_params
     params.require(:fuzzies).permit(:title, :author, :body)
-  end
-
-  def tag_params
-    params.require(:tag)
+      .reject! {|k,v| v.empty? }
   end
 end

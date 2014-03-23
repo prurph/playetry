@@ -10,8 +10,9 @@
     .poem-tags
       %ul#poem-tag-list
         - @poem.try(:tags).each do |tag|
-          %li.mini-tag
-            %p #{tag.name}
+          = link_to tag_path(tag.name), class: "tag-link" do
+            %li.mini-tag
+              %p #{tag.name}
   .poem-body
     %pre #{@poem.body}
   .poem-topbot#new-reading-container
