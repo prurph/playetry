@@ -1,4 +1,4 @@
-$(document).ready(function() {
+Playetry.ready = function() {
   var dataController = $("body").attr("data-controller"),
       dataAction     = $("body").attr("data-action");
 
@@ -29,4 +29,7 @@ $(document).ready(function() {
     Playetry.userControl.renderUser();
     Playetry.favoriteControl.onLoad($("#fav-readings"), undefined);
   }
-});
+};
+
+$(document).ready(Playetry.ready);
+$(document).on('page:load', Playetry.ready);

@@ -7,9 +7,6 @@
   %h1.poem-search poems
   %h3#search-by newest additions
   %ul#poems-list
-    - @poems.each do |poem|
-      %li
-        .poem-index{"data-poem-id" => "#{poem.id}"}
-          = link_to poem, class: "poem-link" do
-            %h3.poem-index-title #{poem.title}
-          %h6.poem-index-author by #{poem.author}
+
+%script
+  Playetry.poemControl.searchPoems()

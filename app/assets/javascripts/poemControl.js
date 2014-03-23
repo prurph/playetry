@@ -1,6 +1,5 @@
 Playetry.poemControl = {
   searchPoems: function(event) {
-    event.preventDefault();
     var $title = $("#title-search"),
         $author = $('#author-search'),
         $body   = $('#body-search');

@@ -24,9 +24,14 @@ class PoemsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { @poems = Poem.order(added_at: :desc).limit(5) }
+      format.html
       format.json do
-        @poems = Poem.find_fuzzy(search_params.delete_if {|k,v| v.length == 0})
+        formatted_params = search_params.reject {|k,v| v.empty? }
+        if formatted_params.empty?
+          @poems = Poem.order(added_at: :desc).limit(5)
+        else
+          @poems = Poem.find_fuzzy(formatted_params)
+        end
       end
     end
   end
