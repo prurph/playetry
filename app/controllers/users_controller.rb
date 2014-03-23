@@ -11,6 +11,8 @@ class UsersController < ApplicationController
         # set user_favs as the ids of favorite readings so the partial can
         # attach the required user_fav: true attribute
         @user_favs = @readings.map(&:id)
+        # on users page we want recordings to link to their poem
+        @link_poem = true
       end
     end
   end

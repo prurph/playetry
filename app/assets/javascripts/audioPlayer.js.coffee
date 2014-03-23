@@ -13,7 +13,6 @@ class Playetry.AudioPlayer
     $playerNode = $("[data-reading-id='#{this.id}']")
     $audioNode  = $playerNode.children("audio")
     $playerNode.click (event) ->
-      event.preventDefault()
       clicked = $(event.target).attr("data-player-action")
       # get the DOM node of the player to call functions on
       if clicked?

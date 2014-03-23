@@ -134,7 +134,6 @@ window.Playetry.audioControl = {
     $.each(readings, function(index, reading) {
       var readingInstance = new Playetry.AudioPlayer(reading);
       readingInstance.renderSelf($attachNode);
-
     });
   },
 

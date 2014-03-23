@@ -11,7 +11,13 @@
           <span class="glyphicon glyphicon-heart-empty"></span>
         {{/if}}
       </div>
-      <h6 class="player-description">{{description}}</h6>
+      {{#if poem_url}}
+        <a class="player-link" href="{{poem_url}}" alt="{{description}}">
+          <h6 class="player-description">{{description}}</h6>
+        </a>
+      {{else}}
+        <h6 class="player-description">{{description}}</h6>
+      {{/if}}
       <p class="player-username">by {{username}}</p>
       <audio class="audio-player">
         <source src="{{wav_url}}" type="audio/wav" />

@@ -23,7 +23,7 @@ window.Playetry.favoriteControl = {
   },
   railsFav: function(favoriteable, id, action, callback) {
     $.ajax({
-      url: "favorites/" + favoriteable + "/" + id,
+      url: "/favorites/" + favoriteable + "/" + id,
       type: action,
       dataType: "json",
       data: null,
