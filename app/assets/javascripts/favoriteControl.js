@@ -1,8 +1,8 @@
 window.Playetry.favoriteControl = {
-  onLoad: function() {
+  onLoad: function($readingNode, $poemNode) {
     if (Playetry.currentUserId) {
-      this.bindHeartClicks($("#reading-list"), "reading");
-      this.bindHeartClicks($(".fav-poem"), "poem");
+      if ($readingNode) { this.bindHeartClicks($readingNode, "reading"); }
+      if ($poemNode)    { this.bindHeartClicks($poemNode, "poem"); }
     }
   },
   bindHeartClicks: function($parent, type) {
@@ -23,7 +23,7 @@ window.Playetry.favoriteControl = {
   },
   railsFav: function(favoriteable, id, action, callback) {
     $.ajax({
-      url: "../favorites/" + favoriteable + "/" + id,
+      url: "favorites/" + favoriteable + "/" + id,
       type: action,
       dataType: "json",
       data: null,

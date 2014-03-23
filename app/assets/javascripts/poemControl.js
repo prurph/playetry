@@ -15,7 +15,7 @@ Playetry.poemControl = {
     .done(function(response) {
       console.log(response);
       var poemCon = Playetry.poemControl;
-      poemCon.makePoems(response.poems);
+      poemCon.makePoems(response.poems, $("#poems-list").empty());
       poemCon.adjustText(response.poems.length, [$title, $author, $body]);
     })
     .fail(function() {
@@ -36,11 +36,10 @@ Playetry.poemControl = {
     $("#search-by").html(searchText.slice(0,-2));
   },
 
-  makePoems: function(response) {
-    var $poemsList = $("#poems-list").empty();
+  makePoems: function(response, $attachNode) {
     $.each(response, function(index, poem) {
       var poemInstance = new Playetry.Poem(poem);
-      poemInstance.renderSelf($poemsList);
+      poemInstance.renderSelf($attachNode);
     });
   }
 };

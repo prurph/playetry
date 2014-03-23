@@ -15,11 +15,14 @@ $(document).ready(function() {
       $("#save-recording").click(
         audCon.saveRecording.bind(audCon)
       );
-      Playetry.favoriteControl.onLoad();
+      Playetry.favoriteControl.onLoad($("#reading-list"), $(".fav-poem"));
     } else if (dataAction === "index") {
       $("#send-search").click(
         Playetry.poemControl.searchPoems
       );
     }
+  } else if (dataController === "users") {
+    Playetry.userControl.renderUser();
+    Playetry.favoriteControl.onLoad($("#fav-readings"), undefined);
   }
 });

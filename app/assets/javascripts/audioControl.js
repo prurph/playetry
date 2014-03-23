@@ -110,8 +110,6 @@ window.Playetry.audioControl = {
       .done(function(response) {
         $description.val("");
         console.log(response);
-       // Playetry.audioControl.makePlayers([response]);
-        // animateToList will attach the new response to the list when complete
         Playetry.audioControl.animateToList(response);
       })
       .fail(function() {
@@ -128,14 +126,15 @@ window.Playetry.audioControl = {
     })
     .done(function(response) {
       console.log(response);
-      Playetry.audioControl.makePlayers(response.readings);
+      Playetry.audioControl.makePlayers(response.readings, $("#reading-list"));
     });
   },
 
-  makePlayers: function(readings) {
+  makePlayers: function(readings, $attachNode) {
     $.each(readings, function(index, reading) {
       var readingInstance = new Playetry.AudioPlayer(reading);
-      readingInstance.renderSelf($("#reading-list"));
+      readingInstance.renderSelf($attachNode);
+
     });
   },
 
@@ -158,7 +157,7 @@ window.Playetry.audioControl = {
         $("#save-recording").fadeOut(500, function() {
             $(this).addClass("hidden").fadeIn();
             $("#recording-desc").addClass("hidden");
-            Playetry.audioControl.makePlayers([response]);
+            Playetry.audioControl.makePlayers([response], $("#reading-list"));
             $readCont.scrollTop(10000); // make sure new reading totally vis
           });
       });

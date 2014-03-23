@@ -2,11 +2,6 @@
 .poems-index
   %h3.section-header your favorite poems
   %ul#fav-poems.user-list
-    - @fav_poems.each do |poem|
-      %li
-        .poem-index{"data-poem-id" => "#{poem.id}"}
-          %h3.poem-index-title #{poem.title}
-          %h6.poem-index-author by #{poem.author}
 .readings-index
   %h3.section-header your favorite readings
   %ul#fav-readings.user-list
