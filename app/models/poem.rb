@@ -16,12 +16,6 @@ class Poem < ActiveRecord::Base
     self.added_at = Time.now()
   end
 
-  def to_builder
-    Jbuilder.new do |poem|
-      poem.(self, :title, :author, :id, :tags)
-    end
-  end
-
   def self.find_fuzzy(params)
     poems = []
     params.each do |term, input|
