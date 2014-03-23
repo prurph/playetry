@@ -41,5 +41,5 @@ Playetry.poemControl = {
       var poemInstance = new Playetry.Poem(poem);
       poemInstance.renderSelf($attachNode);
     });
-  }
+  },
 };

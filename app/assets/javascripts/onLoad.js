@@ -4,8 +4,8 @@ $(document).ready(function() {
 
   Playetry.currentUserId  = $("body").attr("data-current-user");
 
-  if (Playetry.currentUserId.length > 0 && dataController === "poems") {
-    if (dataAction === "show") {
+  if (dataController === "poems") {
+    if (dataAction === "show" && Playetry.currentUserId.length > 0) {
       var audCon = Playetry.audioControl;
       audCon.onLoad();
       // .bind() all these handlers to the namespace to simplify using "this"
@@ -15,31 +15,12 @@ $(document).ready(function() {
       Playetry.favoriteControl.onLoad($("#reading-list"), $(".fav-poem"));
     } else if (dataAction === "index") {
       $("#send-search").click(Playetry.poemControl.searchPoems);
-    } else if (dataAction === "new") {
-      // http://jsfiddle.net/didierg/7aGFq/
-      var split = function(val) { return val.split(/,\s*/); },
-          extractLast = function(term) { return split(term).pop(); };
+    } else if (dataAction === "new" && Playetry.currentUserId.length > 0) {
       $("#new-tags").autocomplete({
         minLength: 2,
         source: $("#new-tags").data("autocomplete-source"),
-        // function(request, response) {
-        //   // request is an object passed as {term: "textbox value"}
-        //   var tag = extractLast(request.term);
-        //   response($.ui.autocomplete.filter(
-        //     $("#new-tags").data("autocomplete-source"), tag));
-        // },
         focus: function() { return false; },
-        select: Playetry.tagControl.onTagGenerated,
-        // function(event, ui) {
-        //   console.log(this);
-        //   // ui is {item: {label: "selectboxval", value: "selectboxval"}}
-        //   var terms = split(this.value);
-        //   terms.pop();
-        //   terms.push(ui.item.value);
-        //   terms.push("");
-        //   this.value = terms.join(", ");
-        //   return false;
-        // }
+        select: Playetry.tagControl.onTagGenerated
       });
       $("#new-tags").keyup(Playetry.tagControl.lookForComma);
     }

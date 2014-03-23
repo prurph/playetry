@@ -1,4 +1,5 @@
 class PoemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def new
     @poem = Poem.new
   end
@@ -15,7 +16,7 @@ class PoemsController < ApplicationController
   end
 
   def show
-    @poem = Poem.includes(:favorites).find(params[:id])
+    @poem = Poem.includes(:favorites).includes(:tags).find(params[:id])
     if current_user.present?
       @user_fav = @poem.favorites.where(user: current_user).present?
     end

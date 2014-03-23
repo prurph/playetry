@@ -7,6 +7,8 @@ Playetry.tagControl = {
     $("#new-tags").css("text-indent", $tagList.position().left +
       $tagList.width() + "px").val("");
     Playetry.tagControl.bindClickX($tag);
+    Playetry.tagControl.fillHidden(ui.item.value);
+    // this return false is critical
     return false;
   },
   textToTag: function(text) {
@@ -33,5 +35,11 @@ Playetry.tagControl = {
           dummyUi = {item: {value: withoutComma}};
       Playetry.tagControl.onTagGenerated(event, dummyUi);
     }
+    return false;
+  },
+  fillHidden: function(tagText) {
+    var $tagForm = $("#finished-tags");
+    // acts-as-taggable-on will chop off the last ", "
+    $tagForm.val($tagForm.val()+ tagText + ", ");
   }
 };

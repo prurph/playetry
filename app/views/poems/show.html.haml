@@ -6,7 +6,7 @@
       - else
         %span.glyphicon.glyphicon-heart-empty
     %h1.poem-major-bar #{@poem.title}
-    %h3.poem-minor-bar #{@poem.author}
+    %h3.poem-minor-bar by #{@poem.author}
   .poem-body
     %pre #{@poem.body}
   .poem-topbot#new-reading-container
@@ -22,7 +22,6 @@
 .readings-container
   %ul#reading-list
 
--# I honestly think this script tag is the most elegant way to immediately
--# make a JSON request for all the relevant readings and render them with JS
+-# Immediately request JSON for the relevant readings and render them with hbs
 %script
   Playetry.audioControl.getReadings("#{@poem.id}")
