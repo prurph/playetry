@@ -22,10 +22,10 @@ class PoemsController < ApplicationController
   end
 
   def index
-    @tags = Poem.tag_counts
+    @tags = Poem.tag_counts.order(:name)
     if params[:tag]
       @poems = Poem.includes(:tags).tagged_with(params[:tag])
-      @search = { tag: "tag: #{params[:tag]}" }
+      @search = { tag: params[:tag] }
     elsif params[:fuzzies].present?
       search_params = params[:fuzzies].reject! {|k,v| v.empty? }
       @poems = Poem.includes(:tags).find_fuzzy(search_params)

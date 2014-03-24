@@ -138,3 +138,9 @@ input.minor-input, .poem-minor-bar {
   background-color: $jordy-blue;
   padding: 5px 0;
 }
+
+#poems-list {
+  li {
+    display: block;
+  }
+}

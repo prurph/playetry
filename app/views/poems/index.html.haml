@@ -3,16 +3,16 @@
   %input.poem-input.minor-input#author-search{type: 'text', placeholder: 'Author'}
   %input.poem-input.minor-input#body-search{type: 'text',   placeholder: 'Body'}
   %button.btn.btn-warning#send-search{type: 'submit'} Submit
-.poems-index
+.poems-index.col-xs-8
   %h1.poem-search poems
   %h3#search-by
     - if @search
-      = "#{pluralize(@poems.count, 'result')} for #{@search.values[0]}"
+      = "#{pluralize(@poems.count, 'result')} for tag: #{@search[:tag]}"
     - else
       recent additions
   %ul#poems-list
     = render @poems
-.tags-index
+.tags-index.col-xs-4
   %h1 get inspired!
   %h3 search by tag
   %ul#tags-list

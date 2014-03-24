@@ -36,6 +36,14 @@ $jordy-blue:    #89C4F4;
   left: 10px;
 }
 
+/* and this is on poems#index (yikes) */
+#tags-list {
+  li {
+    display: block;
+    margin: 5px;
+  }
+}
+
 .mini-tag {
   height: 25px;
   position: relative;
