@@ -90,7 +90,7 @@ window.Playetry.audioControl = {
 
     if (descriptionText.length > 30 || descriptionText.length <= 3) {
       // ADD ERROR HANDLING HERE
-      alert("Descriptions should be 3-30 characters.");
+      alert("Descriptions should be 4-30 characters.");
     } else {
       data.append("wav", blob, new Date().getTime() + fileExt);
       data.append("description", descriptionText);
@@ -139,11 +139,13 @@ window.Playetry.audioControl = {
         $readingList = $("#reading-list"),
         $lis         = $readingList.children(),
         $lisHeight   = $lis.outerHeight() * $lis.length,
+        $playDesc    = $newReading.find(".player-description"),
+        $playUser    = $playDesc.find(".player-username"),
         scrollDist;
 
-    $newReading.find(".player-description").text(response.description);
-    $newReading.find(".player-username").text("by " + response.username)
-      .show();
+    $playDesc.text(response.description);
+    $playUser.show().text(" by " + response.username);
+    $playDesc.append($playUser);
 
     scrollDist = function() {
       // If there is overflow on the list it must be scrolled

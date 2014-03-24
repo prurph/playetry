@@ -13,16 +13,18 @@
       </div>
       {{#if poem_url}}
         <a class="player-link" href="{{poem_url}}" alt="{{description}}">
-          <h6 class="player-description">{{description}}</h6>
+          <h6 class="player-description">{{description}}
         </a>
       {{else}}
-        <h6 class="player-description">{{description}}</h6>
+          <h6 class="player-description">{{description}}
       {{/if}}
-      <p class="player-username">by {{username}}</p>
+          <span class="player-username">by {{username}}</span>
+          </h6>
       <audio class="audio-player">
         <source src="{{wav_url}}" type="audio/wav" />
         Your browser does not support the audio tag.
       </audio>
+      <div>
       <div class="player-glyph-container">
         <span class="play-pause-glyph glyphicon glyphicon-play" data-player-action="playPause"></span>
       </div>
@@ -35,6 +37,7 @@
       </div>
       <div class="volume-meter player-center" data-player-action="clickVolumeSlider">
         <div class="volume-status slider-bar" data-player-action="clickVolumeSlider" data-player-vol="1"></div>
+      </div>
       </div>
     </div>
   </li>

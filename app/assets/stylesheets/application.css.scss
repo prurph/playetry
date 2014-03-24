@@ -40,6 +40,18 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 $jordy-blue:    #89C4F4;
 
+/* Some Generic Classes */
+.full-width {
+  width: 100% !important;
+}
+.container {
+  padding: 0;
+}
+.relative {
+  position: relative;
+}
+
+
 /* Fix janky Chrome user agent outline */
 button, input, textarea {
   &:focus, &:active {
