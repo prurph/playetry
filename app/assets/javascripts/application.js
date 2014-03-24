@@ -18,6 +18,7 @@
 //= require js-routes
 //= require handlebars.runtime
 //= require_tree ./templates
+//= require d3
 //= require onLoad
 //= require bootstrap
 //= require_tree .

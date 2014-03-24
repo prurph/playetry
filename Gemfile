@@ -17,6 +17,7 @@ gem 'paperclip', '~> 4.1'
 gem 'handlebars_assets'
 gem 'js-routes'
 gem 'haml-rails'
+gem 'd3-rails'
 
 gem 'pry-rails'
 gem 'active_model_serializers'

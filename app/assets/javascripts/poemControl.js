@@ -12,11 +12,28 @@ Playetry.poemControl = {
             }
     })
     .done(function(response) {
-      console.log(response);
       var poemCon = Playetry.poemControl;
       poemCon.makePoems(response.poems, $("#poems-list").empty());
       poemCon.adjustText(response);
-      // poemCon.adjustText(response.poems.length, [$title, $author, $body]);
+    })
+    .fail(function() {
+      console.log("error");
+    });
+    return false;
+  },
+
+  poemsByTag: function(event) {
+    $.ajax({
+      // super hacky: get the tag text and concatenate that in as the param
+      url: "/tags/" + this.textContent,
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function(response) {
+      var poemCon = Playetry.poemControl;
+      console.log(response);
+      poemCon.makePoems(response.poems, $("#poems-list").empty());
+      poemCon.adjustText(response);
     })
     .fail(function() {
       console.log("error");

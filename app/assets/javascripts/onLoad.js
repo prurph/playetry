@@ -15,6 +15,8 @@ Playetry.onLoad = function() {
       Playetry.favoriteControl.onLoad($("#reading-list"), $(".fav-poem"));
     } else if (dataAction === "index") {
       $("#send-search").click(Playetry.poemControl.searchPoems);
+      Playetry.d3Tags();
+      //$(".tag-link").click(Playetry.poemControl.poemsByTag);
     } else if (dataAction === "new" && Playetry.currentUserId.length > 0) {
       $("#new-tags").autocomplete({
         minLength: 2,
