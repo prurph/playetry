@@ -66,7 +66,7 @@ window.Playetry.audioControl = {
     // saving. Handlebars uses this undefined to not render a favorite option
 
     var $newReadingInner = $("#new-reading-inner");
-    $newReadingInner.children(".player-container").remove();
+    $newReadingInner.find(".player-container").remove();
     $("#save-recording").removeClass("hidden");
     $("#recording-desc").removeClass("hidden");
     var newPlayer = new window.Playetry.AudioPlayer({
@@ -141,7 +141,6 @@ window.Playetry.audioControl = {
         $lisHeight   = $lis.outerHeight() * $lis.length,
         scrollDist;
 
-    debugger;
     $newReading.find(".player-description").text(response.description);
     $newReading.find(".player-username").text("by " + response.username)
       .show();
@@ -173,6 +172,7 @@ window.Playetry.audioControl = {
             $("#recording-desc").addClass("hidden");
             Playetry.audioControl.makePlayers([response], $readingList);
             $readCont.scrollTop(scrollDist());
+            $newReading.remove();
           });
         });
       });
