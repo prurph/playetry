@@ -28,8 +28,8 @@ Playetry.tagControl = {
     });
   },
   adjustIndent: function($tagList) {
-    $("#new-tags").css("text-indent", $tagList.position().left +
-      $tagList.width() + "px").val("");
+    var indent = $tagList.position().left + $tagList.width();
+    $("#new-tags").css("text-indent", indent + "px").val("");
   },
   lookForComma: function(event) {
     // if comma pressed, fake a tag match to effectively create a new tag

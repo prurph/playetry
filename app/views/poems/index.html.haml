@@ -1,20 +1,18 @@
 .search-bar
-  %input.poem-input.minor-input#title-search{type: 'text', placeholder: 'Title'}
-  %input.poem-input.minor-input#author-search{type: 'text', placeholder: 'Author'}
-  %input.poem-input.minor-input#body-search{type: 'text',   placeholder: 'Body'}
-  %button.btn.btn-warning#send-search{type: 'submit'} Submit
-.poems-index.col-xs-8
-  %h1.poem-search poems
+  %input.poem-input.author.letterpress#title-search{type: 'text', placeholder: 'Title Search'}
+  %input.poem-input.author.letterpress#author-search{type: 'text', placeholder: 'Author Search'}
+  %input.poem-input.author.letterpress#body-search{type: 'text',   placeholder: 'Body Search'}
+  %button.btn.btn-warning#send-search{type: 'submit'} Search
+.poems-index.left
+  %h1.poem-search browse poems
   %h3#search-by
     - if @search
       = "#{pluralize(@poems.count, 'result')} for tag: #{@search[:tag]}"
     - else
       recent additions
-  %ul#poems-list
+  %ul#poems-list.poems-list
     = render @poems
-.tags-index.col-xs-4
+.tags-index.right
   %h1 get inspired!
-  %h3 search by tag
+  %h3 see poems by tag
   #tags-list
-  //%ul#tags-list= render partial: 'tags/tag', collection: @tags
-

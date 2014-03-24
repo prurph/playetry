@@ -158,7 +158,7 @@ window.Playetry.audioControl = {
       $newReading.animate({ width: $readCont.width() + "px" }, 500, function() {
         var topOffset = Math.min($lisHeight, $readCont.height());
         var offsets = {
-            top: $readCont.offset().top + topOffset - $newReading.offset().top,
+            top: 10 + $readCont.offset().top + topOffset - $newReading.offset().top,
             left: $readCont.offset().left - $newReading.offset().left
           };
         // move the new reading over to the existing list

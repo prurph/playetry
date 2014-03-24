@@ -45,6 +45,7 @@ $lightsec: #FCEEC9;
 $lightmain: #96D6D9;
 $medmain: #4FAAC9;
 $darkmain: #176075;
+$letterpress-text: #2F4050;
 $bg-color: #4F6478;
 
 body {
@@ -88,6 +89,7 @@ a {
 }
 .container {
   padding: 0;
+  max-width: 935px;
 }
 .relative {
   position: relative;
@@ -97,11 +99,31 @@ a {
   position: inherit;
 }
 
-.letterpress {
+.letterpress, .glyphicon {
   color: #2F4050;
   text-shadow: 0px 1px 1px #7290AC;
 }
 
+.left {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 2em 2em 0;
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+}
+
+.right {
+  width: 300px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+/* Fix Bootstrap override */
+input.letterpress {
+  color: #2F4050;
+  text-shadow: 0px 1px 1px #7290AC;
+}
 
 /* Fix janky Chrome user agent outline */
 button, input, textarea {

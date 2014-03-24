@@ -16,21 +16,32 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 $jordy-blue:    #89C4F4;
 
+$darksec: #FF5952;
+$lightsec: #FCEEC9;
+$lightmain: #96D6D9;
+$medmain: #4FAAC9;
+$darkmain: #176075;
+$letterpress-text: #2F4050;
+$bg-color: #4F6478;
+
 .readings-container {
-  width: 300px;
-  height: 690px;
+  height: 630px;
+  padding-top: 10px;
   overflow: scroll;
-  margin: 0 10px;
-  display: inline-block;
-  vertical-align: top;
+  border: 2px solid #4faac9;
+  border-radius: 4px;
+  -moz-box-shadow: inset 0 0 2px 2px #2F4050;
+  box-shadow: inset 0 0 2px 2px #2F4050;
 }
+
 
 #reading-list {
   height: 100%;
   width: 100%;
   li {
-    padding: 5px 0;
-    border-bottom: 1px solid rgba($pumpkin, 0.5);
+    padding: 5px 4px;
+    height: 69px;
+    border-bottom: 1px solid $darkmain;
     display: block;
   }
 }
@@ -53,11 +64,15 @@ $jordy-blue:    #89C4F4;
 }
 
 #save-recording {
+  position: relative;
+  top: 1px;
   width: 29%;
   float: right;
 }
 
 /* <li> for which the reading is current user's */
 .user-reading {
-  background-color: $jordy-blue;
+  .player-username {
+    color: $darksec;
+  }
 }

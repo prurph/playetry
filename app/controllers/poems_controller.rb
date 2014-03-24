@@ -27,7 +27,7 @@ class PoemsController < ApplicationController
       @poems = Poem.includes(:tags).tagged_with(params[:tag])
       @search = { tag: params[:tag] }
     elsif params[:fuzzies].present?
-      search_params = params[:fuzzies].reject! {|k,v| v.empty? }
+      search_params = params[:fuzzies].reject {|k,v| v.empty? }
       @poems = Poem.includes(:tags).find_fuzzy(search_params)
       @search = search_params
     else

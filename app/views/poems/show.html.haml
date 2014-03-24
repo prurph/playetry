@@ -1,20 +1,18 @@
-.poem-container{ "data-poem-id" => "#{@poem.id}" }
+.poem-container.left{ "data-poem-id" => "#{@poem.id}" }
   .poem-title.poem-topbot
     .fav-poem
       - if @user_fav
-        %span.glyphicon.glyphicon-heart.is-fav
+        %span.glyphicon.glyphicon-heart-empty.is-fav
       - else
         %span.glyphicon.glyphicon-heart-empty
-    -# %h1.poem-major-bar #{@poem.title}
-    -# %h3.poem-minor-bar by #{@poem.author}
     %h1.poem-input.title.letterpress #{@poem.title}
     %h3.poem-input.author.letterpress by #{@poem.author}
-    .poem-tags
-      %ul#poem-tag-list
-        = render partial: 'tags/tag', collection: @poem.tags, as: :tag
   .poem-body
     %pre #{@poem.body}
   .poem-topbot#new-reading-container
+    .poem-show-tags
+      %ul#poem-tag-list
+        = render partial: 'tags/tag', collection: @poem.tags, as: :tag
     %button.btn.btn-success#toggle-recording REC
     #new-reading-inner
       %h3.poem-input.title.letterpress
@@ -22,10 +20,11 @@
           Read this poem!
         - else
           #{link_to "Sign in", new_user_session_path} to record.
-      %input#recording-desc.poem-input.minor-input.hidden{ type: "text", placeholder: "Click to enter a description"}/
+      %input#recording-desc.poem-input.author.letterpress.hidden{ type: "text", placeholder: "Click to enter a description"}/
       %button.btn.btn-warning.hidden#save-recording Save!
-.readings-container
-  %ul#reading-list
+.right
+  .readings-container
+    %ul#reading-list
 
 -# Immediately request JSON for the relevant readings and render them with hbs
 %script

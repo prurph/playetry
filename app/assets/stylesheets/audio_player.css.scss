@@ -16,6 +16,14 @@ $alizarin:      #e74c3c;
 $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 
+$darksec: #FF5952;
+$lightsec: #FCEEC9;
+$lightmain: #96D6D9;
+$medmain: #4FAAC9;
+$darkmain: #176075;
+$letterpress-text: #2F4050;
+$bg-color: #4F6478;
+
 .player-container {
   position: relative;
   div {
@@ -25,26 +33,20 @@ $belize-hole:   #2980b9;
 }
 
 .player-description {
-  height: 28px;
   width: 90%; // leave room for the heart (remember this scrolls for long desc)
-  line-height: 28px;
-  font-size: 24px;
-  margin: 0;
-  padding-left: 2px;
+  font-size: 1.3em;
+  color: $lightmain;
   overflow: scroll;
-  text-transform: none; // otherwise h6's are all caps
+  text-transform: none;
   white-space: nowrap; // might be better to just text-overflow: ellipsis
 }
 
 .player-username {
-  width: 100%;
-  height: 15px;
-  line-height: 12px;
-  text-indent: 10px;
-  font-size: 16px;
-  margin: 0;
-  padding-bottom: 3px;
-  padding-left: 2px;
+  font-size: 0.9em;
+  margin-left: 0.4em;
+  float: right;
+  text-transform: none;
+  color: $lightmain;
 }
 
 .player-glyph-container {
@@ -63,7 +65,7 @@ $belize-hole:   #2980b9;
 
 .track-slider, .volume-meter {
   height: 10px;
-  background-color: $wet-asphalt;
+  background-color: $darkmain;
   border-radius: 2px;
 }
 
@@ -73,7 +75,7 @@ $belize-hole:   #2980b9;
 
 .track-time {
   font-size: 18px;
-  color: $clouds;
+  color: $lightsec;
   position: absolute;
   right: 10px;
   line-height: 25px;
@@ -91,10 +93,10 @@ $belize-hole:   #2980b9;
 
 .track-progress {
   width: 0;
-  background-color: $alizarin;
+  background-color: $darksec;
 }
 
 .volume-status{
   width: 100%;
-  background-color: $nephritis;
+  background-color: $medmain;
 }

@@ -28,8 +28,7 @@ window.Playetry.favoriteControl = {
       dataType: "json",
       data: null,
     })
-    .done(function() {
-      console.log("success");
+    .done(function(response) {
       callback();
     })
     .fail(function() {
@@ -37,6 +36,6 @@ window.Playetry.favoriteControl = {
     });
   },
   toggleHeart: function() {
-    this.toggleClass("is-fav glyphicon-heart glyphicon-heart-empty");
+    this.toggleClass("is-fav");
   }
 };

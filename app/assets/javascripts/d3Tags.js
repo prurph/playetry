@@ -21,9 +21,9 @@ Playetry.drawD3 = function(tagData) {
               .range([32,72])
               .domain(d3.extent(tagData, function(d) { return d.count; }));
 
-  d3.layout.cloud().size([400, 400])
+  d3.layout.cloud().size([300, 300])
     .words(tagData)
-    .rotate(function() { return ~~(Math.random()*5) * 90; })
+    .rotate(function() { return ~~(Math.random()*2) * 90; })
     .font("Lato")
     .fontSize(function(d) { return size(d.count); })
     .on("end", draw)
@@ -32,18 +32,18 @@ Playetry.drawD3 = function(tagData) {
   function draw(words) {
     console.log(words);
     var a = d3.select("#tags-list").append("svg")
-        .attr("width", 400)
-        .attr("height", 400)
+        .attr("width", 300)
+        .attr("height", 300)
       .append("g")
-        .attr("transform", "translate(200,200)")
+        .attr("transform", "translate(150,150)")
       .selectAll("text")
         .data(words)
       .enter().append("text")
         .style("font-size", function(d) { return d.size + "px"; })
-        .style("font-family", "Lato")
+        .style("font-family", "Oleo Script")
         .style("fill", function(d,i) { return fill(i); })
         .attr("text-anchor", "middle")
-        .attr("class", "tag-link")
+        .attr("class", "tag-link letterpress")
         .attr("transform", function(d) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })

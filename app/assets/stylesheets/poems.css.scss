@@ -34,8 +34,6 @@ $bg-color: #4F6478;
 greater priority than just a class */
 .fav-poem, .fav-reading {
   position: absolute;
-  right: 2px;
-  top: -3px;
   font-size: 48px;
   color: $asbestos;
   span:hover {
@@ -43,36 +41,51 @@ greater priority than just a class */
     transform: scale(1.2);
   }
   .is-fav {
-    color: $alizarin;
-    text-shadow: 0 0 2px $clouds;
+    color: $darksec;
   }
 }
 
+.fav-poem {
+  right: 8px;
+  top: 2px;
+}
+
 .fav-reading {
-  top: 0;
+  top: -6px;
   right: 3px;
   font-size: 24px;
 }
 
 /* if this is an unsaved new reading, don't display the heart or the username */
 .new-reading {
+  position: relative;
+  width: 100%;
+  border-radius: 2px;
+  padding: 5px 0;
+
   .fav-reading > span, .player-username {
     display: none;
   }
-  position: relative;
-  width: 100%;
-  background-color: $jordy-blue;
-  padding: 5px 0;
 }
 
-#poems-list {
+.poems-list {
   li {
     display: block;
     margin: 1.5em 1em;
   }
 }
 
+.poem-container {
+  display: inline-block;
+  border: 2px solid $medmain;
+  border-radius: 4px;
+}
+
 /* poems#index */
+
+.poems-index {
+  padding-left: 1em;
+}
 
 .poem-index-title {
   font-family: 'Oleo Script', 'Lato', cursive;
@@ -87,6 +100,24 @@ greater priority than just a class */
   text-indent: 0.5em;
   font-weight: bold;
   text-transform: lowercase;
+}
+
+.search-bar {
+  width: 100%;
+  position: relative;
+  input.poem-input {
+    display: inline-block;
+    width: 25%;
+  }
+}
+
+#send-search {
+  position: relative;
+  float: right;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 /* poems#show and poems#new */
@@ -108,7 +139,7 @@ input.poem-input, .poem-input {
   &.author {
     font-size: 1.8em;
     text-indent: 0.5em;
-    text-transform: lowercase;
+    text-transform: none;
   }
 }
 
@@ -121,7 +152,7 @@ input.poem-input:focus {
   border: none;
   border-radius: 0;
   width: 100%;
-  height: 500px;
+  height: 448px;
   position: relative;
   font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #2F4050;
@@ -132,7 +163,7 @@ input.poem-input:focus {
   /* a lot of these are resetting default settings for pre and so must be explicit
   inherit */
   textarea, pre {
-    padding: 1em;
+    padding: 1em 1em 1.6em 1em;
     border: none;
     background-color: transparent;
     width: 100%;
@@ -157,20 +188,17 @@ input.poem-input:focus {
   box-shadow: inset 0 0 2px 2px #2F4050;
 }
 
-.poem-container {
-  width: 100%;
-  max-width: 620px;
-  margin: 0;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  border: 2px solid $medmain;
-  border-radius: 4px;
-}
-
 .btn-submit {
   width: 29%;
   display: inline-block;
   position: relative;
   bottom: 4px;
+}
+
+.verb {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: -0.5em;
 }
