@@ -23,7 +23,7 @@ Playetry.drawD3 = function(tagData) {
 
   d3.layout.cloud().size([400, 400])
     .words(tagData)
-    .rotate(function() { return ~~(Math.random()*2) * 90; })
+    .rotate(function() { return ~~(Math.random()*5) * 90; })
     .font("Lato")
     .fontSize(function(d) { return size(d.count); })
     .on("end", draw)
@@ -31,7 +31,7 @@ Playetry.drawD3 = function(tagData) {
 
   function draw(words) {
     console.log(words);
-    d3.select("#tags-list").append("svg")
+    var a = d3.select("#tags-list").append("svg")
         .attr("width", 400)
         .attr("height", 400)
       .append("g")
@@ -49,5 +49,6 @@ Playetry.drawD3 = function(tagData) {
         })
         .text(function(d) { return d.text; })
         .on("click", Playetry.poemControl.poemsByTag);
+    d3.select("svg").attr("transform", "translate(200,200");
   }
 };

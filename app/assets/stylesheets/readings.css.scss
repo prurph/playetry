@@ -31,6 +31,7 @@ $jordy-blue:    #89C4F4;
   li {
     padding: 5px 0;
     border-bottom: 1px solid rgba($pumpkin, 0.5);
+    display: block;
   }
 }
 
@@ -46,6 +47,9 @@ $jordy-blue:    #89C4F4;
 #new-reading-inner {
   width: 90%;
   display: inline-block;
+  li {
+    list-style-type: none;
+  }
 }
 
 #save-recording {
