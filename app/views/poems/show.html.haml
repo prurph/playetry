@@ -5,8 +5,10 @@
         %span.glyphicon.glyphicon-heart.is-fav
       - else
         %span.glyphicon.glyphicon-heart-empty
-    %h1.poem-major-bar #{@poem.title}
-    %h3.poem-minor-bar by #{@poem.author}
+    -# %h1.poem-major-bar #{@poem.title}
+    -# %h3.poem-minor-bar by #{@poem.author}
+    %h1.poem-input.title.letterpress #{@poem.title}
+    %h3.poem-input.author.letterpress by #{@poem.author}
     .poem-tags
       %ul#poem-tag-list
         = render partial: 'tags/tag', collection: @poem.tags, as: :tag
@@ -15,9 +17,9 @@
   .poem-topbot#new-reading-container
     %button.btn.btn-success#toggle-recording REC
     #new-reading-inner
-      %h3.poem-major-bar.full-width
+      %h3.poem-input.title.letterpress
         - if current_user.present?
-          Read this poem! ("Allow" on prompt)
+          Read this poem!
         - else
           #{link_to "Sign in", new_user_session_path} to record.
       %input#recording-desc.poem-input.minor-input.hidden{ type: "text", placeholder: "Click to enter a description"}/

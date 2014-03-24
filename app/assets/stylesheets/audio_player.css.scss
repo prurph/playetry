@@ -17,22 +17,11 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 
 .player-container {
-  width: 100%;
-  height: 68px;
   position: relative;
-  margin: 0 auto;
   div {
     display: inline-block;
     height: 25px;
   }
-}
-
-#default-player {
-  background-color: $asbestos;
-  width: 350px;
-  margin: 2px;
-  height: 31px;
-  padding: 3px;
 }
 
 .player-description {
@@ -70,11 +59,6 @@ $belize-hole:   #2980b9;
     font-size: 26px;
     top: 0;
   }
-}
-
-/* Centers things vertically across the player bar */
-.player-center {
-  position: relative; /* makes layerX refer to click distance from this */
 }
 
 .track-slider, .volume-meter {

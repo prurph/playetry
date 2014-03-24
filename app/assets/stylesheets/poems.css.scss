@@ -17,95 +17,21 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 $jordy-blue:    #89C4F4;
 
+$darksec: #FF5952;
+$lightsec: #FCEEC9;
+$lightmain: #96D6D9;
+$medmain: #4FAAC9;
+$darkmain: #176075;
+$letterpress-text: #2F4050;
+$bg-color: #4F6478;
 
 @import url(http://fonts.googleapis.com/css?family=PT+Mono);
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 
-.poem-container {
-  width: 100%;
-  max-width: 620px;
-  margin: 0;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  &:after {
-    content: '';
-    background: $concrete image-url("paper-9.jpg") no-repeat top left;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    opacity: 0.45;
-    z-index: -1;
-  }
-}
 
-.poem-topbot {
-  position: relative;
-  width: 100%;
-  background-color: rgba($wet-asphalt, 0.8);
-  padding: 10px;
-}
-
-.poem-body {
-  border: none;
-  border-radius: 0;
-  width: 100%;
-  height: 500px;
-  position: relative;
-  padding: 22px; // Title is 10px + 10px + 2px border
-  //background: $concrete image-url("paper-9.jpg") no-repeat top left;
-  color: $midnight-blue;
-  font-family: 'PT Mono', Menlo, Monaco, Courier;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: bold;
-  /* a lot of these are resetting default settings for pre and so must be explicit
-  inherit */
-  textarea, pre {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    resize: none;
-    color: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-  }
-}
 
 /* must specify tag and class or the attribute settings in bootstrap give it
 greater priority than just a class */
-input.poem-input, .poem-major-bar, .poem-minor-bar {
-  display: inline-block;
-  font-family: 'Oleo Script', Lato, 'Helvetica Neue';
-  color: $pumpkin;
-  border: 2px solid transparent; // so border on transition doesn't alter height
-  background-color: transparent;
-  margin: 0 0 2px 0;
-  width: 70%;
-  font-weight: normal;
-  padding: 0 0 0 4px;
-  line-height: inherit;
-  transition: all 0.5s ease-in-out;
-}
-
-input.poem-input:focus {
-  border: 2px solid $pumpkin;
-  background-color: white;
-}
-input.major-input, .poem-major-bar {
-  height: 54px;
-  font-size: 36px;
-}
-
-input.minor-input, .poem-minor-bar {
-  height: 36px;
-  text-indent: 5px;
-  font-size: 20px;
-}
-
 .fav-poem, .fav-reading {
   position: absolute;
   right: 2px;
@@ -142,5 +68,109 @@ input.minor-input, .poem-minor-bar {
 #poems-list {
   li {
     display: block;
+    margin: 1.5em 1em;
   }
+}
+
+/* poems#index */
+
+.poem-index-title {
+  font-family: 'Oleo Script', 'Lato', cursive;
+  font-size: 2.0em;
+  &:hover {
+    text-shadow: none;
+    color: $lightmain;
+  }
+}
+
+.poem-index-author, .poem-show-author {
+  text-indent: 0.5em;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+/* poems#show and poems#new */
+
+/* If don't specify tag, Bootstrap attrs override */
+input.poem-input, .poem-input {
+  font-family: 'Oleo Script', 'Lato', cursive;
+  display: inline-block;
+  border: 2px solid transparent;
+  background-color: transparent;
+  margin: 0 0 2px 0;
+  padding: 0 0 0 4px;
+  width: 70%;
+  line-height: inherit;
+  transition: all 0.5s ease-in-out;
+  &.title {
+    font-size: 3em;
+  }
+  &.author {
+    font-size: 1.8em;
+    text-indent: 0.5em;
+    text-transform: lowercase;
+  }
+}
+
+input.poem-input:focus {
+  border: 2px solid $darksec;
+  background-color: $lightsec;
+}
+
+.poem-body {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  height: 500px;
+  position: relative;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #2F4050;
+  background-color: $lightsec;
+  font-size: 1.4em;
+  line-height: 24px;
+  font-weight: bold;
+  /* a lot of these are resetting default settings for pre and so must be explicit
+  inherit */
+  textarea, pre {
+    padding: 1em;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    border-radius: 0;
+    &:focus {
+      border: 2px solid $darksec;
+    }
+  }
+}
+
+.poem-topbot {
+  position: relative;
+  width: 100%;
+  padding: 0.5em;
+  box-shadow: inset 0 0 2px 2px #2F4050;
+}
+
+.poem-container {
+  width: 100%;
+  max-width: 620px;
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  border: 2px solid $medmain;
+  border-radius: 4px;
+}
+
+.btn-submit {
+  width: 29%;
+  display: inline-block;
+  position: relative;
+  bottom: 4px;
 }

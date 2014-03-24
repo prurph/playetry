@@ -22,6 +22,7 @@ Playetry.onLoad = {
       // .bind() all these handlers to the namespace to simplify using "this"
       $("#toggle-recording").click(audCon.toggleRecording.bind(audCon));
       $("#save-recording").click(audCon.saveRecording.bind(audCon));
+      Playetry.favoriteControl.onLoad($("#reading-list"), $(".fav-poem"));
     }
   },
   poemsNew: function() {

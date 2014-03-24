@@ -5,7 +5,7 @@ Playetry.tagControl = {
     $("#tag-list").append($tag);
     Playetry.tagControl.adjustIndent($tagList);
     $("#new-tags").css("text-indent", $tagList.position().left +
-      $tagList.width() + "px").val("");
+      $tagList.width() + "px").val("").attr("placeholder", "");
     Playetry.tagControl.bindClickX($tag);
     Playetry.tagControl.fillHidden(ui.item.value);
     // this return false is critical
@@ -21,6 +21,9 @@ Playetry.tagControl = {
         this.remove();
         var $tagList = $("#tag-list");
         Playetry.tagControl.adjustIndent($tagList);
+        if ($(".tag-x").length === 0) {
+          $("#new-tags").attr("placeholder", "enter tags (comma-separated)");
+        }
       }
     });
   },

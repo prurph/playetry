@@ -43,9 +43,9 @@ Playetry.poemControl = {
 
   adjustText: function(response) {
     var search = response.search,
-        searchText = " results for ";
+        searchText = response.poems.length + " results for ";
     if (response.poems.length === 1) {
-      searchText = " result for ";
+      searchText = "1 result for ";
     }
     for (var param in search) {
       searchText += param + ": " + search[param] + ", ";

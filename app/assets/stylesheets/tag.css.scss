@@ -16,6 +16,14 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 $jordy-blue:    #89C4F4;
 
+$darksec: #FF5952;
+$lightsec: #FCEEC9;
+$lightmain: #96D6D9;
+$medmain: #4FAAC9;
+$darkmain: #176075;
+$letterpress-text: #2F4050;
+$bg-color: #4F6478;
+
 .poem-tags {
   position: relative;
 }
@@ -23,8 +31,8 @@ $jordy-blue:    #89C4F4;
 /* this is on poems#new */
 #tag-list {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 13px;
+  left: 13px;
   margin: 0;
   padding: 0;
 }
@@ -47,15 +55,15 @@ $jordy-blue:    #89C4F4;
 .mini-tag {
   height: 25px;
   position: relative;
-  background-color: $wet-asphalt;
+  background-color: $medmain;
   display: inline-block;
   padding: 0 5px;
   border-radius: 4px;
   z-index: 2;
-  color: $clouds;
+  color: $letterpress-text;
   margin-right: 2px;
   &:hover {
-    background-color: $jordy-blue;
+    background-color: $lightmain;
   }
   p {
     font-size: 18px;
