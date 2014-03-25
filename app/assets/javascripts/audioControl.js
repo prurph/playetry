@@ -105,7 +105,6 @@ window.Playetry.audioControl = {
       })
       .done(function(response) {
         $description.val("");
-        console.log(response);
         Playetry.audioControl.animateToList(response);
       })
       .fail(function() {
