@@ -1,11 +1,11 @@
 = form_for @poem do |f|
   .poem-title.poem-topbot
-    = f.text_field :title, class: 'poem-input title letterpress', id: 'new-title', placeholder: 'Click to enter title'
-    = f.text_field :author, class: 'poem-input author letterpress', id: 'new-author', placeholder: 'Click to enter author'
+    = f.text_field :title, class: 'poem-input title letterpress', id: 'new-title', placeholder: 'Click to enter title', autocomplete: false
+    = f.text_field :author, class: 'poem-input author letterpress', id: 'new-author', placeholder: 'Click to enter author', autocomplete: false
   .poem-body
     = f.text_area :body, id: 'new-body'
   .poem-tags.poem-topbot
-    = text_field_tag "new-tags", "", class: 'poem-input author letterpress', placeholder: 'Enter tags (comma-separated)', data: { autocomplete_source: Poem.tag_counts_on(:tags).order(:name).map(&:name) }
+    = text_field_tag "new-tags", "", class: 'poem-input author letterpress', placeholder: 'Enter tags (comma-separated)', data: { autocomplete_source: Poem.tag_counts_on(:tags).order(:name).map(&:name) }, autocomplete: false
     = f.hidden_field :tag_list, id: 'finished-tags', class: 'hidden'
     = f.button "Submit", type: 'submit', class: 'btn btn-warning btn-submit', id: 'submit-poem'
     %ul#tag-list

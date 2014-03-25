@@ -90,6 +90,8 @@ a {
 .container {
   padding: 0;
   max-width: 935px;
+  margin-top: 6.5em;
+  margin-bottom: 2em;
 }
 .relative {
   position: relative;
@@ -154,6 +156,62 @@ button, input, textarea {
 .field_with_errors {
   height: 100%;
 }
+
+/* home page */
+.main-splash {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 8em;
+}
+
+/* navbar and alerts */
+.main-nav {
+  width: 100%;
+  background-color: $medmain;
+  margin: 0 auto;
+}
+
+.nav-list {
+  text-align: justify;
+  margin: 0 auto 1em;
+  padding: 0 1em;
+  &:after {
+    content: '';
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.nav-logo {
+  font-size: 1.75em;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-size: 1.8em;
+  &:hover {
+    color: $lightmain;
+  }
+}
+
+.alert, .notice {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  font-size: 2em;
+  color: $lightmain;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: absolute;
+  top: 75px;
+}
+
+
 
 /* check out: http://stackoverflow.com/questions/5019663/jquery-autocomplete-styling
 for help styling this autocomplete */

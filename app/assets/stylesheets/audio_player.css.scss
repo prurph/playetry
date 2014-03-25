@@ -44,7 +44,7 @@ $bg-color: #4F6478;
   float: right;
   width: 40%;
   .slider-outside {
-    width: 85%;
+    width: 82%;
   }
 }
 
@@ -121,10 +121,12 @@ $bg-color: #4F6478;
 }
 
 @media all and (min-width: 996px) {
-  .track-container .slider-outside {
-    width: 85%;
-  }
-  .volume-container .slider-outside {
-    width: 70%;
+  .width-fix {
+    .track-container .slider-outside {
+      width: 85%;
+    }
+    .volume-container .slider-outside {
+      width: 70%;
+    }
   }
 }

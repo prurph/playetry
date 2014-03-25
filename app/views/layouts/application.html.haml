@@ -7,9 +7,9 @@
     = csrf_meta_tags
     %meta{"name" => 'viewport', "content" => 'width=device-width, initial-scale=1'}
   %body{'data-controller' => "#{ controller.controller_path }", 'data-action' => "#{ controller.action_name }", 'data-current-user' => "#{ current_user.try(:id) }" }
+    = render 'layouts/navbar'
     %p.notice= notice
     %p.alert= alert
     .container
       = yield
-      = render 'layouts/user_widget'
 

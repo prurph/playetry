@@ -3,23 +3,24 @@ Playetry.poemControl = {
     var $title = $("#title-search"),
         $author = $('#author-search'),
         $body   = $('#body-search');
-    $.ajax({
-      url: '/poems',
-      type: 'GET',
-      dataType: 'json',
-      data: { fuzzies: { title: $title.val(), author: $author.val(),
-                         body: $body.val() }
-            }
-    })
-    .done(function(response) {
-      var poemCon = Playetry.poemControl;
-      poemCon.makePoems(response.poems, $("#poems-list").empty());
-      poemCon.adjustText(response);
-      $("input[id$='search']").val("");
-    })
-    .fail(function() {
-      console.log("error");
-    });
+    if ($("input[id$='search']").val() !== "") {
+      $.ajax({
+        url: '/poems',
+        type: 'GET',
+        dataType: 'json',
+        data: { fuzzies: { title: $title.val(), author: $author.val(),
+          body: $body.val() } }
+      })
+      .done(function(response) {
+        var poemCon = Playetry.poemControl;
+        poemCon.makePoems(response.poems, $("#poems-list").empty());
+        poemCon.adjustText(response);
+        $("input[id$='search']").val("");
+      })
+      .fail(function() {
+        console.log("error");
+      });
+    }
     return false;
   },
 
