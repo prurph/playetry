@@ -1,4 +1,5 @@
-.poem-container.left{ "data-poem-id" => "#{@poem.id}" }
+.poem-container.left.col-xs-12{ "data-poem-id" => "#{@poem.id}" }
+  %h1#read.verb read
   .poem-title.poem-topbot
     .fav-poem
       - if @user_fav
@@ -23,8 +24,9 @@
       %input#recording-desc.poem-input.author.letterpress.hidden{ type: "text", placeholder: "Click to enter a description"}/
       %button.btn.btn-warning.hidden#save-recording Save!
 .right
+  %h1#listen.verb listen
   .readings-container
-    %ul#reading-list
+    %ul#reading-list.reading-column-ul
 
 -# Immediately request JSON for the relevant readings and render them with hbs
 %script

@@ -105,7 +105,6 @@ a {
 }
 
 .left {
-  width: 80%;
   max-width: 600px;
   margin: 0 2em 2em 0;
   vertical-align: top;
@@ -117,6 +116,7 @@ a {
   width: 300px;
   vertical-align: top;
   display: inline-block;
+  position: relative;
 }
 
 /* Fix Bootstrap override */
@@ -147,11 +147,13 @@ button, input, textarea {
 for help styling this autocomplete */
 ul.ui-autocomplete {
   position: absolute;
+  background: none;
   list-style: none;
   margin: 0;
   padding: 0;
   cursor: default;
   li {
+    background: none;
     background-color: $wet-asphalt;
    // border-top: solid 1px #DDD;
     margin: 0;
@@ -161,8 +163,10 @@ ul.ui-autocomplete {
     color: tomato !important;
     display: block;
     padding: 3px;
+    background: none;
     &:hover {
-      background: $clouds !important;
+      background: none;
+      background-color: $clouds !important;
       border: none;
       transform: none !important;
     }
@@ -177,10 +181,75 @@ ul.ui-autocomplete {
 }
 
 .ui-widget {
+  display: none;
   font-family: Lato !important;
   font-size: 1.1em !important;
 }
 .ui-widget-content {
+  display: none;
   background: none !important;
   color: tomato !important;
+}
+
+.ui-menu {
+  list-style-image: none;
+  &:hover, &:focus {
+    list-style-image: none;
+  }
+}
+
+* {
+  list-style-image: none !important;
+}
+
+.ui-autocomplete-loading {background: white}
+
+.ui-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  display: none;
+  min-width: 160px;
+  _width: 160px;
+  padding: 4px 0;
+  margin: 2px 0 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-color: #ccc;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+
+  .ui-menu-item > a.ui-corner-all {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    white-space: nowrap;
+
+    &.ui-state-hover, &.ui-state-active {
+      color: #ffffff;
+      text-decoration: none;
+      background-color: #0088cc;
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      background-image: none;
+    }
+  }
 }

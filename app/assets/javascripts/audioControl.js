@@ -121,8 +121,12 @@ window.Playetry.audioControl = {
       dataType: 'json'
     })
     .done(function(response) {
-      console.log(response);
-      Playetry.audioControl.makePlayers(response.readings, $("#reading-list"));
+      if (response.readings.length === 0) {
+        $(".readings-container").hide();
+        $("#listen").text("no readings");
+      } else {
+        Playetry.audioControl.makePlayers(response.readings, $("#reading-list"));
+      }
     });
   },
 
@@ -135,7 +139,7 @@ window.Playetry.audioControl = {
 
   animateToList: function(response) {
     var $newReading  = $(".new-reading"),
-        $readCont    = $(".readings-container"),
+        $readCont    = $(".readings-container").show(),
         $readingList = $("#reading-list"),
         $lis         = $readingList.children(),
         $lisHeight   = $lis.outerHeight() * $lis.length,
@@ -143,6 +147,7 @@ window.Playetry.audioControl = {
         $playUser    = $playDesc.find(".player-username"),
         scrollDist;
 
+    $("#listen").text("listen");
     $playDesc.text(response.description);
     $playUser.show().text(" by " + response.username);
     $playDesc.append($playUser);
@@ -159,7 +164,7 @@ window.Playetry.audioControl = {
         var topOffset = Math.min($lisHeight, $readCont.height());
         var offsets = {
             top: 10 + $readCont.offset().top + topOffset - $newReading.offset().top,
-            left: $readCont.offset().left - $newReading.offset().left
+            left: 5 + $readCont.offset().left - $newReading.offset().left
           };
         // move the new reading over to the existing list
         $newReading.animate({

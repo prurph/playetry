@@ -34,6 +34,7 @@ $bg-color: #4F6478;
 
 .player-description {
   width: 90%; // leave room for the heart (remember this scrolls for long desc)
+  height: 19px;
   font-size: 1.3em;
   color: $lightmain;
   overflow: scroll;

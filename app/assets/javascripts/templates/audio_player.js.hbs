@@ -5,11 +5,7 @@
 {{/if}}
     <div class="player-container" data-reading-id="{{id}}">
       <div class="fav-reading">
-        {{#if user_fav}}
-          <span class="glyphicon glyphicon-heart-empty is-fav"></span>
-        {{else}}
-          <span class="glyphicon glyphicon-heart-empty"></span>
-        {{/if}}
+        {{playerGlyph}}
       </div>
       {{#if poem_url}}
         <a class="player-link" href="{{poem_url}}" alt="{{description}}">
@@ -18,7 +14,7 @@
       {{else}}
           <h6 class="player-description">{{description}}
       {{/if}}
-          <span class="player-username">by {{username}}</span>
+          <span class="player-username">{{username}}</span>
           </h6>
       <audio class="audio-player">
         <source src="{{wav_url}}" type="audio/wav" />

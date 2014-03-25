@@ -4,8 +4,7 @@ Playetry.tagControl = {
         $tagList = $("#tag-list");
     $("#tag-list").append($tag);
     Playetry.tagControl.adjustIndent($tagList);
-    $("#new-tags").css("text-indent", $tagList.position().left +
-      $tagList.width() + "px").val("").attr("placeholder", "");
+    $("#new-tags").val("").attr("placeholder", "");
     Playetry.tagControl.bindClickX($tag);
     Playetry.tagControl.fillHidden(ui.item.value);
     // this return false is critical
@@ -29,7 +28,7 @@ Playetry.tagControl = {
   },
   adjustIndent: function($tagList) {
     var indent = $tagList.position().left + $tagList.width();
-    $("#new-tags").css("text-indent", indent + "px").val("");
+    $("#new-tags").css("text-indent", indent - 9 + "px").val("");
   },
   lookForComma: function(event) {
     // if comma pressed, fake a tag match to effectively create a new tag

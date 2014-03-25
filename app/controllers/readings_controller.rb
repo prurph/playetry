@@ -18,4 +18,13 @@ class ReadingsController < ApplicationController
     reading = Reading.find(params[:id])
     render reading
   end
+
+  def destroy
+    @reading = Reading.find(params[:id])
+    if @reading.destroy
+      render @reading
+    else
+      render json: { error: @reading.errors }
+    end
+  end
 end

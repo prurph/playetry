@@ -18,6 +18,12 @@ Playetry.userControl = {
       } else {
         $("#fav-readings-header").text("no favorite readings");
       }
+      if (response.user_readings.length > 0) {
+        Playetry.audioControl.makePlayers(response.user_readings,
+          $("#user-readings").empty());
+      }else {
+        $("#user-readings-header").text("you have no active readings");
+      }
     })
     .fail(function(response) {
       console.log("error");

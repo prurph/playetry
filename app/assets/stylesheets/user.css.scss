@@ -16,9 +16,42 @@ $peter-river:   #3498db;
 $belize-hole:   #2980b9;
 $jordy-blue:    #89C4F4;
 
-#fav-readings {
+$darksec: #FF5952;
+$lightsec: #FCEEC9;
+$lightmain: #96D6D9;
+$medmain: #4FAAC9;
+$darkmain: #176075;
+$letterpress-text: #2F4050;
+$bg-color: #4F6478;
+
+.user-list {
+  padding-left: 0.5em;
+  margin: 10px 0;
   li {
     display: inline-block;
     width: 300px;
+  }
+}
+
+.readings-index {
+  padding-left: 1em;
+}
+
+// .fav-readings-container {
+//   border: 2px solid #4faac9;
+//   border-radius: 4px;
+//   -moz-box-shadow: inset 0 0 2px 2px #2F4050;
+//   box-shadow: inset 0 0 2px 2px #2F4050;
+//   margin: 1em 0;
+// }
+
+#user-readings {
+  height: 100%;
+  width: 100%;
+  li {
+    padding: 5px 4px;
+    height: 69px;
+    border-bottom: 1px solid $darkmain;
+    display: block;
   }
 }

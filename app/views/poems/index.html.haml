@@ -3,7 +3,7 @@
   %input.poem-input.author.letterpress#author-search{type: 'text', placeholder: 'Author Search'}
   %input.poem-input.author.letterpress#body-search{type: 'text',   placeholder: 'Body Search'}
   %button.btn.btn-warning#send-search{type: 'submit'} Search
-.poems-index.left
+.poems-index.col-xs-12.col-sm-7
   %h1.poem-search browse poems
   %h3#search-by
     - if @search
@@ -12,7 +12,7 @@
       recent additions
   %ul#poems-list.poems-list
     = render @poems
-.tags-index.right
+.tags-index.col-xs-12.col-sm-5
   %h1 get inspired!
   %h3 see poems by tag
   #tags-list

@@ -15,6 +15,7 @@ Playetry.poemControl = {
       var poemCon = Playetry.poemControl;
       poemCon.makePoems(response.poems, $("#poems-list").empty());
       poemCon.adjustText(response);
+      $("input[id$='search']").val("");
     })
     .fail(function() {
       console.log("error");

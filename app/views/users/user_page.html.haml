@@ -1,7 +1,12 @@
 %h1 #{@user.username}
 .poems-index
-  %h3#fav-poems-header.section-header your favorite poems
+  %h3#fav-poems-header your favorite poems
   %ul#fav-poems.poems-list
-.readings-index
-  %h3#fav-readings-header.section-header your favorite readings
-  %ul#fav-readings.user-list
+.col-xs-12.col-sm-6
+  %h3#fav-readings-header your favorite readings
+  .readings-container
+    %ul#fav-readings.reading-column-ul
+.col-xs-12.col-sm-6
+  %h3#user-readings-header readings you've done
+  .readings-container
+    %ul#user-readings.reading-column-ul

@@ -49,6 +49,7 @@ Playetry.onLoad = {
   users: function() {
     Playetry.userControl.renderUser();
     Playetry.favoriteControl.onLoad($("#fav-readings"), undefined);
+    Playetry.favoriteControl.onLoad($("#user-readings"), undefined);
   }
 };
 

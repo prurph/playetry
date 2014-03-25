@@ -34,8 +34,7 @@ $bg-color: #4F6478;
   box-shadow: inset 0 0 2px 2px #2F4050;
 }
 
-
-#reading-list {
+.reading-column-ul {
   height: 100%;
   width: 100%;
   li {
@@ -74,5 +73,14 @@ $bg-color: #4F6478;
 .user-reading {
   .player-username {
     color: $darksec;
+  }
+}
+
+@media all and (max-width: 995px) {
+  .right {
+    width: 600px;
+  }
+  .right {
+    margin-top: 4em;
   }
 }

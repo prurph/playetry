@@ -1,5 +1,5 @@
 %li
   .poem-index{"data-poem-id" => "#{poem.id}"}
-    = link_to poem, class: "poem-link" do
-      %h3.poem-index-title.letterpress #{poem.title}
+    %h3.poem-index-title
+      = link_to "#{poem.title}", poem, class: "poem-link letterpress"
     %h6.poem-index-author.letterpress by #{poem.author}
