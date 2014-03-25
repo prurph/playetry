@@ -32,6 +32,22 @@ $bg-color: #4F6478;
   }
 }
 
+.track-container {
+  float: left;
+  width: 58%;
+  .slider-outside {
+    width: 90%;
+  }
+}
+
+.volume-container {
+  float: right;
+  width: 40%;
+  .slider-outside {
+    width: 85%;
+  }
+}
+
 .player-description {
   width: 90%; // leave room for the heart (remember this scrolls for long desc)
   height: 19px;
@@ -70,8 +86,10 @@ $bg-color: #4F6478;
   border-radius: 2px;
 }
 
-.track-slider {
-  width: 55%;
+/* this also has a media-query on it if it gets really narrow */
+.slider-outside {
+  background-color: $darkmain;
+  border-radius: 2px;
 }
 
 .track-time {
@@ -100,4 +118,13 @@ $bg-color: #4F6478;
 .volume-status{
   width: 100%;
   background-color: $medmain;
+}
+
+@media all and (min-width: 996px) {
+  .track-container .slider-outside {
+    width: 85%;
+  }
+  .volume-container .slider-outside {
+    width: 70%;
+  }
 }

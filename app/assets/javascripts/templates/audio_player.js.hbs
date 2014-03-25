@@ -21,19 +21,28 @@
         Your browser does not support the audio tag.
       </audio>
       <div class="relative full-width inherit-pos">
+
+      <div class="track-container">
+
         <div class="player-glyph-container">
           <span class="play-pause-glyph glyphicon glyphicon-play" data-player-action="playPause"></span>
         </div>
-        <div class="track-slider" data-player-action="setTrackPosition">
+        <div id="track-slider" class="slider-outside" data-player-action="setTrackPosition">
           <div class="track-progress slider-bar" data-player-action="setTrackPosition"></div>
           <div class="track-time">0:00</div>
         </div>
+
+      </div>
+      <div class="volume-container">
+
         <div class="player-glyph-container">
           <span class="volume-glyph glyphicon glyphicon-volume-up" data-player-action="toggleVolume"></span>
         </div>
-        <div class="volume-meter" data-player-action="clickVolumeSlider">
+        <div id="vol-slider" class="slider-outside" data-player-action="clickVolumeSlider">
           <div class="volume-status slider-bar" data-player-action="clickVolumeSlider" data-player-vol="1"></div>
         </div>
+      </div>
+
       </div>
     </div>
   </li>

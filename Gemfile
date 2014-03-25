@@ -14,10 +14,12 @@ gem 'bootstrap-sass', "~> 3.1.1"
 gem 'flat-ui-rails'
 
 gem 'paperclip', '~> 4.1'
+gem 'aws-sdk'
 gem 'handlebars_assets'
 gem 'js-routes'
 gem 'haml-rails'
 gem 'd3-rails'
+gem 'dotenv-rails'
 
 gem 'pry-rails'
 gem 'active_model_serializers'

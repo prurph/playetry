@@ -49,7 +49,7 @@ class Playetry.AudioPlayer
         .removeClass("glyphicon-volume-up")
 
   @clickVolumeSlider: (event) ->
-    $volSlider     = $(event.currentTarget).find(".volume-meter")
+    $volSlider     = $(event.currentTarget).find("#vol-slider")
     volSliderWidth = $volSlider.outerWidth()
     $volStatus     = $(event.currentTarget).find(".volume-status")
     clickLocation  = event.originalEvent.layerX
@@ -61,7 +61,7 @@ class Playetry.AudioPlayer
     Playetry.AudioPlayer.setVolume(this, percentage, $volStatus)
 
   @setTrackPosition: (event) ->
-    $trackSlider     = $(event.currentTarget).find(".track-slider")
+    $trackSlider     = $(event.currentTarget).find("#track-slider")
     trackSliderWidth = $trackSlider.outerWidth()
     $trackStatus     = $(event.currentTarget).find(".track-progress")
     clickLocation    = event.originalEvent.layerX
