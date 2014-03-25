@@ -146,6 +146,10 @@ input.poem-input, .poem-input {
     text-indent: 0.5em;
     text-transform: none;
   }
+  &.devise-form {
+    width: 100%;
+    text-align: left;
+  }
 }
 
 input.poem-input:focus {

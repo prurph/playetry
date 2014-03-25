@@ -1,0 +1,10 @@
+.col-xs-12.text-center
+  %h1 welcome
+  %h6.poem-index-author.letterpress.no-indent Already registered? #{link_to "Sign In", new_user_registration_path, class: "poem-link letterpress"}
+  .form-grouping
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = f.email_field :email, autofocus: true, class: 'poem-input author letterpress devise-form', placeholder: 'email'
+      = f.text_field :username, class: 'poem-input author letterpress devise-form', placeholder: 'username'
+      = f.password_field :password, autocomplete: 'off', class: 'poem-input author letterpress devise-form', placeholder: 'password'
+      = f.password_field :password_confirmation, autocomplete: 'off', class: 'poem-input author letterpress devise-form', placeholder: 'confirm password'
+      = link_to_submit 'sign up', type: 'submit', class: 'poem-index-title poem-link letterpress'
