@@ -56,6 +56,12 @@ greater priority than just a class */
   font-size: 24px;
 }
 
+.glyphicon {
+  &:hover:not(.is-fav) {
+    color: $lightmain;
+  }
+}
+
 /* if this is an unsaved new reading, don't display the heart or the username */
 .new-reading {
   position: relative;
@@ -116,11 +122,7 @@ greater priority than just a class */
 #send-search {
   position: relative;
   float: right;
-  opacity: 0.75;
   width: 22%;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 /* poems#show and poems#new */
