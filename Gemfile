@@ -58,4 +58,5 @@ group :test do
   gem 'chronic'
   gem 'simplecov'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
 end
