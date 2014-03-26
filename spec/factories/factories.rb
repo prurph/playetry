@@ -3,7 +3,9 @@ FactoryGirl.define do
 
   sequence(:username) { |n| "user_#{n}" }
   sequence(:email) { |n| "user_#{n}@foobar.com" }
-  sequence(:random_words) { |n| Faker::Lorem.words(5).join }
+  sequence(:author) { |n| Faker::Name.name }
+  sequence(:random_word) { |n| Faker::Lorem.word }
+
 
   factory :user do
     email
@@ -13,14 +15,14 @@ FactoryGirl.define do
   end
 
   factory :poem do
-    title { generate(:random_words) }
-    author { generate(:random_words) }
-    body { generate(:random_words) }
+    author { generate(:author) }
+    title { generate(:random_word) }
+    body { generate(:random_word) }
   end
 
   factory :reading do
     user
-    description { generate(:random_words) }
+    description { generate(:random_word) }
     wav do
       fixture_file_upload(Rails.root.join('spec', 'wav', 'test.wav'), 'audio/wav')
     end
