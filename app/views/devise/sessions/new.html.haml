@@ -1,6 +1,6 @@
 .col-xs-12.text-center
   %h1 welcome
-  %h6.poem-index-author.letterpress.no-indent Not registered? #{link_to "Sign Up", new_user_session_path, class: "poem-link letterpress"}
+  %h6.poem-index-author.letterpress.no-indent Not registered? #{link_to "Sign Up", new_user_registration_path, class: "poem-link letterpress"}
   .form-grouping
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.email_field :email, autofocus: true, class: 'poem-input author letterpress devise-form', placeholder: 'email'

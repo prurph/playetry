@@ -158,6 +158,10 @@ window.Playetry.audioControl = {
 
     // scroll the list to the bottom then...
     $readCont.animate({scrollTop: scrollDist()}, "slow", function() {
+      // fixes for the relative width of vol/track sliders
+      if ($readCont.hasClass("width-fix")) {
+        $newReading.addClass("width-fix");
+      }
       // shrink the new reading so it's the same width as the list of existing
       $newReading.animate({ width: $readCont.width() + "px" }, 500, function() {
         var topOffset = Math.min($lisHeight, $readCont.height());

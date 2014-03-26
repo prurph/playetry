@@ -25,4 +25,14 @@ feature 'returning user views setup page', :js do
       expect(page).to have_content "logout", "my playetry", "search", "write"
     end
   end
+
+  scenario 'user searches for a single parameter' do
+    visit poems_path
+    fill_in 'Title Search', with: @poems.first.title
+    click_link 'Search'
+
+    within('#poems-list') do
+      expect(page).to have_content @poems.first.title
+    end
+  end
 end
