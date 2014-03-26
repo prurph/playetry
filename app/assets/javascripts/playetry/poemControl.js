@@ -44,14 +44,18 @@ Playetry.poemControl = {
 
   adjustText: function(response) {
     var search = response.search,
-        searchText = response.poems.length + " results for ";
+        resultsText = response.poems.length + " results for ",
+        paramText = "",
+        $paramSpan;
     if (response.poems.length === 1) {
-      searchText = "1 result for ";
+      resultsText = "1 result for ";
     }
     for (var param in search) {
-      searchText += param + ": " + search[param] + ", ";
+      paramText += param + ": " + search[param] + ", ";
     }
-    $("#search-by").html(searchText.slice(0,-2));
+    $paramSpan = $("<span/>", { text: paramText.slice(0,-2),
+      "class": "search-param" });
+    $("#search-by").text(resultsText).append($paramSpan);
   },
 
   makePoems: function(response, $attachNode) {

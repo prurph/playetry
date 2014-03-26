@@ -1,0 +1,49 @@
+$clouds:        #ecf0f1;
+$wet-asphalt:   #34495e;
+
+$darksec: #FF5952;
+$lightsec: #FCEEC9;
+$lightmain: #96D6D9;
+$medmain: #4FAAC9;
+$darkmain: #176075;
+$letterpress-text: #2F4050;
+$bg-color: #4F6478;
+
+/* check out: http://stackoverflow.com/questions/5019663/jquery-autocomplete-styling
+for help styling this autocomplete */
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+.ui-autocomplete-loading {background: white}
+
+.ui-autocomplete {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  padding-left: 4px;
+  padding-top: 4px;
+  list-style: none;
+  border: none;
+  li {
+    height: 25px;
+    opacity: 0.85;
+    background-color: $medmain;
+    border-radius: 4px;
+    margin: 0 0.2em;
+    padding: 0 0.5em;
+    display: inline-block;
+    &:hover {
+      opacity: 1;
+      background-color: $lightmain;
+    }
+  }
+  a, a.ui-state-hover, a.ui-state-active {
+    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    color: $lightsec;
+  }
+}

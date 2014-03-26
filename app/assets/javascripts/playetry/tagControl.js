@@ -29,6 +29,8 @@ Playetry.tagControl = {
   adjustIndent: function($tagList) {
     var indent = $tagList.position().left + $tagList.width();
     $("#new-tags").css("text-indent", indent - 9 + "px").val("");
+    // move the autocomplete with the tags
+    $(".ui-autocomplete").css("padding-left", indent - 9 + "px").hide();
   },
   lookForComma: function(event) {
     // if comma pressed, fake a tag match to effectively create a new tag

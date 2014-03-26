@@ -30,7 +30,6 @@ Playetry.drawD3 = function(tagData) {
     .start();
 
   function draw(words) {
-    console.log(words);
     var a = d3.select("#tags-list").append("svg")
         .attr("width", 400)
         .attr("height", 400)
