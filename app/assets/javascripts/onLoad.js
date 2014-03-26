@@ -31,13 +31,7 @@ Playetry.onLoad = {
         minLength: 2,
         source: $("#new-tags").data("autocomplete-source"),
         focus: function() { return false; },
-        select: Playetry.tagControl.onTagGenerated,
-        open: function(event, ui) {
-          var $input = $(event.target),
-              $results = $input.autocomplete("widget");
-          console.log($results);
-          $results.css("top", "-=80");
-        }
+        select: Playetry.tagControl.onTagGenerated
       });
       $("#new-tags").keyup(Playetry.tagControl.lookForComma);
       $("#submit-poem").click(Playetry.tagControl.fillHidden);

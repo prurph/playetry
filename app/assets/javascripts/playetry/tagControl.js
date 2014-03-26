@@ -43,10 +43,16 @@ Playetry.tagControl = {
   },
   fillHidden: function(event) {
     var $tags = $(".mini-tag p"),
-        $processedList;
+        $processedList,
+        $tagInput = $("#new-tags");
     $processedList = $tags.map(function(index, tagDOM) {
       return this.innerText;
     });
+    // in case user hit submit with an active tag still in the input, make sure
+    // it gets stored too.
+    if ($tagInput.val().length >= 2) {
+      $processedList.push($tagInput.val());
+    }
     // adjust the hidden form with the list of tag1,tag2,tag3
     $("#finished-tags").val($processedList.get().join(","));
     // and submit it to Rails to create the poem

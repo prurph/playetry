@@ -3,7 +3,7 @@ Playetry.poemControl = {
     var $title = $("#title-search"),
         $author = $('#author-search'),
         $body   = $('#body-search');
-    if ($("input[id$='search']").val() !== "") {
+    if ($title.length > 0 || $author.length > 0 || $body > 0) {
       $.ajax({
         url: Routes.poems_path(),
         type: 'GET',
