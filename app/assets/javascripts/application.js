@@ -25,4 +25,6 @@
 //= require handlebarsHelpers
 //= require playetry
 //= require onLoad
+//= require_tree ./playetry
+//= require_self
 //= require_tree .

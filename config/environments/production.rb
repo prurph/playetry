@@ -25,6 +25,7 @@ AudioRecordRails::Application.configure do
   # Set to :debug to see everything in the log.
   config.log_level = :info
   config.i18n.fallbacks = true
+  config.assets.precompile += %w( recorderWorker.js )
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
