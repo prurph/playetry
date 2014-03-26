@@ -16,6 +16,8 @@
     // URL.createObjectURL is then run on this blob to effectively mimic a
     // separate .js file with the desired worker functionality in it.
     var worker = new Worker(newWorkerURL);
+    //var worker = new Worker('<%= asset_path('worker.js') %>');
+    //var worker = new Worker(config.workerPath || WORKER_PATH);
     worker.postMessage({
       command: 'init',
       config: {

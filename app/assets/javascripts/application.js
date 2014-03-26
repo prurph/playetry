@@ -10,20 +10,19 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require playetry
+
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
 //= require turbolinks
-//= require js-routes
-//= require handlebars.runtime
-//= require_tree ./templates
-//= require d3
-//= require onLoad
 //= require bootstrap
-//= require_tree .
+//= require d3
+//= require handlebars.runtime
+//= require js-routes
 
-// Function.prototype.bind polyfill for PhantomJS
-$(function(){
-  Function.prototype.bind=(function(){}).bind||function(b){if(typeof this!=="function"){throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");}function c(){}var a=[].slice,f=a.call(arguments,1),e=this,d=function(){return e.apply(this instanceof c?this:b||window,f.concat(a.call(arguments)));};c.prototype=this.prototype;d.prototype=new c();return d;};
-});
+//= require polyfill
+//= require_tree ./templates
+//= require handlebarsHelpers
+//= require playetry
+//= require onLoad
+//= require_tree .

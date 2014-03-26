@@ -81,16 +81,22 @@ a {
   &:hover {
     color: $lightmain;
   }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+    color: $lightmain;
+  }
 }
 
 /* Some Generic Classes */
 .full-width {
   width: 100% !important;
 }
+
 .container {
   padding: 0;
   max-width: 935px;
-  margin-top: 6.5em;
+  margin-top: 6.5em !important;
   margin-bottom: 2em;
 }
 .relative {
