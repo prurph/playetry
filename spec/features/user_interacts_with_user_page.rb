@@ -11,6 +11,8 @@ feature 'user interacts with user page', :js do
     @fav_poem.save!
     @notfav_poem = @poems.second
     @notfav_poem.tag_list = "anger, sorrow"
+    @notfav_poem.save!
+
     @favorite = @fav_poem.favorites.new(user: @user)
     @favorite.save!
 
@@ -31,13 +33,10 @@ feature 'user interacts with user page', :js do
     click_link 'my playetry'
   end
 
-  sceanario 'by clicking on a poem link' do
-    click_link @fav_poem.title
+  scenario 'by clicking on a poem link' do
+    page.all("a.poem-link", text: @fav_poem.title).first.trigger('click')
 
     # should be redirected to that poem show page
-    within('#read') do
-      expect(page).to have_content @fav_poem.title
-    end
 
     within('.poem-container') do
       expect(page).to have_content @fav_poem.title
@@ -47,9 +46,33 @@ feature 'user interacts with user page', :js do
       expect(page).to_not have_content @notfav_poem.tags.first.name
     end
 
-    within('readings-container') do
+    within('.readings-container') do
       expect(page).to have_content @notfav_reading.description
     end
   end
 
+  scenario 'by clicking on a reading link' do
+    page.all("a.player-link", text: @fav_reading.description)
+      .first.trigger('click')
+
+    # should be redirected to the poem show page for that reading
+    # recall that this poem is @notfav_poem
+    within('.poem-container') do
+      expect(page).to have_content @notfav_poem.title
+      expect(page).to have_content @notfav_poem.body
+      expect(page).to_not have_content @fav_poem.body
+    end
+  end
+
+  scenario 'by unfavoriting a reading and refreshing' do
+    within("div[data-reading-id='#{@fav_reading.id}']") do
+      page.find('.is-fav').trigger('click')
+    end
+
+    expect(page).to have_content @fav_poem.title
+
+    visit(current_path)
+    expect(page).not_to have_content @fav_reading.description
+    expect(page).to have_content @fav_poem.title
+  end
 end
