@@ -52,6 +52,8 @@ $bg-color: #4F6478;
 
 /* and this is on poems#index (yikes) */
 #tags-list {
+  position: relative;
+  right: 4.5em;
   li {
     display: block;
     margin: 5px;

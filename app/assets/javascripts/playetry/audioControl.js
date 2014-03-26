@@ -115,7 +115,7 @@ window.Playetry.audioControl = {
 
   getReadings: function(poemId) {
     $.ajax({
-      url: '/poems/' + poemId + '/readings',
+      url: Routes.poem_readings_path(poemId),
       type: 'GET',
       dataType: 'json'
     })

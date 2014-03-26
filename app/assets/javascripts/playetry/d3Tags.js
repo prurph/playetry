@@ -18,10 +18,10 @@ Playetry.d3Tags = function() {
 Playetry.drawD3 = function(tagData) {
   var fill = d3.scale.category20(),
       size = d3.scale.linear()
-              .range([32,72])
+              .range([32,90])
               .domain(d3.extent(tagData, function(d) { return d.count; }));
 
-  d3.layout.cloud().size([300, 300])
+  d3.layout.cloud().size([400, 400])
     .words(tagData)
     .rotate(function() { return ~~(Math.random()*2) * 90; })
     .font("Lato")
@@ -32,10 +32,10 @@ Playetry.drawD3 = function(tagData) {
   function draw(words) {
     console.log(words);
     var a = d3.select("#tags-list").append("svg")
-        .attr("width", 300)
-        .attr("height", 300)
+        .attr("width", 400)
+        .attr("height", 400)
       .append("g")
-        .attr("transform", "translate(150,150)")
+        .attr("transform", "translate(200,200)")
       .selectAll("text")
         .data(words)
       .enter().append("text")

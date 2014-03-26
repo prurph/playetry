@@ -17,11 +17,13 @@ class Poem < ActiveRecord::Base
   end
 
   def self.find_fuzzy(params)
+    first_search = true
     poems = []
     params.each do |term, input|
       results = Poem.send("find_by_fuzzy_#{term}", input)
-      poems = poems.empty? ? results : poems & results
+      poems = (first_search && results) || poems & results
+      first_search = false
     end
-    return poems
+    return (poems || [])
   end
 end
