@@ -4,8 +4,10 @@
     .fav-poem
       - if @user_fav
         %span.glyphicon.glyphicon-heart-empty.is-fav
-      - else
+      - elsif current_user
         %span.glyphicon.glyphicon-heart-empty
+      - else
+        %span.glyphicon
     %h1.poem-input.title.letterpress #{@poem.title}
     %h3.poem-input.author.letterpress by #{@poem.author}
   .poem-body

@@ -3,7 +3,7 @@ Playetry.d3Tags = function() {
       tagData;
 
   $.ajax({
-    url: '/tag_cloud',
+    url: Routes.tag_cloud_path(),
     type: 'GET',
     dataType: 'json'
   })

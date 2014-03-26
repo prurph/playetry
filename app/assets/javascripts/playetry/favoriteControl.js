@@ -31,7 +31,7 @@ window.Playetry.favoriteControl = {
   },
   railsFav: function(favoriteable, id, action, callback) {
     $.ajax({
-      url: "/favorites/" + favoriteable + "/" + id,
+      url: Routes.new_favorite_path(favoriteable, id),
       type: action,
       dataType: "json",
       data: null,
@@ -48,7 +48,7 @@ window.Playetry.favoriteControl = {
   },
   delReading: function(readingId, $glyph) {
     $.ajax({
-      url: "/readings/" + readingId,
+      url: Routes.reading_path(readingId),
       type: "DELETE",
       dataType: "json",
     })

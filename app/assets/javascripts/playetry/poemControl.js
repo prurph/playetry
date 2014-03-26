@@ -5,7 +5,7 @@ Playetry.poemControl = {
         $body   = $('#body-search');
     if ($("input[id$='search']").val() !== "") {
       $.ajax({
-        url: '/poems',
+        url: Routes.poems_path(),
         type: 'GET',
         dataType: 'json',
         data: { fuzzies: { title: $title.val(), author: $author.val(),
@@ -27,13 +27,12 @@ Playetry.poemControl = {
   poemsByTag: function(event) {
     $.ajax({
       // super hacky: get the tag text and concatenate that in as the param
-      url: "/tags/" + this.textContent,
+      url: Routes.tag_path(this.textContent),
       type: 'GET',
       dataType: 'json',
     })
     .done(function(response) {
       var poemCon = Playetry.poemControl;
-      console.log(response);
       poemCon.makePoems(response.poems, $("#poems-list").empty());
       poemCon.adjustText(response);
     })

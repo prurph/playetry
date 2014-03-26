@@ -86,7 +86,8 @@ window.Playetry.audioControl = {
     var data = new FormData(),
         fileExt = ".wav",
         $description = $("#recording-desc"),
-        descriptionText = $description.val();
+        descriptionText = $description.val(),
+        poemId = $(".poem-container").attr("data-poem-id");
 
     if (descriptionText.length > 30 || descriptionText.length <= 3) {
       // ADD ERROR HANDLING HERE
@@ -95,9 +96,7 @@ window.Playetry.audioControl = {
       data.append("wav", blob, new Date().getTime() + fileExt);
       data.append("description", descriptionText);
       $.ajax({
-        // current URL is /poems/:poem_id, tacking on readings and making a POST
-        // gives readings#create controller as a resourceful nested route
-        url: window.location.pathname + '/readings',
+        url: Routes.poem_readings_path(poemId),
         type: 'POST',
         data: data,
         contentType: false,

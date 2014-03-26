@@ -1,7 +1,7 @@
 Playetry.userControl = {
   renderUser: function() {
     $.ajax({
-      url: '/user',
+      url: Routes.user_path(),
       type: 'GET',
       dataType: 'json',
     })

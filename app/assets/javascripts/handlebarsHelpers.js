@@ -1,5 +1,5 @@
 Handlebars.registerHelper("playerGlyph", function(){
-  var glyphClass;
+  var glyphClass = "";
   if (this.is_users) {
     glyphClass = "glyphicon-remove is-users";
     return new Handlebars.SafeString(
@@ -10,8 +10,6 @@ Handlebars.registerHelper("playerGlyph", function(){
     return new Handlebars.SafeString(
       "<span class='glyphicon glyphicon-heart-empty is-fav'></span>"
     );
-  } else {
-    glyphClass = "glyphicon-heart-empty";
   }
 
   return new Handlebars.SafeString(
