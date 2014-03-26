@@ -1,10 +1,4 @@
-$darksec: #FF5952;
-$lightsec: #FCEEC9;
-$lightmain: #96D6D9;
-$medmain: #4FAAC9;
-$darkmain: #176075;
-$letterpress-text: #2F4050;
-$bg-color: #4F6478;
+@import "colors";
 
 .user-list {
   padding-left: 0.5em;
@@ -28,4 +22,8 @@ $bg-color: #4F6478;
     border-bottom: 1px solid $darkmain;
     display: block;
   }
+}
+
+#fav-readings-header, #user-readings-header {
+  margin-bottom: 0.6em;
 }

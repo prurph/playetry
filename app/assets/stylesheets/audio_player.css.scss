@@ -1,10 +1,4 @@
-$darksec: #FF5952;
-$lightsec: #FCEEC9;
-$lightmain: #96D6D9;
-$medmain: #4FAAC9;
-$darkmain: #176075;
-$letterpress-text: #2F4050;
-$bg-color: #4F6478;
+@import "colors";
 
 .player-container {
   position: relative;
