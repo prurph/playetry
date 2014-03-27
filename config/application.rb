@@ -14,6 +14,7 @@ Bundler.require(:default, Rails.env)
 module AudioRecordRails
   class Application < Rails::Application
     ActsAsTaggableOn.force_lowercase = true
+    config.cache_store = :memory_store, { size: 64.megabytes }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

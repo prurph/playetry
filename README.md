@@ -9,7 +9,7 @@ Technologies used:
   - [jbuilder](https://github.com/rails/jbuilder)
   - [HAML](http://haml.info/)
   - Thanks to some especially awesome gems: [fuzzily](https://github.com/mezis/fuzzily), [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
-  - TDD: [RSpec](https://github.com/jnicklas/capybara), [Capybara](https://github.com/jnicklas/capybara), [FactoryGirl](https://github.com/thoughtbot/factory_girl)
+  - TDD: [RSpec](https://github.com/jnicklas/capybara), [Capybara](https://github.com/jnicklas/capybara), [FactoryGirl](https://github.com/thoughtbot/factory_girl), [poltergeist](https://github.com/jonleighton/poltergeist)
 -  JavaScript
   - [CoffeeScript](http://coffeescript.org)
   - [Handlebars](http://handlebarsjs.com/)
