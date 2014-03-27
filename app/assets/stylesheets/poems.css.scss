@@ -1,8 +1,5 @@
 @import "colors";
 
-@import url(http://fonts.googleapis.com/css?family=PT+Mono);
-@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
-
 /* must specify tag and class or the attribute settings in bootstrap give it
 greater priority than just a class */
 .fav-poem, .fav-reading {
@@ -144,7 +141,7 @@ input.poem-input:focus {
   font-weight: bold;
   // leave space for tags on the show page
   &.show {
-  padding-bottom: 1.8em;
+    padding-bottom: 1.8em;
   }
   /* a lot of these are resetting default settings for pre and so must be explicit
   inherit */

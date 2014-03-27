@@ -17,6 +17,7 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
 
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 @import "bootstrap";
 @import "flat-ui";
 @import "colors";
@@ -164,7 +165,7 @@ button, input, textarea {
 .nav-list {
   text-align: justify;
   margin: 0 auto 1em;
-  padding: 0 1em;
+  padding: 0 5em;
   &:after {
     content: '';
     width: 100%;
