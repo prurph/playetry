@@ -15,7 +15,7 @@ Playetry.d3Tags = function(selector, svgSize) {
 Playetry.drawD3 = function(tagData, selector, svgSize) {
   var fill = d3.scale.category20(),
       size = d3.scale.linear()
-              .range([svgSize/15 ,svgSize/5])
+              .range([svgSize/18 ,svgSize/5])
               .domain(d3.extent(tagData, function(d) { return d.count; }));
 
   d3.layout.cloud().size([svgSize, svgSize/2])
