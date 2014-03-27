@@ -7,7 +7,7 @@ class Poem < ActiveRecord::Base
   before_create :added_at
 
   validates :title,
-    uniqueness: { scope: :author, message: "Poem already exists"},
+    uniqueness: { scope: :author, message: "already exists"},
     presence: true
   validates :author, presence: true
   validates :body, presence: true

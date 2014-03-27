@@ -5,6 +5,11 @@ Playetry.onLoad = {
     this.dataAction     = $("body").attr("data-action");
     Playetry.currentUserId  = $("body").attr("data-current-user");
 
+    window.setTimeout(function() {
+      $('.notice').fadeOut();
+      $('.alert').fadeOut();
+    }, 5000);
+
     if (this.dataController === "poems") {
       Playetry.onLoad.poems();
     } else if (this.dataController === "users") {
