@@ -29,7 +29,7 @@ class PoemsController < ApplicationController
       @search = { tag: params[:tag] }
     elsif params[:fuzzies].present?
       search_params = params[:fuzzies].reject {|k,v| v.empty? }
-      @poems = Poem.includes(:tags).find_fuzzy(search_params).sort_by!(&:title)
+      @poems = Poem.includes(:tags).find_fuzzy(search_params)
       @search = search_params
     else
       @poems = Poem.includes(:tags).order(added_at: :desc).limit(5)

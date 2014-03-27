@@ -2,4 +2,6 @@
   .poem-index{"data-poem-id" => "#{poem.id}"}
     %h3.poem-index-title
       = link_to "#{poem.title}", poem, class: "poem-link letterpress"
-    %h6.poem-index-author.letterpress by #{poem.author}
+    %h6.poem-index-author.letterpress
+      by
+      %span.author{"data-author-name" => "#{poem.author}"}= poem.author
