@@ -1,27 +1,24 @@
-Playetry.d3Tags = function() {
-  var fill = d3.scale.category20(),
-      tagData;
-
+Playetry.d3Tags = function(selector, svgSize) {
   $.ajax({
     url: Routes.tag_cloud_path(),
     type: 'GET',
     dataType: 'json'
   })
   .done(function(response) {
-    Playetry.drawD3(response.tags);
+    Playetry.drawD3(response.tags, selector, svgSize);
   })
   .fail(function(response) {
     console.log("error");
   });
 };
 
-Playetry.drawD3 = function(tagData) {
+Playetry.drawD3 = function(tagData, selector, svgSize) {
   var fill = d3.scale.category20(),
       size = d3.scale.linear()
-              .range([32,90])
+              .range([svgSize/15 ,svgSize/5])
               .domain(d3.extent(tagData, function(d) { return d.count; }));
 
-  d3.layout.cloud().size([400, 400])
+  d3.layout.cloud().size([svgSize, svgSize])
     .words(tagData)
     .rotate(function() { return ~~(Math.random()*2) * 90; })
     .font("Lato")
@@ -30,11 +27,12 @@ Playetry.drawD3 = function(tagData) {
     .start();
 
   function draw(words) {
-    var a = d3.select("#tags-list").append("svg")
-        .attr("width", 400)
-        .attr("height", 400)
+    var a = d3.select(selector).append("svg")
+        .attr("width", svgSize)
+        .attr("height", svgSize)
       .append("g")
         .attr("transform", "translate(200,200)")
+        .attr("transform", "translate(" + svgSize/2.5 + "," + svgSize/2.5 + ")")
       .selectAll("text")
         .data(words)
       .enter().append("text")
@@ -47,7 +45,14 @@ Playetry.drawD3 = function(tagData) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
         .text(function(d) { return d.text; })
-        .on("click", Playetry.poemControl.poemsByTag);
+        .on("click", function() {
+            if (window.location.pathname !== Routes.poems_path()) {
+              window.location.href = Routes.poems_path();
+              window.sessionStorage.playetryPoemsByTag = this.textContent;
+            } else {
+              $(document).ready(Playetry.poemControl.poemsByTag.bind(this));
+            }
+          });
     d3.select("svg").attr("transform", "translate(200,200");
   }
 };

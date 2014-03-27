@@ -51,7 +51,7 @@ Playetry.poemControl = {
       resultsText = "1 result for ";
     }
     for (var param in search) {
-      paramText += param + ": " + search[param] + ", ";
+      paramText += "[" +param + "] " + search[param] + ", ";
     }
     $paramSpan = $("<span/>", { text: paramText.slice(0,-2),
       "class": "search-param" });

@@ -50,4 +50,18 @@ feature 'user views user page', :js do
       expect(page).to have_content @user_reading.description
     end
   end
+
+  scenario 'when deleting a reading' do
+    @user = create(:user)
+    sign_in_as(@user)
+
+    @reading = create(:reading, user: @user)
+
+    visit user_path
+    expect(page).to have_content @reading.description
+
+    page.find('.glyphicon-remove').trigger('click')
+    visit(current_path)
+    expect(page).to_not have_content @reading.description
+  end
 end

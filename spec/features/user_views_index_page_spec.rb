@@ -85,7 +85,6 @@ feature 'returning user views setup page', :js do
     fill_in 'Author Search', with: 'asdf'
     fill_in 'Body Search', with: 'asdf'
     click_link 'Search'
-    save_and_open_page
 
     within('#search-by') do
       expect(page).to have_content "0 results"

@@ -21,7 +21,7 @@ class ReadingsController < ApplicationController
 
   def destroy
     @reading = Reading.find(params[:id])
-    if @reading.destroy
+    if current_user == @reading.user && @reading.destroy
       render @reading
     else
       render json: { error: @reading.errors }

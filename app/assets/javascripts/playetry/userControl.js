@@ -6,7 +6,6 @@ Playetry.userControl = {
       dataType: 'json',
     })
     .done(function(response) {
-      console.log(response);
       if (response.poems.length > 0) {
         Playetry.poemControl.makePoems(response.poems, $("#fav-poems").empty());
       } else {

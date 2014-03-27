@@ -9,11 +9,13 @@ Playetry.onLoad = {
       Playetry.onLoad.poems();
     } else if (this.dataController === "users") {
       Playetry.onLoad.users();
+    } else if (this.dataController === "static_pages") {
+      Playetry.onLoad.main();
     }
   },
   poemsIndex: function() {
     $("#send-search").click(Playetry.poemControl.searchPoems);
-    Playetry.d3Tags();
+    Playetry.d3Tags("#tags-list", $(".tags-index").width()*1.5);
   },
   poemsShow: function() {
     if (Playetry.currentUserId > 0) {
@@ -40,6 +42,11 @@ Playetry.onLoad = {
   poems: function() {
     if (this.dataAction === "index") {
       this.poemsIndex();
+      var pendingSearch = window.sessionStorage.playetryPoemsByTag;
+      if (pendingSearch) {
+        Playetry.poemControl.poemsByTag.bind({textContent: pendingSearch})();
+        window.sessionStorage.removeItem("playetryPoemsByTag");
+      }
     } else if (this.dataAction === "new") {
       this.poemsNew();
     } else if (this.dataAction === "show") {
@@ -50,6 +57,9 @@ Playetry.onLoad = {
     Playetry.userControl.renderUser();
     Playetry.favoriteControl.onLoad($("#fav-readings"), undefined);
     Playetry.favoriteControl.onLoad($("#user-readings"), undefined);
+  },
+  main: function() {
+    Playetry.d3Tags("#big-tag-cloud", $("#big-tag-cloud").width());
   }
 };
 

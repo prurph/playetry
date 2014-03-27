@@ -53,7 +53,6 @@ window.Playetry.favoriteControl = {
       dataType: "json",
     })
     .done(function(response) {
-      console.log(response);
       $glyph.parents("li").remove();
     })
     .fail(function(response) {

@@ -22,7 +22,6 @@ class PoemsController < ApplicationController
   end
 
   def index
-    #@tags = Poem.tag_counts.order(:name)
     if params[:tag]
       @poems = Poem.includes(:tags).tagged_with(params[:tag])
       @search = { tag: params[:tag] }
