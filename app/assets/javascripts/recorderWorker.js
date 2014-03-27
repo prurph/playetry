@@ -1,6 +1,4 @@
 // I hacked this a little bit for smaller filesize by messing with interLeave
-// and wrapped the whole thing in a Blob to get around asset compiling in
-// production, but I did NOT write this code:
 // https://github.com/mattdiamond/Recorderjs
 
 var recLength = 0,
@@ -71,6 +69,7 @@ function mergeBuffers(recBuffers, recLength){
   return result;
 }
 
+// this basically averages the left and right channels to create mono
 function interleave(inputL, inputR){
   var result = new Float32Array(inputL.length);
   for (var i = 0; i < inputL.length; ++i)

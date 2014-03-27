@@ -26,7 +26,8 @@ Playetry.poemControl = {
 
   poemsByTag: function(event) {
     $.ajax({
-      // super hacky: get the tag text and concatenate that in as the param
+      // super hacky: get the tag text from the <g> and concatenate that
+      // in as the param
       url: Routes.tag_path(this.textContent),
       type: 'GET',
       dataType: 'json',
