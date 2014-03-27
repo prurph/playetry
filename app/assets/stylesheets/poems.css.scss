@@ -142,6 +142,10 @@ input.poem-input:focus {
   font-size: 1.4em;
   line-height: 24px;
   font-weight: bold;
+  // leave space for tags on the show page
+  &.show {
+  padding-bottom: 1.8em;
+  }
   /* a lot of these are resetting default settings for pre and so must be explicit
   inherit */
   textarea, pre {
