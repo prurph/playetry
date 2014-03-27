@@ -1,6 +1,6 @@
 class Favorite < ActiveRecord::Base
   belongs_to :user
-  belongs_to :favoriteable, polymorphic: true
+  belongs_to :favoriteable, polymorphic: true, touch: true
 
   # Allows calling user.favorites.poems, user.readings.poems
   scope :poems, -> { where(favoriteable_type: 'Poem')}

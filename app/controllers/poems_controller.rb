@@ -15,7 +15,9 @@ class PoemsController < ApplicationController
   end
 
   def show
-    @poem = Poem.includes(:favorites).includes(:tags).find(params[:id])
+    @poem = Rails.cache.fetch("poem_#{params[:id]}", expires_in: 2.days) do
+      Poem.includes(:favorites).includes(:tags).find(params[:id])
+    end
     if current_user.present?
       @user_fav = @poem.favorites.where(user: current_user).present?
     end
