@@ -66,6 +66,10 @@ a {
   width: 100% !important;
 }
 
+.no-padding {
+  padding: 0 !important;
+}
+
 .container {
   padding: 0;
   max-width: 935px;
@@ -106,7 +110,8 @@ a {
 }
 
 .right {
-  width: 300px;
+  max-width: 600px;
+  padding: 0;
   vertical-align: top;
   display: inline-block;
   position: relative;
@@ -141,6 +146,8 @@ button, input, textarea {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  position: relative;
+  top: -2em;
 }
 
 .home-title {

@@ -18,7 +18,7 @@ Playetry.drawD3 = function(tagData, selector, svgSize) {
               .range([svgSize/15 ,svgSize/5])
               .domain(d3.extent(tagData, function(d) { return d.count; }));
 
-  d3.layout.cloud().size([svgSize, svgSize])
+  d3.layout.cloud().size([svgSize, svgSize/2])
     .words(tagData)
     .rotate(function() { return ~~(Math.random()*2) * 90; })
     .font("Lato")
@@ -31,8 +31,7 @@ Playetry.drawD3 = function(tagData, selector, svgSize) {
         .attr("width", svgSize)
         .attr("height", svgSize)
       .append("g")
-        .attr("transform", "translate(200,200)")
-        .attr("transform", "translate(" + svgSize/2.5 + "," + svgSize/2.5 + ")")
+        .attr("transform", "translate(" + svgSize/2.1 + "," + svgSize/4 + ")")
       .selectAll("text")
         .data(words)
       .enter().append("text")

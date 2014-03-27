@@ -1,4 +1,4 @@
-.poem-container.left.col-xs-12{ "data-poem-id" => "#{@poem.id}" }
+.poem-container.left.col-xs-12.col-md-7{ "data-poem-id" => "#{@poem.id}" }
   %h1#read.verb read
   .poem-title.poem-topbot
     .fav-poem
@@ -25,7 +25,7 @@
           #{link_to "Sign in", new_user_session_path} to record.
       %input#recording-desc.poem-input.author.letterpress.hidden{ type: "text", placeholder: "Click to enter a description"}/
       %button.btn.btn-warning.hidden#save-recording Save!
-.right
+.right.col-xs-12.col-md-4
   %h1#listen.verb listen
   .readings-container.width-fix
     %ul#reading-list.reading-column-ul

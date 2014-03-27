@@ -12,7 +12,7 @@
   float: left;
   width: 58%;
   .slider-outside {
-    width: 90%;
+    width: 87%;
   }
 }
 
@@ -20,7 +20,7 @@
   float: right;
   width: 40%;
   .slider-outside {
-    width: 82%;
+    width: 75%;
   }
 }
 
@@ -96,7 +96,7 @@
   background-color: $medmain;
 }
 
-@media all and (min-width: 996px) {
+@media all and (min-width: 991px) {
   .width-fix {
     .track-container .slider-outside {
       width: 85%;

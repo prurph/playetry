@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+#new-tags {
+  width: 70%;
+}
+
 /* this is on poems#show */
 #poem-tag-list {
   margin: 0;
@@ -29,6 +33,7 @@
 #tags-list {
   position: relative;
   right: 4.5em;
+  max-width: 600px;
   li {
     display: block;
     margin: 5px;
@@ -65,7 +70,7 @@ svg {
 }
 
 .tag-link {
-  opacity: 0.8;
+  opacity: 0.5;
   &:hover {
     opacity: 1;
   }

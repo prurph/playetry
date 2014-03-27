@@ -15,7 +15,7 @@ Playetry.onLoad = {
   },
   poemsIndex: function() {
     $("#send-search").click(Playetry.poemControl.searchPoems);
-    Playetry.d3Tags("#tags-list", $(".tags-index").width()*1.5);
+    Playetry.d3Tags("#tags-list", 500);
   },
   poemsShow: function() {
     if (Playetry.currentUserId > 0) {

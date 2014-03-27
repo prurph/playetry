@@ -31,7 +31,7 @@
 }
 
 #new-reading-inner {
-  width: 90%;
+  width: 89%;
   display: inline-block;
   li {
     list-style-type: none;
@@ -52,9 +52,9 @@
   }
 }
 
-@media all and (max-width: 995px) {
+@media all and (max-width: 991px) {
   .right {
-    width: 600px;
+   // width: 600px;
     margin-top: 3.7rem;
   }
 }
