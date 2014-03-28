@@ -24,6 +24,10 @@ window.Playetry.audioControl = {
     this.trackMaxTime.timeoutId = setTimeout(this.stopRecording,
       this.trackMaxTime.maxTime);
     $("#toggle-recording").text("STOP").toggleClass("btn-success btn-danger");
+    $("#recording-desc").val("");
+    $("#save-recording").addClass("hidden");
+    $("#recording-desc").addClass("hidden");
+    $(".player-container").addClass("hidden");
   },
 
   startRecording: function(event) {

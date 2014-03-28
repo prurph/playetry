@@ -20,7 +20,7 @@ class Poem < ActiveRecord::Base
     first_search = true
     poems = []
     params.each do |term, input|
-      results = Poem.send("find_by_fuzzy_#{term}", input)
+      results = Poem.send("find_by_fuzzy_#{term}", input, {limit: 25})
       poems = (first_search && results) || poems & results
       first_search = false
     end
