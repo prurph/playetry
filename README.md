@@ -19,4 +19,6 @@ Technologies used:
 
 This was made over the course of a week as a project for General Assembly's Web Development Immersive course.
 
-I'm an aspiring web developer. See some of my other work at: [presco.tt](http://presco.tt)
+Note that there is a known Chrome bug--apparently related to JavaScript garbage collection--where an old AudioContext does not go out of scope, causing "Uncaught SyntaxError: ... : number of hardware contexts reached maximum(4)." when one tries to record 4+ times without refreshing the page. See: [https://code.google.com/p/chromium/issues/detail?id=308784](https://code.google.com/p/chromium/issues/detail?id=308784).
+
+I'm an aspiring web developer. See some of my other work at: [presco.tt](http://presco.tt) and feel free to get in touch to chat about the site or web dev in general!
