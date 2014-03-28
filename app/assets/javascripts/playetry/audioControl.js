@@ -27,7 +27,7 @@ window.Playetry.audioControl = {
     $("#recording-desc").val("");
     $("#save-recording").addClass("hidden");
     $("#recording-desc").addClass("hidden");
-    $(".player-container").addClass("hidden");
+    $("#new-reading-inner").find(".player-container").addClass("hidden");
   },
 
   startRecording: function(event) {
