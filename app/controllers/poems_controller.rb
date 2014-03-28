@@ -15,7 +15,7 @@ class PoemsController < ApplicationController
   end
 
   def show
-    @poem = Rails.cache.fetch("poem_#{params[:id]}", expires_in: 2.days) do
+    @poem = Rails.cache.fetch("poem_#{params[:id]}", expires_in: 2.day) do
       Poem.includes(:favorites).includes(:tags).find(params[:id])
     end
     if current_user.present?
