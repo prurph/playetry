@@ -23,11 +23,19 @@ window.Playetry.audioControl = {
     this.recorder.record();
     this.trackMaxTime.timeoutId = setTimeout(this.stopRecording,
       this.trackMaxTime.maxTime);
-    $("#toggle-recording").text("STOP").toggleClass("btn-success btn-danger");
+    this.adjustNewReadingDisplay();
+  },
+
+  adjustNewReadingDisplay: function() {
+    var inner = $("#new-reading-inner");
+
     $("#recording-desc").val("");
-    $("#save-recording").addClass("hidden");
-    $("#recording-desc").addClass("hidden");
-    $("#new-reading-inner").find(".player-container").addClass("hidden");
+
+    inner.find("li").remove();
+    inner.children().addClass("hidden");
+    $("#toggle-recording").text("STOP")
+      .toggleClass("btn-success btn-danger").removeClass("hidden");
+    inner.find("h3").removeClass("hidden");
   },
 
   startRecording: function(event) {
