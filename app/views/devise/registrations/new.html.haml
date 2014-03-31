@@ -7,4 +7,4 @@
       = f.text_field :username, class: 'poem-input author letterpress devise-form', placeholder: 'username'
       = f.password_field :password, autocomplete: 'off', class: 'poem-input author letterpress devise-form', placeholder: 'password'
       = f.password_field :password_confirmation, autocomplete: 'off', class: 'poem-input author letterpress devise-form', placeholder: 'confirm password'
-      = link_to_submit 'sign up', type: 'submit', class: 'poem-index-title poem-link letterpress'
+      = f.submit 'sign up', class: 'poem-index-title letterpress clear-button'

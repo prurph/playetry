@@ -118,6 +118,13 @@ a {
   position: relative;
 }
 
+.clear-button {
+  border: none;
+  background: none;
+  text-align: left;
+  text-indent: 0.5em;
+}
+
 /* Fix Bootstrap override */
 input.letterpress {
   color: #2F4050;

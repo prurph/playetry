@@ -5,4 +5,4 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.email_field :email, autofocus: true, class: 'poem-input author letterpress devise-form', placeholder: 'email'
       = f.password_field :password, autocomplete: 'off', class: 'poem-input author letterpress devise-form', placeholder: 'password'
-      = link_to_submit 'sign in', type: 'submit', class: 'poem-index-title poem-link letterpress'
+      = f.submit 'sign in', class: 'poem-index-title letterpress clear-button'
