@@ -22,7 +22,6 @@ AudioRecordRails::Application.configure do
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
-  # Set to :debug to see everything in the log.
   config.log_level = :info
   config.i18n.fallbacks = true
   config.assets.precompile += %w( recorderWorker.js )
@@ -31,8 +30,7 @@ AudioRecordRails::Application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_controller.asset_host = ENV['CLOUDFRONT-DOMAIN']
-
+  config.action_controller.asset_host = ENV['CLOUDFRONT_ASSETS']
 
   config.paperclip_defaults = {
     :storage => :s3,
