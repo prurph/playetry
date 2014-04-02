@@ -4,6 +4,8 @@ class ReadingsController < ApplicationController
                           user: current_user, poem_id: params[:poem_id])
     reading.save!
     render reading
+    # Reading.delay.save
+    # thread.new
   end
 
   def index
