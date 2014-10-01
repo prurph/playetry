@@ -30,7 +30,7 @@ AudioRecordRails::Application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_controller.asset_host = ENV['CLOUDFRONT_ASSETS']
+  # config.action_controller.asset_host = ENV['CLOUDFRONT_ASSETS']
 
   config.paperclip_defaults = {
     :storage => :s3,
